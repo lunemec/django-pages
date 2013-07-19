@@ -158,4 +158,4 @@ def generate_sitemap(request):
 
                 data.append('%s/~%s' % (page_url, slugify(post.title)))
 
-    return render_to_response('%s/sitemap.xml' % TEMPLATE_PATH, {'urls': data}, context_instance=RequestContext(request))
+    return render_to_response('%s/sitemap.xml' % TEMPLATE_PATH, {'urls': data}, context_instance=RequestContext(request), mimetype='application/xml')

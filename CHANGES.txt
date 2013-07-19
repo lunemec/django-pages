@@ -1,2 +1,5 @@
+v1.0.4, 19.07.2013 -- changed mimetype for sitemap
+v1.0.3, 19.07.2013 -- fixed sitemap.xml
+v1.0.2, 19.07.2013 -- fixed templates that were not adding to pip
 v1.0.1, 19.07.2013 -- corrected app name, models and README, added sample_project
 v1.0.0, 19.07.2013 -- changed entire project to package for pip, added django-reverse for database data versioning
