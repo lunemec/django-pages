@@ -1,0 +1,2 @@
+v1.0.1, 19.07.2013 -- corrected app name, models and README, added sample_project
+v1.0.0, 19.07.2013 -- changed entire project to package for pip, added django-reverse for database data versioning

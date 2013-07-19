@@ -1,0 +1,2 @@
+include README.md DEPENDENCIES LICENCE.txt CHANGES.txt
+recursive-include wysiwyg *.py *.html *.js *.css *.gif *.png

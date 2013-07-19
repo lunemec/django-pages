@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7]><html class="no-js iem7 oldie"><![endif]-->
+<!--[if lt IE 7]><html class="no-js ie6 oldie" lang="en"><![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js ie7 oldie" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js ie8 oldie" lang="en"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html><!--<![endif]--><!--[if (gte IE 9)|(gt IEMobile 7)]><!--><!--<![endif]--><head>
+
+        <!--    License
+
+        This HTML template was downloaded from http://sunrise.gpmd.co.uk/ and edited for use with this application.
+
+Copyright (c) 2006-10, SilverStripe Limited - www.silverstripe.com
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    Neither the name of SilverStripe nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+{% for meta in site_content.metadata %}
+
+    <meta name="{{ meta.name }}" content="{{ meta.content }}">
+
+{% endfor %}
+		
+<title>{% block title %}{{ site_content.site.display_name }} - {{ site_content.page.title }}{% endblock %}</title>
+	
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0">
+	
+    <!-- Load CSS -->
+
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style_default.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/lightbox.css">
+
+    <!-- Load JS -->
+
+    <script src="{{ STATIC_URL }}js/jquery-1.7.2.min.js"></script>
+    <script src="{{ STATIC_URL }}js/lightbox.js"></script>
+
+</head>
+
+<body class="clearfix">
+
+	<header role="banner" id="header"><!-- #header start -->
+	
+		<div id="inner-header" class="clearfix"><!-- #inner-header start -->
+
+            <div id="search-wrapper">
+                {% for lang in site_content.languages %}            
+                
+                <a href="/{{ lang.country_code }}/" class="lang_link{% if site_content.current_language == lang %} lang_active{% endif %}">
+                    {% if lang.flag %}
+                    <img class="lang_flag" src="{{ MEDIA_URL }}{{ lang.flag }}">
+                    {% endif %}
+                        {{ lang.language }}
+                    </a>
+
+                {% endfor %}
+            </div>
+
+				
+			<!-- Site title -->
+            <h1>
+                <a href="http://{{ site_content.site.domain }}/" title="{{ site_content.site.display_name }}">
+                    {{ site_content.site.display_name }}
+                </a>
+            </h1>
+			
+			<!-- Site tagline -->
+            <p>{{ site_content.site.tagline }}</p>
+		
+		</div><!-- #inner-header end -->
+		
+		<!-- navigation -->
+		<nav role="navigation" id="navigation" class="clearfix"><!-- #navigation start -->
+			<ul class="level-one">
+
+	    {% for menuitem in site_content.menuitems %}
+
+            <li>
+            <a href="/{{ site_content.current_language.country_code }}/{{ menuitem.url }}" title="{{ menuitem.menuitem_name }}"
+                {% if menuitem.current %}
+                class="current"
+                {% endif %}
+                >
+                    {{ menuitem.menuitem_name }}
+                </a>
+            </li>
+
+        {% endfor %}
+	         
+</ul>
+
+		</nav><!-- #navigation end -->
+		
+	</header><!-- #header end -->
+
+    {% block content %}    
+
+
+    {% endblock %}
+
+	<footer role="contentinfo" class="clearfix" id="footer"><!-- #footer start -->
+	
+		<div id="inner-footer" class="clearfix"><!-- #inner-footer start -->
+	
+            {{ site_content.site.footer|safe }}
+		
+		</div><!-- #inner-footer end -->
+		
+	</footer><!-- #footer end -->
+
+    
+
+</body></html>

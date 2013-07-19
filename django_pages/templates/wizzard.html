@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Django Wysiwyg (CMS) help Wizzard</title>
+</head>
+<body>
+    <style>
+        img {border: 1px solid;}
+    </style>
+
+    <h1>Helper Wizzard</h1>
+    <p>Since you visited this page, I assume you want to know how co correctly configure this Django application. I will NOT tell you how to configure
+    your webserver (apache, nginx, lighttpd, etc..) to handle requests and pass them to uwsgi proccesses, that is not my objective, there is a lot
+    information on how to do that on the internet already, and maybe I'll make a tutorial how to install this application on debian server with Nginx,
+    uwsgi and postgresql database.</p>
+    <p>Now I assume you <b>correctly set up your Django settings.py</b> so you can run the application. If not, visit <a href='http://www.djangoproject.com'>Django project</a> and look at beginner's tutorial, which will walk you through the basic settings.</p>
+    <p>For testing purposes, you can use the settings.py file that is included in this project <b>but DO NOT USE IT IN PRODUCTION</b>, that is on you
+    and I will NOT be responsible for damage to your OS due to security risks when published your SECRET_KEY on the web.</p>
+    <p>For use on your production server, create new SECRET_KEY (either create new django project and copy from there or google for a generator).</p>
+    <p>I also assume you ran <i>python manage.py syncdb</i> and created a <b>superuser account</b>.</p>
+
+    <h1>Prerequisites</h1>
+    <p>Install all dependencies by ececuting: <i># pip install -r DEPENDENCIES</i></p>
+    <p>One mor dependency that is not listed on the github is imagemagick, install it by executing: <i># apt-get install imagemagick</i> (or yum, or pacman or whatever). Imagemagick is called when image is uploaded on server to resize it to fit 800x600px (because of Lightbox2 - when you have 3000x2000 px or more, it goes out of visible screen).</p>
+
+    <h1>Step 1</h1>
+    <p>Custom settings.py specific to this project are: TEMPLATE_PATH, USE_TZ, FLAG_UPLOAD_DIR, ADMIN_MEDIA_PREFIX, POSTS_ON_PAGE</p>
+    <p><h2>TEMPLATE_PATH</h2> This means your folder in templates directory. Default is default, this means that the applicatioin will look for its
+    template into directory <i>wysiwyg/templates/default</i>. If you want to write your own template, copy the default directory under different name,
+    change the TEMPLATE_PATH to the same name, and edit html files.</p>
+    <p><h2>USE_TZ</h2> This is Django specific setting, it tells Django to use TimeZone support. I DO NOT RECOMMEND you to change it. More info
+    on what this does can be found on Django site.</p>
+    <p><h2>FLAG_UPLOAD_DIR</h2> Path to directory where to save flags (country/language flags) uploaded from admin site. Set this to some directory in /media/ folder. Of course, you need to have write permissions into that directory (well not you, but user that is assigned to the django app).</p>
+    <p><h2>ADMIN_MEDIA_PREFIX</h2> Path to directory where are saved admin staticfiles (js, css, images). Set this to path like this: /home/user/something/wysiwyg/wysiwyg/static/admin/ . Look for directory structure on the <a href='https://github.com/lunemec/wysiwyg'>GitHub page of this project</a> and you'll understand.</p>
+    <p><h2>POSTS_ON_PAGE</h2> How many posts (like blog posts) will be displayed per Page (pagination).</p>
+
+    <h1>Step 2</h1>
+    <p>Now, when you navigate to your site (http://yoursite.com or http://localhost:8000 for local testing), you should see this:
+    <br> <img src="/static/wizzard/img1.png"></p>
+    <p>This means there is no Site created in the database, so go to <a href="/admin/wysiwyg/site/add/" target="_blank">admin</a> and create one. 
+    Make sure to create <b>ONLY ONE!</b></p>
+    <p>Fields available: Domain, Display name, Tagline, Footer.<br>Here is explanation: <br><img src="/static/wizzard/img2.png"></p>
+
+    <h1>Step 3</h1>
+    <p>After creating exactly ONE site, you should see this:<br> <img src="/static/wizzard/img3.png"></p>
+    <p>Again, some data are missing from database. Go to <a href="/admin/wysiwyg/language/add/" target="_blank">admin</a> and create one. Here you can create
+    as many as you like.</p>
+    <p>Fields available: Language, Country code, Flag, Display as default, Active.</p>
+    <p>This does not need image, simply look on the image above and there you can see 2 languages with Icons (Flags).</p> 
+    <p><b>Language</b> field is how your language will be spelled on the webpage.</p>
+    <p><b>Country code</b> is 2 or 3 letters specifiyng your country and is used to build URL (like http://mysite.com/en/ for english version). </p>
+    <p><b>Flag</b> if you want to have nice icon (I recommend 64x64 px) you can upload it there, it can be empty.</p>
+    <p><b>Display as default</b>, this field indicates which language should be the default language displayed when someone visits 
+    http://mysite.com without any parameters. There can be only ONE default language, and the admin logic will make sure it stays this way.</p>
+    <p><b>Active</b>, this indicates if you want this language quickly activate/deactivate without the need to delete it. When you deactivate it, 
+    it will dissapear from the webpage.</p>
+
+    <h1>Step 4</h1>
+    <p>After creating your Language, you'll see this:<br><img src="/static/wizzard/img4.png"></p>
+    <p>This means there is no Page with Active and Index fields checked True. Active means exactly the same as it did in Language, when you want to
+    disable a page, simply deactivate it. Index, that means that page will be index page for specified language (language for which its link is set).</p>
+    <p>To create a page, we must first create link to that page. Go to <a href="/admin/wysiwyg/menu/add/" target="_blank">guess where, admin</a> and create a Menu.
+    Here, select a <b>Language</b> where this menu should be displayed (all links belonging to this menu), and fill in <b>name</b> - it will 
+    not be displayed anywhere but the admin, so anything.</p>
+    <p>After creating Menu, go <a href="/admin/wysiwyg/menuitem/add/" target="_blank">here</a> and create one menuitem. In the dropdown, select <b>Menu</b> you just made.
+    Write some name in the <b>MenuItem name field</b> - this is what will be displayed on the page, so something smart (look at the first image). 
+    <b>Url</b>, here you can fill the url that points to this page - it should be SEO friendly, so something like this: 
+    my-article-where-i-write-about-cats.</p>
+    <p>Now we're ready to create the <b>Page</b>. Go <a href="/admin/wysiwyg/page/add/" target="_blank">here</a> and create one.</p>
+    <p><b>Page title</b> this will be displayed as Page's heading (look at the first picture - black Root text).</p>
+    <p><b>Link</b> select the link you created a while ago.</p>
+    <p><b>Page content</b> this is the text and images and all inside the page, you can use the editor as a Word.</p>
+    <p><b>Active</b> you know what this does.</p>
+    <p><b>Index</b> don't forget to check this as True, so this will be your Index page, and remember there can be ONLY ONE INDEX page per LANGUAGE!</p>
+
+    <h1>FINISHED</h1>
+    <p>If you followed these steps, you now see a nice page with all the data you filled in. This is all.</p>
+    <p>You should familiarize yourself with the ADMIN page, it may seem difficult at first, but once you create a few Pages, you'll do fine.</p>
+
+    <h1>Wysiwyg</h1>
+    <p>The Wysiwyg editor in Admin is JavaScript tool called CKEditor. More info can be found on the project site (google it).
+    There are two modifications however. When you want to add a Image, click on image icon, and click on Browse server. Now in this window, 
+    you should be able to upload images to your /media/uploaded/ directory (application will try to resize automatically) and when you upload an image,
+    select it, and it will fill that image path and link to the CKEditor.</p>
+    <p>The other customization is a Plugin that allows you to create a LightBox(ed) images. Click on a image. Click on the small magnifiing glass icon
+    in the editor window, fill in the text you want to be displayed, and Save. Now that image will display an animation after clicking it.</p>
+
+    <h1>Posts</h1>
+    <p>On each Page can be infinite number of Posts, it can be viewed as a Blog, posts are sorted by their creation date (newest first). Creation date
+    can be changed in Admin.</p>
+    <p>Post admin is pretty much the same as Page, but instead of <b>Link</b> there is a <b>Page</b> where it will be displayed. There are several 
+    more options, like <b>Enable comments</b>, <b>Visible From-To</b>. These I hope are self-explanatory.</p>
+    <p>Comments can be accesed from Admin, in Comments section, nothing strange here.</p>
+
+    <h1>Meta Sets</h1>
+    <p>This is a SEO option, you don't need to fill it in for your website to work, but it is recommended.</p>
+    <p>It wors like this, you create MetaSet, which has only 2 fields, Language and Name. After this you can create MetaData. MetaData creates &lt;meta&gt; tags for you. For each MetaSet can be infinite MetaData, just select MetaSet and fill in meta name and content. Now go to <b>Page</b> on which you want a specific MetaSet displayed (can be different because of keywords on a page or language).</p>
+
+    <h1>Logging</h1>
+    <p>The Wysiwyg editor saves all incoming requests in the database, and is accesible from Admin. You can look at your own requests there.</p>
+
+    <h1>Rss and Atom feed</h1>
+    <p>If you want this enabled, go to Admin to Feed settings and add 1 Feed setting. Check Enabled, Fill in Site title (displayed in the feed),
+    and Site description for the Feed, and Last Posts to show in the Feed.</p>
+
+
+</body>
+</html>

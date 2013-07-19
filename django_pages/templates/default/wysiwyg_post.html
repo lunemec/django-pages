@@ -1,0 +1,105 @@
+{% extends 'default/wysiwyg.html'%}
+
+{% block title %}
+{{ block.super }}, {{ site_content.posts.title }}
+{% endblock %}
+
+{% block content %}
+
+	<div id="content" class="clearfix"><!-- #content start -->
+	
+		<div id="main" role="main" class="clearfix"><!-- #main start -->
+			<article class="post" role="article" itemscope="" itemtype="http://schema.org/BlogPosting"><!-- .post start -->
+
+	
+	<header><!-- header start -->
+    <h2 class="page-title" itemprop="headline">{{ site_content.posts.title }}</h2>
+	</header><!-- header end -->
+	
+	<section class="post-content clearfix" itemprop="articleBody"><!-- .post-content start -->
+
+
+                {{ site_content.posts.content|safe }}
+    
+    </section><!-- .post-content end -->
+    </article><!-- .post end -->
+    <br />
+    <link rel="cannonical" href="{{ site_content.posts.get_url }}">
+    <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="32"></div>
+    <div class="fb-like", data-href="{{ site_content.posts.get_url }}" data-send="false" data-width="32" data-show-faces="true" data-layout="button_count"></div>
+    <div id="comments"></div>
+    {% if site_content.posts.comments %}
+
+    {% if site_content.posts.comment_set.count %}
+    <br />
+    Comments:
+        {% for comment in site_content.posts.comment_set.all %} 
+            
+        <div class="page_post">
+            <p>{{ comment.user }}</p>
+            <p>{{ comment.comment }}</p>
+        </div>
+
+        {% endfor %}
+
+        {% endif %}
+
+        <br />
+        <br />
+        <br />
+        Add comment:
+        <form action="#" method="POST">{% csrf_token %}
+            
+            {{ site_content.form.non_field_errors }}
+
+            {{ site_content.form.user.errors }}
+            <p>Nick: {{ site_content.form.user }}</p>
+
+            {{ site_content.form.comment.errors }}
+            <p>Comment: {{ site_content.form.comment }}</p>
+            <p>1 {{ site_content.form.one }} 2 {{ site_content.form.two }} 3 {{ site_content.form.three }} 4 {{ site_content.form.four }}</p>
+            
+            {% if site_content.form.spam %}
+            <ul class="errorlist">
+                <li>{{ site_content.form.spam }}</li>
+            </ul>
+            {% endif %}
+
+            <p> AntiSpam protection: check {{ site_content.form.humanity }} </p>
+
+            <input type="submit" value="Send">
+
+        </form>
+        {% endif %}
+	
+    </div><!-- #main end -->
+    
+    </div><!-- .content end -->
+
+    
+    <!-- google plus button -->
+    
+    <script type="text/javascript">
+        (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+         })();
+     </script>
+
+
+     <!-- facebook button  -->
+
+     <div id="fb-root"></div>
+     <script>
+        (function(d,s,id) {
+            var js, fjs=d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+     </script>
+
+
+{% endblock %}

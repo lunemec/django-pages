@@ -1,0 +1,10 @@
+django
+pytz
+elementtree
+django-reversion
+
+# to enable django admin doc
+docutils
+
+# nicer admin templates
+django-grappelli
