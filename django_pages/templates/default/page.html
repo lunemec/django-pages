@@ -1,0 +1,30 @@
+{% extends 'default/base.html'%}
+
+{% block content %}
+
+	<div id="content" class="clearfix"><!-- #content start -->
+	
+		<div id="main" role="main" class="clearfix"><!-- #main start -->
+			<article class="post" role="article" itemscope="" itemtype="http://schema.org/BlogPosting"><!-- .post start -->
+
+	
+            <header><!-- header start -->
+
+            <h2 class="page-title" itemprop="headline">
+                {{ site_content.page.title }}
+            </h2>
+
+            </header><!-- header end -->
+
+
+    {% include 'default/post_list.html' %}    
+	
+
+    </article><!-- .post end -->
+	
+    </div><!-- #main end -->
+    
+    </div><!-- .content end -->
+
+
+{% endblock %}

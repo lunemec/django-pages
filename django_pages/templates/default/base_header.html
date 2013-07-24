@@ -1,0 +1,47 @@
+<header role="banner" id="header"><!-- #header start -->
+
+<div id="inner-header" class="clearfix"><!-- #inner-header start -->
+
+
+<div id="search-wrapper">
+    {% for lang in site_content.languages %}            
+                
+    <a href="/{{ lang.country_code }}/" class="lang_link{% if site_content.current_language == lang %} lang_active{% endif %}">
+
+        {% if lang.flag %}
+
+        <img class="lang_flag" src="{{ MEDIA_URL }}{{ lang.flag }}">
+
+        {% endif %}
+
+        {{ lang.language }}
+
+    </a>
+
+    {% endfor %}
+
+</div>
+
+<!-- Site title -->
+
+<h1>
+
+    <a href="http://{{ site_content.site.domain }}/" title="{{ site_content.site.display_name }}">
+
+        {{ site_content.site.display_name }}
+
+    </a>
+
+</h1>
+
+			
+<!-- Site tagline -->
+
+<p>{{ site_content.site.tagline }}</p>
+
+		
+        </div><!-- #inner-header end -->
+
+	    {% include 'default/base_menu.html' %}	
+		
+</header><!-- #header end -->

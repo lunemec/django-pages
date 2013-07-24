@@ -1,0 +1,55 @@
+{% extends 'default/base.html'%}
+
+{% block title %}
+{{ block.super }}, {{ site_content.posts.title }}
+{% endblock %}
+
+{% block content %}
+
+	<div id="content" class="clearfix"><!-- #content start -->
+	
+		<div id="main" role="main" class="clearfix"><!-- #main start -->
+			<article class="post" role="article" itemscope="" itemtype="http://schema.org/BlogPosting"><!-- .post start -->
+
+	
+	<header><!-- header start -->
+    <h2 class="page-title" itemprop="headline">
+        {{ site_content.posts.title }}
+    </h2>
+	</header><!-- header end -->
+	
+	<section class="post-content clearfix" itemprop="articleBody"><!-- .post-content start -->
+
+
+                {{ site_content.posts.content|safe }}
+    
+    </section><!-- .post-content end -->
+    </article><!-- .post end -->
+    <br />
+
+    <!-- g+ button -->
+    <link rel="cannonical" href="{{ site_content.posts.get_url }}">
+    <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="32"></div>
+    <!-- g+ end -->
+    
+
+    {% include 'default/comments.html' %}
+    
+	
+    </div><!-- #main end -->
+    
+    </div><!-- .content end -->
+
+    
+    <!-- google plus button -->
+    
+    <script type="text/javascript">
+        (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+         })();
+     </script>
+
+
+{% endblock %}

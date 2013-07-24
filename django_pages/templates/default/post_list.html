@@ -1,0 +1,59 @@
+<section class="post-content clearfix" itemprop="articleBody"><!-- .post-content start -->
+
+    {{ site_content.page.content|safe }}
+
+    {% for post in site_content.posts.object_list %}
+
+    <div class="page_post">
+        
+        <div id="{{ post.title|slugify }}" class="page_post_title">
+            
+            <a href="{{ post.get_url }}">
+                {{ post.title }}
+            </a>
+
+        </div>
+        <div class="page_post_content">
+
+            {{ post.content|safe }}
+
+        </div>
+
+        {% if post.comments %}
+
+        <div class="page_post_comments">
+
+            <a href='{{ post.get_url }}#comments'>
+                {{ post.comment_set.count }} comments
+            </a>
+
+        </div>
+
+        {% endif %}
+        
+    </div>
+
+    {% endfor %}
+
+    {% if site_content.posts.has_other_pages %}
+
+        <div id="pagination">
+
+            {% for page in site_content.posts.paginator.page_range %}
+            
+            <a class="pagination_page
+                {% if site_content.posts.number == page %}
+                    page_active
+                {% endif %}
+                " href="/{{ site_content.current_language.country_code }}/{{ site_content.page.link.url }}~{{ page }}">
+
+                 <span>{{ page }}</span></a>
+                
+             {% endfor %}
+
+        <span id="pagination_all">{{ site_content.posts }}</span>
+        </div>
+
+    {% endif %}
+
+    </section><!-- .post-content end -->

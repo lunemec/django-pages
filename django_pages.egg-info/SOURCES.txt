@@ -356,10 +356,10 @@ django_pages/static/wizzard/img2.png
 django_pages/static/wizzard/img3.png
 django_pages/static/wizzard/img4.png
 django_pages/templates/wizzard.html
+django_pages/templates/default/base.html
+django_pages/templates/default/page.html
+django_pages/templates/default/post.html
 django_pages/templates/default/sitemap.xml
-django_pages/templates/default/wysiwyg.html
-django_pages/templates/default/wysiwyg_page.html
-django_pages/templates/default/wysiwyg_post.html
 sample_project/__init__.py
 sample_project/manage.py
 sample_project/settings.py

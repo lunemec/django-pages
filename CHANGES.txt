@@ -1,3 +1,4 @@
+v1.0.5, 24.07.2013 -- changed template names, removed FB button since it doesn't work without appid, changed default template layout
 v1.0.4, 19.07.2013 -- changed mimetype for sitemap
 v1.0.3, 19.07.2013 -- fixed sitemap.xml
 v1.0.2, 19.07.2013 -- fixed templates that were not adding to pip

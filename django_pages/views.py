@@ -80,7 +80,7 @@ def main_view(request, url, test=False):
 
         posts = get_post(page, url_result['post'])
 
-        template_page = 'wysiwyg_post.html'
+        template_page = 'post.html'
 
         if request.method == 'POST':
 
@@ -100,7 +100,7 @@ def main_view(request, url, test=False):
 
         posts = get_paginated_posts(page, page_num)
 
-        template_page = 'wysiwyg_page.html'
+        template_page = 'page.html'
 
     site_content = {'site': current_site,
                     'languages': get_languages(),

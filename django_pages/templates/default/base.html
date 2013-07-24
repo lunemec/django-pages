@@ -24,85 +24,26 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 
-{% for meta in site_content.metadata %}
+{% include 'default/base_metadata.html' %}
 
-    <meta name="{{ meta.name }}" content="{{ meta.content }}">
-
-{% endfor %}
-		
-<title>{% block title %}{{ site_content.site.display_name }} - {{ site_content.page.title }}{% endblock %}</title>
+{% include 'default/base_title.html'%}
 	
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
 	<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0">
-	
-    <!-- Load CSS -->
 
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style_default.css">
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/lightbox.css">
 
-    <!-- Load JS -->
-
-    <script src="{{ STATIC_URL }}js/jquery-1.7.2.min.js"></script>
-    <script src="{{ STATIC_URL }}js/lightbox.js"></script>
+{% include 'default/base_static.html' %}    
 
 </head>
 
 <body class="clearfix">
 
-	<header role="banner" id="header"><!-- #header start -->
 	
-		<div id="inner-header" class="clearfix"><!-- #inner-header start -->
 
-            <div id="search-wrapper">
-                {% for lang in site_content.languages %}            
-                
-                <a href="/{{ lang.country_code }}/" class="lang_link{% if site_content.current_language == lang %} lang_active{% endif %}">
-                    {% if lang.flag %}
-                    <img class="lang_flag" src="{{ MEDIA_URL }}{{ lang.flag }}">
-                    {% endif %}
-                        {{ lang.language }}
-                    </a>
-
-                {% endfor %}
-            </div>
-
+        {% include 'default/base_header.html' %}
 				
-			<!-- Site title -->
-            <h1>
-                <a href="http://{{ site_content.site.domain }}/" title="{{ site_content.site.display_name }}">
-                    {{ site_content.site.display_name }}
-                </a>
-            </h1>
-			
-			<!-- Site tagline -->
-            <p>{{ site_content.site.tagline }}</p>
-		
-		</div><!-- #inner-header end -->
-		
-		<!-- navigation -->
-		<nav role="navigation" id="navigation" class="clearfix"><!-- #navigation start -->
-			<ul class="level-one">
 
-	    {% for menuitem in site_content.menuitems %}
-
-            <li>
-            <a href="/{{ site_content.current_language.country_code }}/{{ menuitem.url }}" title="{{ menuitem.menuitem_name }}"
-                {% if menuitem.current %}
-                class="current"
-                {% endif %}
-                >
-                    {{ menuitem.menuitem_name }}
-                </a>
-            </li>
-
-        {% endfor %}
-	         
-</ul>
-
-		</nav><!-- #navigation end -->
-		
-	</header><!-- #header end -->
 
     {% block content %}    
 

@@ -1,0 +1,46 @@
+<div id="comments"></div>
+{% if site_content.posts.comments %}
+
+    {% if site_content.posts.comment_set.count %}
+    <br />
+
+
+Comments:
+        {% for comment in site_content.posts.comment_set.all %} 
+            
+        <div class="page_post">
+            <p>{{ comment.user }}</p>
+            <p>{{ comment.comment }}</p>
+        </div>
+
+        {% endfor %}
+
+        {% endif %}
+
+        <br />
+        <br />
+        <br />
+        Add comment:
+        <form action="#" method="POST">{% csrf_token %}
+            
+            {{ site_content.form.non_field_errors }}
+
+            {{ site_content.form.user.errors }}
+            <p>Nick: {{ site_content.form.user }}</p>
+
+            {{ site_content.form.comment.errors }}
+            <p>Comment: {{ site_content.form.comment }}</p>
+            <p>1 {{ site_content.form.one }} 2 {{ site_content.form.two }} 3 {{ site_content.form.three }} 4 {{ site_content.form.four }}</p>
+            
+            {% if site_content.form.spam %}
+            <ul class="errorlist">
+                <li>{{ site_content.form.spam }}</li>
+            </ul>
+            {% endif %}
+
+            <p> AntiSpam protection: check {{ site_content.form.humanity }} </p>
+
+            <input type="submit" value="Send">
+
+        </form>
+        {% endif %}

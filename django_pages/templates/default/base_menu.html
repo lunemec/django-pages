@@ -1,0 +1,22 @@
+<!-- navigation -->
+
+        <nav role="navigation" id="navigation" class="clearfix"><!-- #navigation start -->
+
+        <ul class="level-one">
+
+            {% for menuitem in site_content.menuitems %}
+            <li>
+            <a href="/{{ site_content.current_language.country_code }}/{{ menuitem.url }}" title="{{ menuitem.menuitem_name }}"
+                {% if menuitem.current %}
+                class="current"
+                {% endif %}
+                >
+                {{ menuitem.menuitem_name }}
+            </a>
+            </li>
+            {% endfor %}
+
+        </ul>
+
+</nav><!-- #navigation end -->
+
