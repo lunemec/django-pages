@@ -8,7 +8,7 @@ setup(
     version='1.0.6',
     author=u'Lukas Nemec',
     author_email='lu.nemec@gmail.com',
-    url='https://github.com/lunemec/wysiwyg',
+    url='https://github.com/lunemec/django-pages',
     license='see LICENCE.txt',
     description='Simple CMS for django',
     long_description=open('README.md').read(),
