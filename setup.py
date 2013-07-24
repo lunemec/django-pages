@@ -5,7 +5,7 @@ from setuptools import find_packages
 
 setup(
     name='django-pages',
-    version='1.0.5',
+    version='1.0.6',
     author=u'Lukas Nemec',
     author_email='lu.nemec@gmail.com',
     url='https://github.com/lunemec/wysiwyg',

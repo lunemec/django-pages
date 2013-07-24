@@ -357,8 +357,15 @@ django_pages/static/wizzard/img3.png
 django_pages/static/wizzard/img4.png
 django_pages/templates/wizzard.html
 django_pages/templates/default/base.html
+django_pages/templates/default/base_header.html
+django_pages/templates/default/base_menu.html
+django_pages/templates/default/base_metadata.html
+django_pages/templates/default/base_static.html
+django_pages/templates/default/base_title.html
+django_pages/templates/default/comments.html
 django_pages/templates/default/page.html
 django_pages/templates/default/post.html
+django_pages/templates/default/post_list.html
 django_pages/templates/default/sitemap.xml
 sample_project/__init__.py
 sample_project/manage.py
