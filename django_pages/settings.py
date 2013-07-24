@@ -3,12 +3,28 @@
 from django.conf import settings
 
 
-ADMIN_MEDIA_PREFIX = '/static/admin/'
+try:
+    ADMIN_MEDIA_PREFIX = settings.ADMIN_MEDIA_PREFIX
+
+except AttributeError:
+    ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # where to upload flag images /media/FLAG_UPLOAD_DIR
-FLAG_UPLOAD_DIR = settings.MEDIA_ROOT
+try:
+    FLAG_UPLOAD_DIR = settings.FLAG_UPLOAD_DIR
+
+except AttributeError:
+    FLAG_UPLOAD_DIR = settings.MEDIA_ROOT
 
 # where to look for template in templates/
-TEMPLATE_PATH = 'default'
+try:
+    TEMPLATE_PATH = settings.TEMPLATE_PATH
 
-POSTS_ON_PAGE = 10
+except AttributeError:
+    TEMPLATE_PATH = 'default'
+
+try:
+    POSTS_ON_PAGE = settings.POSTS_ON_PAGE
+
+except AttributeError:
+    POSTS_ON_PAGE = 10
