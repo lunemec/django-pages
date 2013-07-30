@@ -66,9 +66,6 @@ def file_upload(request, folder_path):
 
         file_w_path = os.path.join(folder_path, file_name)
 
-        # call resizer for file
-        call(['convert', file_w_path, '-resize', '800x600', file_w_path])
-
         # set the status
         if file_name == new_file.name:
             status = "0"

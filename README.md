@@ -59,8 +59,35 @@ Configure:
     'grappelli', <- nice admin looks
 
     
-    # add to MIDDLEWARE_CLASSES for logging requests into DB
+    # add to MIDDLEWARE_CLASSES for logging requests into file 
     'django_pages.log.middleware.RequestLog',
+
+    # for logging, also configure logger with name 'requestlog'
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'filters': {
+            'require_debug_false': {
+                '()': 'django.utils.log.RequireDebugFalse'
+            }
+        },
+        'handlers': {
+            'log': {
+                'level': 'INFO',
+                'class': 'logging.handlers.TimedRotatingFileHandler',
+                'filename': 'request.log',
+                'when': 'D',
+                'interval': 1,
+            }
+        },
+        'loggers': {
+                'requestlog': {
+                'handlers': ['log',],
+                'level': 'INFO',
+            }   
+        }
+    }
+
 
 Add this to your urls.py:
 
