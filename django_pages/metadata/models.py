@@ -2,7 +2,7 @@
 
 from django.db import models
 
-from django_pages.language.models import Language
+from ..language.models import Language
 
 
 class MetaSet(models.Model):
@@ -27,10 +27,12 @@ class MetaData(models.Model):
     name = models.CharField('name', max_length=200)
     content = models.TextField('content')
 
+    class Meta:
+
+        verbose_name_plural = 'Meta data'
+
     def __unicode__(self):
 
         return '%s@%s' % (self.name, self.meta_set)
 
-    class Meta:
 
-        verbose_name_plural = 'Meta data'

@@ -6,9 +6,9 @@ from django.core.paginator import Paginator, EmptyPage
 from django.http import Http404
 from django.utils.text import slugify
 
-from django_pages.common.errors import ConfigurationError
-from django_pages.pages.models import Page
-from django_pages.settings import POSTS_ON_PAGE
+from .models import Page
+from ..common.errors import ConfigurationError
+from ..settings import POSTS_ON_PAGE
 
 
 def get_index_page(language):
@@ -72,9 +72,9 @@ def get_paginated_posts(page, page_num=1):
 
         posts = page.post_set.filter(active=True).order_by('-created')
 
-        posts = filter(lambda item: item.is_visible(datetime.datetime.now()), posts)
+        posts_visible = [item for item in posts if item.is_visible(datetime.datetime.now())]
 
-        paginated_posts = Paginator(posts, POSTS_ON_PAGE)
+        paginated_posts = Paginator(posts_visible, POSTS_ON_PAGE)
 
         try:
 

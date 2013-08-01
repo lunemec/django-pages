@@ -2,13 +2,13 @@
 
 from django.db import models
 
-from django_pages.pages.models import Post
+from ..pages.models import Post
 
 
 class Comment(models.Model):
     '''
     Stores comment data.
-    Is related to :model: `django_pages.Post`.
+    Is related to :model: `pages.Post`.
     '''
 
     post = models.ForeignKey(Post)

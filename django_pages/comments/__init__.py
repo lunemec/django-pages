@@ -4,8 +4,8 @@ import random
 
 from django.utils.html import strip_tags
 
-from django_pages.comments.forms import CommentForm
-from django_pages.comments.models import Comment
+from .forms import CommentForm
+from .models import Comment
 
 
 def get_client_ip(request):
@@ -76,7 +76,7 @@ def is_human(request, data):
     return False
 
 
-def handle_comment(request, post, url):
+def handle_comment(request, post):
     '''
     handles comment and either saves it or displays error
 

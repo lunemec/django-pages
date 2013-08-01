@@ -2,8 +2,8 @@
 
 from django.http import Http404
 
-from django_pages.common.errors import ConfigurationError
-from django_pages.language.models import Language
+from ..common.errors import ConfigurationError
+from .models import Language
 
 
 def get_language(url_data):

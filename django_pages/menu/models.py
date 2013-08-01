@@ -2,7 +2,7 @@
 
 from django.db import models
 
-from django_pages.language.models import Language
+from ..language.models import Language
 
 
 class MenuItem(models.Model):

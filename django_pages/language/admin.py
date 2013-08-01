@@ -4,8 +4,8 @@ from django import forms
 
 import reversion
 
-from django_pages.common.admin_actions import activate, deactivate
-from django_pages.language.models import Language
+from ..common.admin_actions import activate, deactivate
+from .models import Language
 
 
 class LanguageAdminForm(forms.ModelForm):

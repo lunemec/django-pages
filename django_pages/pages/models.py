@@ -7,8 +7,8 @@ from django.db import models
 from django.utils.text import slugify
 from django.utils.timezone import make_aware, get_current_timezone
 
-from django_pages.menu.models import MenuItem
-from django_pages.metadata.models import MetaSet
+from ..menu.models import MenuItem
+from ..metadata.models import MetaSet
 
 
 class Page(models.Model):

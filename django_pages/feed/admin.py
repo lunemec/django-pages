@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 
-from django_pages.common.admin_actions import activate, deactivate
+from ..common.admin_actions import activate, deactivate
 
 
 class FeedAdmin(admin.ModelAdmin):

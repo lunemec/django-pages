@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
-from django_pages.common.errors import ConfigurationError
-from django_pages.site.models import Site
+from ..common.errors import ConfigurationError
+from .models import Site
 
 
 def get_site():

@@ -8,15 +8,15 @@ from django.template import RequestContext
 from django.utils.text import slugify
 from django.views.decorators.cache import cache_page
 
-from django_pages.comments import handle_comment, set_humanity_check, translate_humanity
-from django_pages.comments.forms import CommentForm
-from django_pages.language import get_language, get_languages
-from django_pages.language.models import Language
+from .comments import handle_comment, set_humanity_check, translate_humanity
+from .comments.forms import CommentForm
+from .language import get_language, get_languages
+from .language.models import Language
 from .looks import get_template
-from django_pages.metadata import get_metadata
-from django_pages.pages import get_page, get_index_page, get_post, get_paginated_posts
-from django_pages.pages.models import Page
-from django_pages.site import get_site
+from .metadata import get_metadata
+from .pages import get_page, get_index_page, get_post, get_paginated_posts
+from .pages.models import Page
+from .site import get_site
 
 
 def parse_url(url):
@@ -50,7 +50,7 @@ def parse_url(url):
 
 
 @cache_page(10)
-def main_view(request, url, test=False):
+def main_view(request, url):
 
     url_result = parse_url(url)
 
@@ -84,7 +84,7 @@ def main_view(request, url, test=False):
 
         if request.method == 'POST':
 
-            form = handle_comment(request, posts, url)
+            form = handle_comment(request, posts)
 
             set_humanity_check(request)
             form.humanity = translate_humanity(request)
@@ -158,4 +158,4 @@ def generate_sitemap(request):
 
                 data.append('%s/~%s' % (page_url, slugify(post.title)))
 
-    return render_to_response('%s/sitemap.xml' % TEMPLATE_PATH, {'urls': data}, context_instance=RequestContext(request), mimetype='application/xml')
+    return render_to_response('sitemap.xml', {'urls': data}, context_instance=RequestContext(request), mimetype='application/xml')

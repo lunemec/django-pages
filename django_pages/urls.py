@@ -5,7 +5,7 @@ admin.autodiscover()
 
 from django.views.generic import TemplateView
 
-from django_pages.feed.feed import RssLatestPostsFeed, AtomLatestPostsFeed
+from .feed.feed import RssLatestPostsFeed, AtomLatestPostsFeed
 
 urlpatterns = patterns(
     '',

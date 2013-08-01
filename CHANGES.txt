@@ -1,4 +1,4 @@
-v1.0.8, 01.08.2013 -- added the option to change templates directly from admin, 30s cache
+v1.0.8, 01.08.2013 -- added the option to change templates directly from admin, 30s cache, changed to relative imports
 v1.0.7, 30.07.2013 -- fixed lightbox.js paths, changed logging to file log, removed autoresize for uploaded images
 v1.0.6, 24.07.2013 -- bump to 1.0.6
 v1.0.5, 24.07.2013 -- changed template names, removed FB button since it doesn't work without appid, changed default template layout

@@ -1,14 +1,14 @@
 import os
 
-from django_pages.connector import ElementTree
-from django_pages.connector import settings
+from . import ElementTree
+from . import settings
+from . import actions
+from . import support
+from .support import actual_path, actual_url
 
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
-import actions
-import support
-from support import actual_path, actual_url
 
 
 @csrf_exempt

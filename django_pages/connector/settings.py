@@ -17,19 +17,11 @@ from django.conf import settings
 
 FCKEDITOR_CONNECTOR_PREFIX = 'uploaded'
 
-try:
-    # if using the fckeditor package
-    from fckeditor.settings import FCKEDITOR_JS
 
-    FCKEDITOR_CONNECTOR_ROOT = os.path.join(settings.MEDIA_ROOT,
-                                            FCKEDITOR_JS)
-    FCKEDITOR_CONNECTOR_URL = urlparse.urljoin(settings.MEDIA_URL,
-                                               FCKEDITOR_JS)
-except ImportError:
-    FCKEDITOR_CONNECTOR_ROOT = os.path.join(settings.MEDIA_ROOT,
-                                            FCKEDITOR_CONNECTOR_PREFIX)
-    FCKEDITOR_CONNECTOR_URL = urlparse.urljoin(settings.MEDIA_URL,
-                                           FCKEDITOR_CONNECTOR_PREFIX)
+FCKEDITOR_CONNECTOR_ROOT = os.path.join(settings.MEDIA_ROOT,
+                                        FCKEDITOR_CONNECTOR_PREFIX)
+FCKEDITOR_CONNECTOR_URL = urlparse.urljoin(settings.MEDIA_URL,
+                                        FCKEDITOR_CONNECTOR_PREFIX)
 
 
 # RESOURCE_TYPE_MAP allows you to map FCKeditor's resource types

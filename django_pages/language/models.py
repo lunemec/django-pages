@@ -3,9 +3,9 @@
 from django.db import models
 from django.core.files.storage import FileSystemStorage
 
-from django_pages.settings import FLAG_UPLOAD_DIR
+from ..settings import FLAG_UPLOAD_DIR
 
-images_dir = FileSystemStorage(FLAG_UPLOAD_DIR)
+IMAGES_DIR = FileSystemStorage(FLAG_UPLOAD_DIR)
 
 
 class Language(models.Model):
@@ -16,7 +16,7 @@ class Language(models.Model):
 
     language = models.CharField('Language', max_length=150, unique=True)
     country_code = models.CharField('Country code', max_length=3, unique=True)
-    flag = models.ImageField(storage=images_dir, upload_to='languages', blank=True)
+    flag = models.ImageField(storage=IMAGES_DIR, upload_to='languages', blank=True)
     default = models.BooleanField('Display as default language?', blank=True)
     active = models.BooleanField('Active', blank=True, default=True)
 

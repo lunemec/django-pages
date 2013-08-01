@@ -1,6 +1,6 @@
 import os
 
-from django_pages.connector import settings
+from . import settings
 
 
 def actual_path(base_path, file_type, path):

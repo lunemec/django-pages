@@ -12,8 +12,8 @@ from django.utils.translation import ugettext_lazy
 
 import reversion
 
-from django_pages.menu.models import MenuItem
-from django_pages.settings import ADMIN_MEDIA_PREFIX
+from .models import MenuItem
+from ..settings import ADMIN_MEDIA_PREFIX
 
 
 class MenuItemInline(admin.TabularInline):
@@ -27,7 +27,7 @@ class MenuItemUrlField(forms.CharField):
 
         super(MenuItemUrlField, self).validate(value)
 
-        allowed = '%s%s%s' % (string.ascii_letters, string.digits, '-._')
+        allowed = '%s%s%s' % (string.ascii_letters, string.digits, '-._/~')
 
         for letter in value:
 
@@ -51,7 +51,7 @@ class MenuItemAdmin(reversion.VersionAdmin):
     fields = (('lang', 'menuitem_name'), 'url')
     list_display = ('menuitem_name', 'lang', 'url', 'move', 'position')
 
-    def move(sefl, obj):
+    def move(self, obj):
         '''
         Returns html with links to move_up and move_down views.
         '''

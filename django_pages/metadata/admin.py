@@ -4,7 +4,7 @@ from django.contrib import admin
 
 import reversion
 
-from django_pages.metadata.models import MetaData
+from .models import MetaData
 
 
 class MetaDataInline(admin.TabularInline):

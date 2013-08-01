@@ -13,10 +13,12 @@ class FeedSettings(models.Model):
     site_description = models.TextField('Site Feed description', max_length=1000)
     latest_post_count = models.IntegerField('Latest Post count to show', default=10)
 
+    class Meta():
+
+        verbose_name_plural = 'Feed Settings'
+
     def __unicode__(self):
 
         return self.site_title
 
-    class Meta():
 
-        verbose_name_plural = 'Feed Settings'

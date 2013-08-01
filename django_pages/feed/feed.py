@@ -3,8 +3,8 @@
 from django.contrib.syndication.views import Feed
 from django.utils.feedgenerator import Atom1Feed
 
-from django_pages.pages.models import Post
-from django_pages.feed.models import FeedSettings
+from ..pages.models import Post
+from .models import FeedSettings
 
 
 class RssLatestPostsFeed(Feed):

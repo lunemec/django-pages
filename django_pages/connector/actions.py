@@ -2,8 +2,8 @@ import os
 import stat
 from subprocess import call
 
-from django_pages.connector import ElementTree
-from django_pages.connector.settings import IGNORE_FOLDERS
+from . import ElementTree
+from .settings import IGNORE_FOLDERS
 
 
 def get_folders(xml_response, folder_path):

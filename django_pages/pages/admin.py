@@ -4,7 +4,7 @@ from django.contrib import admin
 
 import reversion
 
-from django_pages.common.admin_actions import activate, deactivate
+from ..common.admin_actions import activate, deactivate
 
 
 class PageAdmin(reversion.VersionAdmin):
