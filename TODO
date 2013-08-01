@@ -1,0 +1,4 @@
+change logging - make correct logging for POST and GET params and other similar
+make it python3 compatible, and test with django for python3
+MOAR documentation
+MOAR unittests

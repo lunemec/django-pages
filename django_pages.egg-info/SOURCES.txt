@@ -35,9 +35,7 @@ django_pages/language/__init__.py
 django_pages/language/admin.py
 django_pages/language/models.py
 django_pages/log/__init__.py
-django_pages/log/admin.py
 django_pages/log/middleware.py
-django_pages/log/models.py
 django_pages/menu/__init__.py
 django_pages/menu/admin.py
 django_pages/menu/models.py
@@ -369,6 +367,7 @@ django_pages/templates/default/post_list.html
 django_pages/templates/default/sitemap.xml
 sample_project/__init__.py
 sample_project/manage.py
+sample_project/settings-dev.py
 sample_project/settings.py
 sample_project/urls.py
 sample_project/wsgi.py

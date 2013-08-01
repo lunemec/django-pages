@@ -1,8 +1,8 @@
 Metadata-Version: 1.0
 Name: django-pages
-Version: 1.0.6
+Version: 1.0.7
 Summary: Simple CMS for django
-Home-page: https://github.com/lunemec/wysiwyg
+Home-page: https://github.com/lunemec/django-pages
 Author: Lukas Nemec
 Author-email: lu.nemec@gmail.com
 License: see LICENCE.txt
@@ -67,8 +67,35 @@ Description: Django-pages
             'grappelli', <- nice admin looks
         
             
-            # add to MIDDLEWARE_CLASSES for logging requests into DB
+            # add to MIDDLEWARE_CLASSES for logging requests into file 
             'django_pages.log.middleware.RequestLog',
+        
+            # for logging, also configure logger with name 'requestlog'
+            LOGGING = {
+                'version': 1,
+                'disable_existing_loggers': False,
+                'filters': {
+                    'require_debug_false': {
+                        '()': 'django.utils.log.RequireDebugFalse'
+                    }
+                },
+                'handlers': {
+                    'log': {
+                        'level': 'INFO',
+                        'class': 'logging.handlers.TimedRotatingFileHandler',
+                        'filename': 'request.log',
+                        'when': 'D',
+                        'interval': 1,
+                    }
+                },
+                'loggers': {
+                        'requestlog': {
+                        'handlers': ['log',],
+                        'level': 'INFO',
+                    }   
+                }
+            }
+        
         
         Add this to your urls.py:
         
