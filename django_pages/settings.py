@@ -16,13 +16,6 @@ try:
 except AttributeError:
     FLAG_UPLOAD_DIR = settings.MEDIA_ROOT
 
-# where to look for template in templates/
-try:
-    TEMPLATE_PATH = settings.TEMPLATE_PATH
-
-except AttributeError:
-    TEMPLATE_PATH = 'default'
-
 try:
     POSTS_ON_PAGE = settings.POSTS_ON_PAGE
 

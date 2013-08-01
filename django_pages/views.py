@@ -12,11 +12,11 @@ from django_pages.comments import handle_comment, set_humanity_check, translate_
 from django_pages.comments.forms import CommentForm
 from django_pages.language import get_language, get_languages
 from django_pages.language.models import Language
+from .looks import get_template
 from django_pages.metadata import get_metadata
 from django_pages.pages import get_page, get_index_page, get_post, get_paginated_posts
 from django_pages.pages.models import Page
 from django_pages.site import get_site
-from django_pages.settings import TEMPLATE_PATH
 
 
 def parse_url(url):
@@ -118,7 +118,7 @@ def main_view(request, url, test=False):
 
         pass
 
-    template = '%s/%s' % (TEMPLATE_PATH, template_page)
+    template = '%s/%s' % (get_template(), template_page)
 
     return render_to_response(template, {'site_content': site_content}, context_instance=RequestContext(request))
 

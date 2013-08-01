@@ -127,6 +127,7 @@ INSTALLED_APPS = (
     'django_pages.feed',
     'django_pages.language',
     'django_pages.log',
+    'django_pages.looks',
     'django_pages.menu',
     'django_pages.metadata',
     'django_pages.pages',
@@ -160,7 +161,7 @@ LOGGING = {
             'requestlog': {
             'handlers': ['log',],
             'level': 'INFO',
-        }   
+        }
     }
 }
 TEMPLATE_CONTEXT_PROCESSORS = (

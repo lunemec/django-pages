@@ -122,9 +122,6 @@ This is where django will look for admin static files (for deployment with colle
 FLAG_UPLOAD_DIR = settings.MEDIA_ROOT + '/languages'
 This is wher language flags will be saved and loaded from
 
-TEMPLATE_PATH = 'default'
-What template should Django choose in /templates/ folder (default is packaged with this application)
-
 POSTS_ON_PAGE = 10
 How many posts on page show
 
@@ -192,6 +189,28 @@ insert text you want the image to have and click OK.
 Files will be uploaded to your MEDIA_ROOT path into folder uploaded (you can change this in file connector/settings.oy)
 
 Don't forget to set your /media/uploadeded/ folder permissions to 775 so you'll be able to save images into it from admin!
+
+
+Templates
+---------
+
+Copy your custom template into your project's templates folder, and add Template in admin's Looks subsection
+and set it to active, the system will use your new template automatically.
+
+Note: there is a 30s cache for current template, so after the change in admin, wait a bit for it to display.
+
+
+Creating custom template
+------------------------
+
+1. In your settings.py, set TEMPLATE_PATH = 'templatename'
+2. Copy templates/default to templates/templatename
+3. Edit files in templates/templatename to your liking
+4. Save your css/js inside your project's /static/ and in base_static.html change path and names inside {% static 'filename' %}
+
+Note: all commands inside {} are django template language, and I suggest you leave it as is, and just change the HTML surrounding it.
+
+I wanted to make templatetags that would just say {% menu %}, {% content %} {% comments %}, but each of these requires some HTML to render them, so it will be as it is for now.
 
 
 Scheme
