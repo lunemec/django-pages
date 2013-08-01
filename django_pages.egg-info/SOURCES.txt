@@ -36,6 +36,9 @@ django_pages/language/admin.py
 django_pages/language/models.py
 django_pages/log/__init__.py
 django_pages/log/middleware.py
+django_pages/looks/__init__.py
+django_pages/looks/admin.py
+django_pages/looks/models.py
 django_pages/menu/__init__.py
 django_pages/menu/admin.py
 django_pages/menu/models.py
@@ -353,6 +356,7 @@ django_pages/static/wizzard/img1.png
 django_pages/static/wizzard/img2.png
 django_pages/static/wizzard/img3.png
 django_pages/static/wizzard/img4.png
+django_pages/templates/sitemap.xml
 django_pages/templates/wizzard.html
 django_pages/templates/default/base.html
 django_pages/templates/default/base_header.html
@@ -364,7 +368,6 @@ django_pages/templates/default/comments.html
 django_pages/templates/default/page.html
 django_pages/templates/default/post.html
 django_pages/templates/default/post_list.html
-django_pages/templates/default/sitemap.xml
 sample_project/__init__.py
 sample_project/manage.py
 sample_project/settings-dev.py
