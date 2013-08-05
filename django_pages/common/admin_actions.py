@@ -1,5 +1,8 @@
 # -*- encoding: utf-8 -*-
 
+"""
+Common admin actions importable from any module
+"""
 
 def activate(modeladmin, request, queryset):
 

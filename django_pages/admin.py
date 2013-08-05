@@ -1,5 +1,9 @@
 # -*- encoding: utf-8 -*-
 
+"""
+This file just imports admins from all packages so Django finds them
+"""
+
 from django.contrib import admin
 
 from .comments.models import Comment

@@ -125,6 +125,9 @@ def main_view(request, url):
 
 @cache_page(60 * 60 * 24)
 def robots(request):
+    """
+    generates robots.txt, which pretty much does not change
+    """
 
     site = get_site()
     domain = site.domain
@@ -141,6 +144,9 @@ Disallow: /static/
 
 @cache_page(60 * 60 * 24)
 def generate_sitemap(request):
+    """
+    generates /sitemap.xml
+    """
 
     data = []
 

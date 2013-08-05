@@ -7,6 +7,9 @@ from .models import Site
 def get_site():
     '''
     checks for site with pk=1
+
+    @return Site object
+    @raises ConfigurationError
     '''
 
     try:

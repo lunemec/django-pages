@@ -10,8 +10,7 @@ def get_template():
     Returns current active template
     If there is none user-defined template, return 'default'
 
-    Returns:
-        string
+    @return string
     """
 
     try:

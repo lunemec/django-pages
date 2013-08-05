@@ -63,6 +63,7 @@ class MenuItemAdmin(reversion.VersionAdmin):
         html = button % (link, prefix, 'up', _('up')) + " | "
         link = '%d/move_down/' % obj.pk
         html += button % (link, prefix, 'down', _('down'))
+
         return html
 
     move.allow_tags = True

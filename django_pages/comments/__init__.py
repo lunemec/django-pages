@@ -9,6 +9,12 @@ from .models import Comment
 
 
 def get_client_ip(request):
+    """
+    Returns requester's IP address from HTTP request
+
+    @param request: Http Request
+    @return string
+    """
 
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
 
@@ -24,6 +30,12 @@ def get_client_ip(request):
 
 
 def set_humanity_check(request):
+    """
+    sets session['humanity'] to dictionary {0: True/False, 1:True/False, .. 3:True/False}
+
+    @param request: Http Request
+    @return None
+    """
 
     result = {}
 
@@ -41,6 +53,13 @@ def set_humanity_check(request):
 
 
 def translate_humanity(request):
+    """
+    translates request.session['humanity'] dictionary {0:True, 1:False, ..}
+    into 'One, Two, Three' according to numbers that are True
+
+    @param request: Http Request
+    @return string
+    """
 
     text = []
 

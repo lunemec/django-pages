@@ -1,5 +1,9 @@
 # -*- encoding: utf-8 -*-
 
+"""
+Custom errors definition
+"""
+
 from django.core.exceptions import ImproperlyConfigured
 
 

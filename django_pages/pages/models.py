@@ -33,6 +33,11 @@ class Page(models.Model):
         return self.title
 
     def have_posts(self):
+        """
+        checks if Page has any Posts
+
+        @return bool
+        """
 
         if self.post_set.count():
 
@@ -74,6 +79,11 @@ class Post(models.Model):
         super(Post, self).save(*args, **kwargs)
 
     def is_visible(self, now):
+        """
+        checks if the Post should be displayed or not
+
+        @return bool
+        """
 
         now = make_aware(now, get_current_timezone())
 
@@ -114,6 +124,11 @@ class Post(models.Model):
             return False
 
     def get_url(self):
+        """
+        creates url for Post
+
+        @return string
+        """
 
         url_scheme = '/{country_code}/{link_url}/~{post_title}'
 
