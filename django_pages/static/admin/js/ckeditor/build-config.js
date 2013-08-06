@@ -93,7 +93,8 @@ var CKBUILDER_CONFIG = {
 		'richcombo' : 1,
 		'listblock' : 1,
 		'menubutton' : 1,
-		'autogrow' : 1
+		'autogrow' : 1,
+		'indentlist' : 1
 	},
 	languages : {
 		'cs' : 1,
