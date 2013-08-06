@@ -1,2 +1,2 @@
-include README.md DEPENDENCIES LICENCE.txt CHANGES.txt
+include README.txt DEPENDENCIES LICENCE.txt CHANGES.txt
 recursive-include django_pages *.py *.html *.js *.css *.gif *.png *.xml

@@ -2,7 +2,7 @@ CHANGES.txt
 DEPENDENCIES
 LICENCE.txt
 MANIFEST.in
-README.md
+README.txt
 setup.py
 django_pages/__init__.py
 django_pages/admin.py
