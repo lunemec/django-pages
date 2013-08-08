@@ -8,7 +8,6 @@ from django.utils.text import slugify
 
 from .models import Page
 from ..common.errors import ConfigurationError
-from ..settings import POSTS_ON_PAGE
 
 
 def get_index_page(language):
@@ -60,7 +59,7 @@ def get_page(page_url, language):
         raise Http404
 
 
-def get_paginated_posts(page, page_num=1):
+def get_paginated_posts(page, page_num=1, posts_on_page=10):
     '''
     returns posts paginated by settings.POSTS_ON_PAGE for page object or ()
 
@@ -74,7 +73,7 @@ def get_paginated_posts(page, page_num=1):
 
         posts_visible = [item for item in posts if item.is_visible(datetime.datetime.now())]
 
-        paginated_posts = Paginator(posts_visible, POSTS_ON_PAGE)
+        paginated_posts = Paginator(posts_visible, posts_on_page)
 
         try:
 

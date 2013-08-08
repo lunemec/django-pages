@@ -15,9 +15,3 @@ try:
 
 except AttributeError:
     FLAG_UPLOAD_DIR = settings.MEDIA_ROOT
-
-try:
-    POSTS_ON_PAGE = settings.POSTS_ON_PAGE
-
-except AttributeError:
-    POSTS_ON_PAGE = 10

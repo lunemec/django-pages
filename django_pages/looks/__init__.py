@@ -10,7 +10,7 @@ def get_template():
     Returns current active template
     If there is none user-defined template, return 'default'
 
-    @return string
+    @return (string, int)
     """
 
     try:
@@ -19,7 +19,11 @@ def get_template():
 
         if not cache.get('template'):
 
-            current_template = Template.objects.get(active=True).template
+            template = Template.objects.get(active=True)
+            template_name = template.template
+            posts_count = template.posts_per_page
+
+            current_template = (template_name, posts_count)
             cache.set('template', current_template, 30)
 
         else:
@@ -28,6 +32,6 @@ def get_template():
 
     except Template.DoesNotExist:
 
-        current_template = 'default'
+        current_template = ('default', 10)
 
     return current_template

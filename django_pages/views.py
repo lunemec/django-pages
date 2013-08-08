@@ -55,6 +55,7 @@ def main_view(request, url):
     url_result = parse_url(url)
 
     current_site = get_site()
+    current_template = get_template()  # sets tuple (template_name, posts_on_page)
 
     language = get_language(url_result)
 
@@ -98,7 +99,7 @@ def main_view(request, url):
 
     else:
 
-        posts = get_paginated_posts(page, page_num)
+        posts = get_paginated_posts(page, page_num, current_template[1])
 
         template_page = 'page.html'
 
@@ -118,7 +119,7 @@ def main_view(request, url):
 
         pass
 
-    template = '%s/%s' % (get_template(), template_page)
+    template = '%s/%s' % (current_template[0], template_page)
 
     return render_to_response(template, {'site_content': site_content}, context_instance=RequestContext(request))
 

@@ -10,6 +10,7 @@ class Template(models.Model):
     '''
 
     template = models.CharField('Template name', max_length=200)
+    posts_per_page = models.PositiveIntegerField('Posts per page', default=10)
     active = models.BooleanField('Active', default=False, blank=True)
 
     def __unicode__(self):

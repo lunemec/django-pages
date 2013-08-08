@@ -5,5 +5,5 @@ import reversion
 
 class LooksAdmin(reversion.VersionAdmin):
 
-    fields = ('template', 'active')
+    fields = ('template', 'posts_per_page', 'active')
     list_display = fields

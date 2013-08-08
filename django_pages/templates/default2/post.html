@@ -1,0 +1,40 @@
+{% extends 'default2/base.html'%}
+
+{% block title %}
+{{ block.super }}, {{ site_content.posts.title }}
+{% endblock %}
+
+{% block content %}
+
+<header class="jumbotron subhead" id="overview">
+  <div class="row">
+      <div>
+          <!-- page header -->
+          <h1>{{ site_content.posts.title }}</h1>
+         
+          {{ site_content.posts.content|safe }}
+  
+      </div>
+    <!-- g+ button -->
+    <link rel="cannonical" href="{{ site_content.posts.get_url }}">
+    <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="32"></div>
+    <!-- g+ end -->
+
+</div>
+    
+
+    {% include 'default2/comments.html' %}
+    
+    
+    <!-- google plus button -->
+    
+    <script type="text/javascript">
+        (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+         })();
+     </script>
+
+
+{% endblock %}
