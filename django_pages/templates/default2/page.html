@@ -13,8 +13,12 @@
       </div>
 
 </div>
- 
+
+{% if site_content.page.have_posts %}
+
     {% include 'default2/post_list.html' %}    
+
+{% endif %}
 	
  
 {% endblock %}

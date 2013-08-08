@@ -195,6 +195,18 @@ Don't forget to set your /media/uploadeded/ folder permissions to 775 so you'll 
 Templates
 ---------
 
+You can now use one of 3 default templates!
+
+The default, which is the first that came with this package, just ordinary white and responsive design,
+default2 is white design based on twitter bootstrap from bootswatch.com, (default theme)
+default3 is black design based on twitter bootstrap from bootswatch.com (cyborg theme).
+
+To use any of the builtins, create new item in Admin/Looks/Templates, type in the name (default, default2, default3)
+and number of posts to display on page.
+
+Note: You need to fiddle with the number of posts, depending on your average post heading length, sometimes
+when you have long titles, the submenu displaying posts just doesn't work properly.
+
 Copy your custom template into your project's templates folder, and add Template in admin's Looks subsection
 and set it to active, the system will use your new template automatically.
 
