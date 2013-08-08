@@ -1,3 +1,4 @@
+v1.1.0, 08.08.2013 -- added another default template, added admin option for template to change posts on page
 v1.0.9, 06.08.2013 -- updated version of CKEDITOR
 v1.0.8, 01.08.2013 -- added the option to change templates directly from admin, 30s cache, changed to relative imports
 v1.0.7, 30.07.2013 -- fixed lightbox.js paths, changed logging to file log, removed autoresize for uploaded images

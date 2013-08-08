@@ -5,7 +5,7 @@ from setuptools import find_packages
 
 setup(
     name='django-pages',
-    version='1.0.9',
+    version='1.1.0',
     author=u'Lukas Nemec',
     author_email='lu.nemec@gmail.com',
     url='https://github.com/lunemec/django-pages',
