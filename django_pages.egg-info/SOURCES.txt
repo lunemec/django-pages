@@ -3,7 +3,6 @@ DEPENDENCIES
 LICENCE.txt
 MANIFEST.in
 README.md
-setup.cfg
 setup.py
 django_pages/__init__.py
 django_pages/admin.py
