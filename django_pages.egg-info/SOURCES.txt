@@ -385,6 +385,9 @@ django_pages/static/css/default2/bootstrap-responsive.css
 django_pages/static/css/default2/bootstrap.css
 django_pages/static/css/default2/bootswatch.css
 django_pages/static/css/default2/font-awesome.css
+django_pages/static/css/default3/bootstrap-responsive.css
+django_pages/static/css/default3/bootstrap.css
+django_pages/static/css/default3/bootswatch.css
 django_pages/static/images/bg-checker.png
 django_pages/static/images/box.png
 django_pages/static/images/bullet.gif
@@ -430,6 +433,10 @@ django_pages/static/js/default2/bootstrap.js
 django_pages/static/js/default2/bootswatch.js
 django_pages/static/js/default2/jquery.js
 django_pages/static/js/default2/jquery_002.js
+django_pages/static/js/default3/bootstrap.js
+django_pages/static/js/default3/bootswatch.js
+django_pages/static/js/default3/jquery.js
+django_pages/static/js/default3/jquery_002.js
 django_pages/static/wizzard/img1.png
 django_pages/static/wizzard/img2.png
 django_pages/static/wizzard/img3.png
@@ -456,6 +463,16 @@ django_pages/templates/default2/comments.html
 django_pages/templates/default2/page.html
 django_pages/templates/default2/post.html
 django_pages/templates/default2/post_list.html
+django_pages/templates/default3/base.html
+django_pages/templates/default3/base_header.html
+django_pages/templates/default3/base_menu.html
+django_pages/templates/default3/base_metadata.html
+django_pages/templates/default3/base_static.html
+django_pages/templates/default3/base_title.html
+django_pages/templates/default3/comments.html
+django_pages/templates/default3/page.html
+django_pages/templates/default3/post.html
+django_pages/templates/default3/post_list.html
 sample_project/__init__.py
 sample_project/manage.py
 sample_project/settings-dev.py

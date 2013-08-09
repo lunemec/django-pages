@@ -1,0 +1,66 @@
+<div id="comments"></div>
+{% if site_content.posts.comments %}
+
+    {% if site_content.posts.comment_set.count %}
+    <br /><br /><br />
+
+
+Comments:
+        {% for comment in site_content.posts.comment_set.all %} 
+        <hr>
+        <div class="page_post">
+            <p>{{ comment.user }}</p>
+            <p>{{ comment.comment }}</p>
+        </div>
+
+        {% endfor %}
+
+        {% endif %}
+
+        <br />
+        <br />
+        <br />
+        Add comment:
+        <form action="#" method="POST" class="form-horizontal well">{% csrf_token %}
+            
+            {{ site_content.form.non_field_errors }}
+
+            {{ site_content.form.user.errors }}
+
+            <fieldset>
+                <div class="control-group">
+                    <label class="control-label">Nick: </label>
+                    <div class="controls">
+                        {{ site_content.form.user }}
+                    </div>
+                </div>
+
+                {{ site_content.form.comment.errors }}
+                <div class="control-group">
+                    <label class="control-label">Comment: </label>
+                    <div class="controls">
+                        {{ site_content.form.comment }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Antispam protection:</label>
+                    <div class="controls">
+                        1 {{ site_content.form.one }} 2 {{ site_content.form.two }} 3 {{ site_content.form.three }} 4 {{ site_content.form.four }}
+                        <p class="help-block">
+                        Check {{ site_content.form.humanity }}
+                        </p>
+                    </div>
+                </div>
+
+            <p></p>
+            
+            {% if site_content.form.spam %}
+            <ul class="errorlist">
+                <li>{{ site_content.form.spam }}</li>
+            </ul>
+            {% endif %}
+
+            <button class="btn btn-primary" type="submit">Submit</button> 
+            </fieldset>
+        </form>
+        {% endif %}

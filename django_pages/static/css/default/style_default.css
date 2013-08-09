@@ -1521,7 +1521,7 @@ p {
   /* Images */
   .post-content img {
     width: auto !important;
-    max-width: 940px;
+    max-width: 920px;
   }
   .captionImage {
     width: 100% !important;
@@ -1538,7 +1538,7 @@ p {
 @media only screen and (min-width: 1382px) {
   .post-content img {
     width: auto !important;
-    max-width: 940px;
+    max-width: 920px;
   }
   .captionImage {
     width: 100% !important;

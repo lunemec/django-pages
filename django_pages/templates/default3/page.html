@@ -1,0 +1,22 @@
+{% extends 'default3/base.html'%}
+
+{% block content %}
+
+<header class="jumbotron subhead" id="overview">
+  <div class="row">
+      <div>
+          <!-- page header -->
+          <h1>{{ site_content.page.title }}</h1>
+         
+          {{ site_content.page.content|safe }}
+  
+      </div>
+
+</div>
+{% if site_content.page.have_posts %}
+
+    {% include 'default2/post_list.html' %}    
+
+{% endif %}
+ 
+{% endblock %}

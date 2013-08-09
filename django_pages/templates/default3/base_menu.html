@@ -1,0 +1,58 @@
+ <!-- menu top -->
+
+       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+     </a>
+ 
+     <a class="brand" href="http://{{ site_content.site.domain }}/" title="{{ site_content.site.display_name }}">
+
+         {{ site_content.site.display_name }} -- {{ site_content.site.tagline }}
+
+    </a>
+
+       <div class="nav-collapse collapse" id="main-menu">
+           <ul class="nav" id="main-menu-left">
+               
+               {% for menuitem in site_content.menuitems %}
+            <li {% if menuitem.current %}
+                class="active"
+                {% endif %}>
+            <a href="/{{ site_content.current_language.country_code }}/{{ menuitem.url }}" title="{{ menuitem.menuitem_name }}"
+               
+                >
+                {{ menuitem.menuitem_name }}
+            </a>
+            </li>
+            {% endfor %}
+
+
+      </ul>
+      <!-- language selection -->
+        <ul class="nav pull-right" id="main-menu-right">
+
+            {% for lang in site_content.languages %}            
+                
+                <li>
+                <a href="/{{ lang.country_code }}/" class="lang_link{% if site_content.current_language == lang %} lang_active{% endif %}">
+
+                {% if lang.flag %}
+
+                    <img class="lang_flag" src="{{ MEDIA_URL }}{{ lang.flag }}" alt="language_image_icon">
+
+                {% endif %}
+
+                {{ lang.language }}
+
+                </a>
+                </li>
+
+            {% endfor %}
+
+        </ul>
+       </div>
+     </div>
+   </div>
+ </div>
+
