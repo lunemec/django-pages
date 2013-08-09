@@ -22,4 +22,5 @@ class LanguageAdmin(reversion.VersionAdmin):
     form = LanguageAdminForm
     fields = (('language', 'country_code'), 'flag', 'default', 'active')
     list_display = ('language', 'country_code', 'default', 'active')
+    list_filter = ('active',)
     actions = [activate, deactivate]

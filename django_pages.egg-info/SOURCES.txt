@@ -378,9 +378,8 @@ django_pages/static/admin/js/ckeditor/skins/moono/images/hidpi/close.png
 django_pages/static/admin/js/ckeditor/skins/moono/images/hidpi/lock-open.png
 django_pages/static/admin/js/ckeditor/skins/moono/images/hidpi/lock.png
 django_pages/static/admin/js/ckeditor/skins/moono/images/hidpi/refresh.png
-django_pages/static/css/lightbox.css
 django_pages/static/css/screen.css
-django_pages/static/css/style_default.css
+django_pages/static/css/default/style_default.css
 django_pages/static/css/default2/bootstrap-responsive.css
 django_pages/static/css/default2/bootstrap.css
 django_pages/static/css/default2/bootswatch.css
@@ -393,11 +392,14 @@ django_pages/static/images/box.png
 django_pages/static/images/bullet.gif
 django_pages/static/images/close.png
 django_pages/static/images/donate.png
+django_pages/static/images/error.png
 django_pages/static/images/favicon.gif
 django_pages/static/images/loading.gif
 django_pages/static/images/next.png
+django_pages/static/images/play-pause.png
 django_pages/static/images/prev.png
 django_pages/static/images/speech-bubbles.png
+django_pages/static/images/video-play.png
 django_pages/static/img/bg-body.gif
 django_pages/static/img/bg-divider.png
 django_pages/static/img/bg-footer.png
@@ -425,10 +427,9 @@ django_pages/static/img/l/apple-touch-icon-precomposed.png
 django_pages/static/img/l/apple-touch-icon.png
 django_pages/static/img/l/splash.png
 django_pages/static/img/m/apple-touch-icon.png
-django_pages/static/js/jquery-1.7.2.min.js
+django_pages/static/js/jquery-1.10.2.min.js
 django_pages/static/js/jquery-ui-1.8.18.custom.min.js
 django_pages/static/js/jquery.smooth-scroll.min.js
-django_pages/static/js/lightbox.js
 django_pages/static/js/default2/bootstrap.js
 django_pages/static/js/default2/bootswatch.js
 django_pages/static/js/default2/jquery.js

@@ -165,6 +165,17 @@ Create website
     Done!
 
 
+Preview in admin
+----------------
+
+The preview does this:
+    
+    After clicking on Preview, it sets the item to INACTIVE
+    Displays it as it would look on the page (pagination may not work)
+    
+DO NOT FORGET to set the item to ACTIVE after you're happy with the way it looks!!!
+
+
 Wizzard
 -------
 

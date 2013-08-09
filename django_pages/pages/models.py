@@ -45,6 +45,19 @@ class Page(models.Model):
 
         return False
 
+    def get_url(self):
+        """
+        returns url for this page
+
+        @return string
+        """
+
+        url_scheme = '/{country_code}/{link_url}'
+
+        result = url_scheme.format(country_code=self.link.lang.country_code, link_url=self.link.url)
+
+        return result
+
 
 class Post(models.Model):
     '''

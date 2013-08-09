@@ -50,7 +50,7 @@ def parse_url(url):
 
 
 @cache_page(10)
-def main_view(request, url):
+def main_view(request, url, preview=False):
 
     url_result = parse_url(url)
 
@@ -65,9 +65,14 @@ def main_view(request, url):
 
     else:
 
-        page = get_page(url_result['page'], language)
+        page = get_page(url_result['page'], language, preview)
 
-    menuitems = page.link.lang.menuitem_set.select_related('page').filter(page__active=True).order_by('position').all()
+    menuitems = page.link.lang.menuitem_set.select_related('page').order_by('position').all()
+
+    # filter active pages if we're not previewing
+    if not preview:
+
+        menuitems = menuitems.filter(page__active=True)
 
     for menuitem in menuitems:
 
@@ -79,7 +84,7 @@ def main_view(request, url):
 
     if url_result['post']:
 
-        posts = get_post(page, url_result['post'])
+        posts = get_post(page, url_result['post'], preview)
 
         template_page = 'post.html'
 

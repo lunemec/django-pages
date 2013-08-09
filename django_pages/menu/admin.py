@@ -50,6 +50,7 @@ class MenuItemAdmin(reversion.VersionAdmin):
     form = MenuItemAdminForm
     fields = (('lang', 'menuitem_name'), 'url')
     list_display = ('menuitem_name', 'lang', 'url', 'move', 'position')
+    list_filter = ('lang',)
 
     def move(self, obj):
         '''

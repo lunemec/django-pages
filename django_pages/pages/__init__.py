@@ -33,7 +33,7 @@ def get_index_page(language):
         raise ConfigurationError('There are multiple index Pages for this Language, please make sure only 1 Page has index field checked True')
 
 
-def get_page(page_url, language):
+def get_page(page_url, language, preview=False):
     '''
     returns page for specific url
 
@@ -46,7 +46,7 @@ def get_page(page_url, language):
 
         page = Page.objects.select_related('link', 'metadata_set', 'link__lang').get(link__url=page_url, link__lang=language)
 
-        if page.active:
+        if page.active or preview:
 
             return page
 
@@ -86,7 +86,7 @@ def get_paginated_posts(page, page_num=1, posts_on_page=10):
     return tuple()
 
 
-def get_post(page, post_title):
+def get_post(page, post_title, preview=False):
     '''
     returns post object or 404
 
@@ -97,7 +97,7 @@ def get_post(page, post_title):
 
     for post in page.post_set.all():
 
-        if slugify(post.title) == post_title:
+        if slugify(post.title) == post_title and (post.active or preview):
 
             return post
 
