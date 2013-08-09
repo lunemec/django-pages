@@ -11,7 +11,7 @@ setup(
     url='https://github.com/lunemec/django-pages',
     license='see LICENCE.txt',
     description='Simple CMS for django',
-    long_description=open('README.md').read(),
+    long_description='''https://github.com/lunemec/django-pages''',
     zip_safe=False,
     include_package_data=True,
     packages=find_packages(),

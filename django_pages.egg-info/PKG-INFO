@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: django-pages
-Version: 1.1.2
+Version: 1.1.3
 Summary: Simple CMS for django
 Home-page: https://github.com/lunemec/django-pages
 Author: Lukas Nemec
@@ -171,6 +171,17 @@ Description: Django-pages
             Set DEBUG = False in you settings.py after succesfull creation!
         
             Done!
+        
+        
+        Preview in admin
+        ----------------
+        
+        The preview does this:
+            
+            After clicking on Preview, it sets the item to INACTIVE
+            Displays it as it would look on the page (pagination may not work)
+            
+        DO NOT FORGET to set the item to ACTIVE after you're happy with the way it looks!!!
         
         
         Wizzard
