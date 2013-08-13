@@ -180,7 +180,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Georgia, Times, "Times New Roman", serif;
+/*  font-family: Georgia, Times, "Times New Roman", serif;*/
   color: #000000;
   -webkit-text-shadow: 0 1px 0 #ffffff;
   -moz-text-shadow: 0 1px 0 #ffffff;
