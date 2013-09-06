@@ -1,3 +1,5 @@
+v1.1.5, 06.09.2013 -- changed menuitem's url to slugfield with admin prepopulate from menuitem's name
+v1.1.4, 20.08.2013 -- modified default styles
 v1.1.3, 09.08.2013 -- added filters and search to admin, added preview links to admin Page, Post
 v1.1.2, 09.08.2013 -- removed lightbox - can't get it to work, fixed default template bug, updated jquery version
 v1.1.1, 08.08.2013 -- added another default template
