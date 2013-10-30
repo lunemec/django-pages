@@ -14,7 +14,7 @@ class MenuItem(models.Model):
 
     lang = models.ForeignKey(Language)
     menuitem_name = models.CharField('MenuItem name', max_length=200)
-    url = models.CharField('Url', max_length=200, unique=True)
+    url = models.SlugField('Url', max_length=200, unique=True)
     position = models.IntegerField('Position', blank=True)
 
     def __unicode__(self):

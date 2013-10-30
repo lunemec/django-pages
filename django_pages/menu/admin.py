@@ -1,8 +1,5 @@
 # -*- encoding: utf-8 -*-
 
-import string
-
-from django import forms
 from django.conf.urls import patterns
 from django.contrib import admin
 from django.core.exceptions import PermissionDenied
@@ -21,36 +18,12 @@ class MenuItemInline(admin.TabularInline):
     model = MenuItem
 
 
-class MenuItemUrlField(forms.CharField):
-
-    def validate(self, value):
-
-        super(MenuItemUrlField, self).validate(value)
-
-        allowed = '%s%s%s' % (string.ascii_letters, string.digits, '-._/~')
-
-        for letter in value:
-
-            if letter not in allowed:
-
-                raise forms.ValidationError(u'These characters are allowed: %s' % allowed)
-
-
-class MenuItemAdminForm(forms.ModelForm):
-
-    url = MenuItemUrlField('Url', min_length=4)
-
-    class Meta:
-
-        model = MenuItem
-
-
 class MenuItemAdmin(reversion.VersionAdmin):
 
-    form = MenuItemAdminForm
     fields = (('lang', 'menuitem_name'), 'url')
     list_display = ('menuitem_name', 'lang', 'url', 'move', 'position')
     list_filter = ('lang',)
+    prepopulated_fields = {"url": ("menuitem_name",)}
 
     def move(self, obj):
         '''
