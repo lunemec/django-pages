@@ -6,7 +6,7 @@ from django.conf.urls import patterns
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
-from ..common.admin_actions import activate, deactivate
+from ..common.admin_actions import activate, deactivate, enable_comments, disable_comments
 from .models import Page, Post
 from ..views import main_view
 
@@ -99,7 +99,7 @@ class PostAdmin(PreviewAdmin):
     list_display = ('title', 'page', 'active', 'visible_from', 'visible_to', 'comments')
     list_filter = ('active', 'page')
     search_fields = ['title', 'content', 'page__title']
-    actions = [activate, deactivate]
+    actions = [activate, deactivate, enable_comments, disable_comments]
 
     def preview_view(self, request, item_pk):
 

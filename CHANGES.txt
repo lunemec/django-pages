@@ -1,3 +1,4 @@
+v1.1.7, 30.10.2013 -- fixed forgotten admin import
 v1.1.6, 30.10.2013 -- added bulk disabling of post comments
 v1.1.5, 06.09.2013 -- changed menuitem's url to slugfield with admin prepopulate from menuitem's name
 v1.1.4, 20.08.2013 -- modified default styles
