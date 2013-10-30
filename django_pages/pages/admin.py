@@ -95,8 +95,8 @@ class PageAdmin(PreviewAdmin):
 class PostAdmin(PreviewAdmin):
 
     fields = (('title', 'page'), 'content', 'active', 'comments', 'preview_link', 'visible_from', 'visible_to', 'created')
-    list_editable = ('page', 'active', 'visible_from', 'visible_to')
-    list_display = ('title', 'page', 'active', 'visible_from', 'visible_to')
+    list_editable = ('page', 'active', 'visible_from', 'visible_to', 'comments')
+    list_display = ('title', 'page', 'active', 'visible_from', 'visible_to', 'comments')
     list_filter = ('active', 'page')
     search_fields = ['title', 'content', 'page__title']
     actions = [activate, deactivate]
