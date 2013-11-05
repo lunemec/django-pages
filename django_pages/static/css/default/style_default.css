@@ -1555,3 +1555,11 @@ p {
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   
 }
+
+#id_email {
+    display: none;
+}
+
+#id_fillmeup {
+    display: none;
+}

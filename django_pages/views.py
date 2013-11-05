@@ -94,6 +94,7 @@ def main_view(request, url, preview=False):
 
             set_humanity_check(request)
             form.humanity = translate_humanity(request)
+            form.js_check = request.session['random_number']
 
         else:
 
@@ -101,6 +102,7 @@ def main_view(request, url, preview=False):
 
             set_humanity_check(request)
             form.humanity = translate_humanity(request)
+            form.js_check = request.session['random_number']
 
     else:
 

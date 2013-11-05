@@ -31,7 +31,7 @@ def get_client_ip(request):
 
 def set_humanity_check(request):
     """
-    sets session['humanity'] to dictionary {0: True/False, 1:True/False, .. 3:True/False}
+    sets session['humanity'] to dictionary {0: True/False, 1: True/False, .. 3: True/False}
 
     @param request: Http Request
     @return None
@@ -39,51 +39,47 @@ def set_humanity_check(request):
 
     result = {}
 
-    for i in xrange(4):
+    # this ensures we don't have empty checkboxes
+    while result == {} or result == {0: False, 1: False, 2: False, 3: False}:
 
-        if random.randint(0, 1):
+        for i in xrange(4):
 
-            result[i] = True
+            if random.randint(0, 1):
 
-        else:
+                result[i] = True
 
-            result[i] = False
+            else:
+
+                result[i] = False
 
     request.session['humanity'] = result
+
+    # also fill the random number into session
+    # this number will be filled into form using JS
+    request.session['random_number'] = str(random.random())
+    print request.session['random_number']
 
 
 def translate_humanity(request):
     """
-    translates request.session['humanity'] dictionary {0:True, 1:False, ..}
+    translates request.session['humanity'] dictionary {0: True, 1: False, ..}
     into 'One, Two, Three' according to numbers that are True
 
     @param request: Http Request
     @return string
     """
 
-    text = []
+    numbers = []
+    translation = {0: 'one', 1: 'two', 2: 'three', 3: 'four'}
 
-    for i in xrange(4):
+    for i in request.session['humanity']:
 
         if request.session['humanity'][i]:
+            numbers.append(translation[i])
 
-            if i == 0:
-                text.append('one')
+    check_string = ', '.join(numbers)
 
-            elif i == 1:
-                text.append('two')
-
-            elif i == 2:
-                text.append('three')
-
-            elif i == 3:
-                text.append('four')
-
-        elif request.session['humanity'][i] == {0: False, 1: False, 2: False, 3: False}:
-
-            text.append('None')
-
-    return ', '.join(text)
+    return check_string
 
 
 def is_human(request, data):
@@ -117,6 +113,13 @@ def handle_comment(request, post):
         three = form.cleaned_data['three']
         four = form.cleaned_data['four']
 
+        random_number = form.cleaned_data['fillmeup']
+
+        if random_number != request.session['random_number']:
+
+            form.spam = 'Please check that you have JavaScript enabled.'
+            return form
+
         if is_human(request, {0: one, 1: two, 2: three, 3: four}):
 
             if Comment.objects.filter(post=post, user=user, comment=comment):
@@ -130,7 +133,7 @@ def handle_comment(request, post):
 
         else:
 
-            form.spam = 'wrong antispam check'
+            form.spam = 'Wrong antispam check'
             return form
 
     else:

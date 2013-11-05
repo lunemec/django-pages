@@ -435,3 +435,11 @@ body .one .bsa_it_p {
 		width: 1168px; /* 2px less to account for left/right borders being removed when in fixed mode */
 	}
 }
+
+#id_email {
+    display: none;
+}
+
+#id_fillmeup {
+    display: none;
+}

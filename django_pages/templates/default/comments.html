@@ -26,6 +26,15 @@ Comments:
             {{ site_content.form.non_field_errors }}
 
             {{ site_content.form.user.errors }}
+
+            {{ site_content.form.email }}
+            {{ site_content.form.fillmeup }}
+        <!-- this must be after showing the field -->
+        <script>
+            fillmeup = document.getElementById('id_fillmeup')
+            fillmeup.value = {{ site_content.form.js_check }}
+        </script>
+
             <p>Nick: {{ site_content.form.user }}</p>
 
             {{ site_content.form.comment.errors }}
