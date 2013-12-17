@@ -1,3 +1,9 @@
+# -*- encoding: utf-8 -*-
+
+"""
+Default URL scheme for django-pages
+"""
+
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
@@ -5,13 +11,45 @@ admin.autodiscover()
 
 from django.views.generic import TemplateView
 
+from .common.errors import ConfigurationError
 from .feed.feed import RssLatestPostsFeed, AtomLatestPostsFeed
+from .settings import ADMIN_URL
+
+
+def get_admin_urls(ADMIN_URL):
+    """
+    Checks that admin url
+    has required format
+
+    @param ADMIN_URL: string
+    @return tuple
+    """
+
+    # no / as a first character
+    try:
+        assert('/' not in ADMIN_URL[0])
+    except AssertionError:
+        raise ConfigurationError('ADMIN_URL has "/" at the beginning!')
+
+    try:
+        assert('/' in ADMIN_URL[-1])
+    except AssertionError:
+        raise ConfigurationError('ADMIN_URL does not have "/" at the end!')
+
+    admindoc_url = r'^' + ADMIN_URL + 'doc/'
+    admin_url = r'^' + ADMIN_URL
+
+    return (admindoc_url, admin_url)
+
+
+admin_urls = get_admin_urls(ADMIN_URL)
 
 urlpatterns = patterns(
     '',
+
     # admin part
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    url(admin_urls[0], include('django.contrib.admindocs.urls')),
+    url(admin_urls[1], include(admin.site.urls)),
 
     # ckeditor image upload connector
     url(r'^connector/browser/$', 'django_pages.connector.views.browser'),

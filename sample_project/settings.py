@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'wysiwyg.db',                      # Or path to database file if using sqlite3.
+        'NAME': 'sample_project/wysiwyg.db',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -102,10 +102,10 @@ MIDDLEWARE_CLASSES = (
     'django_pages.log.middleware.RequestLog',
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'sample_project.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'wsgi.application'
+WSGI_APPLICATION = 'sample_project.wsgi.application'
 
 TEMPLATE_DIRS = (
     '',
@@ -152,7 +152,7 @@ LOGGING = {
         'log': {
             'level': 'INFO',
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': 'request.log',
+            'filename': 'sample_project/log/request.log',
             'when': 'D',
             'interval': 1,
         }

@@ -19,6 +19,7 @@ django_pages/comments/__init__.py
 django_pages/comments/admin.py
 django_pages/comments/forms.py
 django_pages/comments/models.py
+django_pages/comments/validators.py
 django_pages/common/__init__.py
 django_pages/common/admin_actions.py
 django_pages/common/errors.py

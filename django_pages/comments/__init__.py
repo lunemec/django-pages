@@ -122,6 +122,7 @@ def handle_comment(request, post):
 
         if is_human(request, {0: one, 1: two, 2: three, 3: four}):
 
+            # check for duplicate comments
             if Comment.objects.filter(post=post, user=user, comment=comment):
 
                 return CommentForm()

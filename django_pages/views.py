@@ -1,5 +1,9 @@
 # -*- encoding: utf-8 -*-
 
+"""
+This module handles all views that django-pages support
+"""
+
 import re
 
 from django.http import Http404, HttpResponse
@@ -49,8 +53,38 @@ def parse_url(url):
     return urlmatch.groupdict()
 
 
+def handle_comment_form(request, user_last_post):
+    """
+    Handles comment form.
+    Prefills the JS random_number check, saves comment or
+    shows empty form
+
+    @param request: HTTP request
+    @param user_last_post: pages.models.Post instance
+
+    @return comments.form.CommentForm instance
+    """
+
+    if request.method == 'POST':
+        form = handle_comment(request, user_last_post)
+
+    else:
+        form = CommentForm()
+
+    set_humanity_check(request)
+    form.humanity = translate_humanity(request)
+    form.js_check = request.session['random_number']
+
+    return form
+
+
 @cache_page(10)
 def main_view(request, url, preview=False):
+    """
+    @param request: HTTP request
+    @param url: string
+    @param preview: boolean
+    """
 
     url_result = parse_url(url)
 
@@ -60,54 +94,32 @@ def main_view(request, url, preview=False):
     language = get_language(url_result)
 
     if not url_result['page']:
-
         page = get_index_page(language)
 
     else:
-
         page = get_page(url_result['page'], language, preview)
 
     menuitems = page.link.lang.menuitem_set.select_related('page').order_by('position').all()
 
     # filter active pages if we're not previewing
     if not preview:
-
         menuitems = menuitems.filter(page__active=True)
 
     for menuitem in menuitems:
-
         menuitem.current = menuitem.is_current(url_result['page'])
 
     meta_data = get_metadata(page)
-
     page_num = url_result['page_num'] or 1
 
     if url_result['post']:
 
         posts = get_post(page, url_result['post'], preview)
-
         template_page = 'post.html'
-
-        if request.method == 'POST':
-
-            form = handle_comment(request, posts)
-
-            set_humanity_check(request)
-            form.humanity = translate_humanity(request)
-            form.js_check = request.session['random_number']
-
-        else:
-
-            form = CommentForm()
-
-            set_humanity_check(request)
-            form.humanity = translate_humanity(request)
-            form.js_check = request.session['random_number']
+        form = handle_comment_form(request, posts)
 
     else:
 
         posts = get_paginated_posts(page, page_num, current_template[1])
-
         template_page = 'page.html'
 
     site_content = {'site': current_site,
@@ -119,11 +131,9 @@ def main_view(request, url, preview=False):
                     'posts': posts, }
 
     try:
-
         site_content['form'] = form
 
     except NameError:
-
         pass
 
     template = '%s/%s' % (current_template[0], template_page)
