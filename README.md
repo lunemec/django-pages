@@ -126,6 +126,9 @@ This is wher language flags will be saved and loaded from
 POSTS_ON_PAGE = 10
 How many posts on page show
 
+ADMIN_URL = 'myadmin/'
+If you want your admin on specific url
+
 Optional:
 Set DEBUG = True in settings.py while creating pages to see debugging information
 

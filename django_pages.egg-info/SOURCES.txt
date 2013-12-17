@@ -476,7 +476,6 @@ django_pages/templates/default3/page.html
 django_pages/templates/default3/post.html
 django_pages/templates/default3/post_list.html
 sample_project/__init__.py
-sample_project/manage.py
 sample_project/settings-dev.py
 sample_project/settings.py
 sample_project/urls.py
