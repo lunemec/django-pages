@@ -13,4 +13,4 @@ yourself (or hire someone to make it) and use it. There is no maintenance
 required.
 """
 
-VERSION = '1.2.0'
+VERSION = '1.2.1'
