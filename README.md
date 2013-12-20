@@ -28,20 +28,26 @@ Install dependencies:
 Create your project:
 
     Install Django (pip install django)
-    Create your Django application (see [django docs](https://docs.djangoproject.com/en/1.5/intro/install/))
+    Create your Django application 
 
     OR
 
-    Download and copy somewhere the sample_project
+    Download and copy sample_project
 
-Configure:
+see [django docs](https://docs.djangoproject.com/en/1.5/intro/install/))
+
+Configure
+---------
+
+`settings.py`
 
     # add to settings.py:
     USE_TZ = True
 
-# don't forget to include django admin in INSTALLED_APPS
-
     # add to INSTALLED_APPS:
+    'django.contrib.admin', <- admin site
+    'django.contrib.admindocs', <- admin documentation - not required
+
     'django_pages',
     'django_pages.comments',
     'django_pages.common',
@@ -89,7 +95,7 @@ Configure:
     }
 
 
-Your urls.py should contain roughly this:
+Your `urls.py` should contain roughly this:
 
     from django.conf.urls import patterns, include, url
 
@@ -113,7 +119,7 @@ Your urls.py should contain roughly this:
         url(r'', include('django_pages.urls')),
     )
 
-Create empty database:
+Create empty `database`:
     
     run #~ python manage.py syncdb  to create database and tables
     
@@ -133,17 +139,17 @@ Configuration
 
 You can override default settings on these values:
 
-ADMIN_MEDIA_PREFIX = '/static/admin/'
+`ADMIN_MEDIA_PREFIX` = '/static/admin/'
 This is where django will look for admin static files (for deployment with collectstatic)
 
-FLAG_UPLOAD_DIR = settings.MEDIA_ROOT + '/languages'
+`FLAG_UPLOAD_DIR` = settings.MEDIA_ROOT + '/languages'
 This is wher language flags will be saved and loaded from
 
-POSTS_ON_PAGE = 10
+`POSTS_ON_PAGE` = 10
 How many posts on page show
 
 Optional:
-Set DEBUG = True in settings.py while creating pages to see debugging information
+Set `DEBUG` = True in settings.py while creating pages to see debugging information
 
 
 Create website
@@ -178,7 +184,7 @@ Create website
 
     Set DEBUG = False in you settings.py after succesfull creation!
 
-    Done!
+Done!
 
 
 Preview in admin
@@ -205,18 +211,16 @@ Adding Images
 -------------
 
 You can now add images directly from admin. Select Page/Post you want to edit. Click on Image icon in the editor.
-Click Browse server. In the new window, either upload your image (will be automatically resized to fit 800x600 px) or select
+Click Browse server. In the new window, either upload your image or select
 already uploaded image from the files.
 
 Once selected, Image will be automatically selected by the editor, and you can hit OK.
 It will automatically create link for that image.
 
-If you want this image to have nice pop-up effects from Lightbox2, click on small magnifiing glass icon (Create Lightbox),
-insert text you want the image to have and click OK.
+Files will be uploaded to your `MEDIA_ROOT` path into folder uploaded 
+(you can change this in file connector/settings.py - I'm working on making this easier)
 
-Files will be uploaded to your MEDIA_ROOT path into folder uploaded (you can change this in file connector/settings.oy)
-
-Don't forget to set your /media/uploadeded/ folder permissions to 775 so you'll be able to save images into it from admin!
+Don't forget to set your /media/uploaded/ folder permissions to 775 so you'll be able to save images into it from admin!
 
 
 Templates
@@ -243,7 +247,7 @@ Note: there is a 30s cache for current template, so after the change in admin, w
 Creating custom template
 ------------------------
 
-1. In your settings.py, set TEMPLATE_PATH = 'templatename'
+1. In your settings.py, set `TEMPLATE_PATH` = 'templatename'
 2. Copy templates/default to templates/templatename
 3. Edit files in templates/templatename to your liking
 4. Save your css/js inside your project's /static/ and in base_static.html change path and names inside {% static 'filename' %}
@@ -272,7 +276,7 @@ Url
 
 Url is following:
 
-    http://mydomain.example/language/my-page-with-somethin~page_number/~post
+`http://mydomain.example/language/my-page-with-somethin~page_number/~post`
     
 Rules are following:
 
@@ -301,8 +305,8 @@ Reserved URLs:
 Caching
 -------
 
-Wysiwyg now supports caching in-memory (I guess), for some reason django's wrapper @chache_page for specific view caching works without CACHE in settings.py, which is weird at least. And I tried memcached, in-memory and without cache, and in-memory had the best results, and you don't even have to configure it.
-Now it can handle 50 concurrent page acceses in 12ms! (tested with ab -n 1000 -c 50 http://lnemec.tk/)
+Wysiwyg now supports caching in-memory, for some reason django's wrapper @chache_page for specific view caching works without CACHE in settings.py, which is weird at least. I tried memcached, in-memory and without cache, and in-memory had the best results, and you don't even have to configure it.
+Now it can handle 50 concurrent page acceses in 12ms! (tested with ab -n 1000 -c 50 http://nemec.lu/)
 
 
 Atom and RSS

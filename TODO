@@ -1,2 +1,9 @@
+change connector/settings.py
+change connector (write my own stuff)
+somehow solve lightbox
 views.py looks ugly, clean up
+
 MOAR unittests!
+
+# protoype
+try LaTeX as document writing language
