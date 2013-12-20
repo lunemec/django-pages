@@ -132,7 +132,6 @@ INSTALLED_APPS = (
     'django_pages.metadata',
     'django_pages.pages',
     'django_pages.site',
-    'reversion',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -169,4 +168,5 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.static',
     'django.core.context_processors.media',
+    'django.core.context_processors.request',
 )

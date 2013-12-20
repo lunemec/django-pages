@@ -1,3 +1,4 @@
+v1.2.0, 20.12.2013 -- removed reversion as it was causing some trouble in admin, removed custom url for ADMIN, now you need to set it in urls.py (if you want)
 v1.1.9, 17.12.2013 -- added custom url for ADMIN, minor refactor of views
 v1.1.8, 05.11.2013 -- improved antispam protection with JS and hidden fields
 v1.1.7, 30.10.2013 -- fixed forgotten admin import

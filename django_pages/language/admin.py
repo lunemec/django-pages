@@ -1,8 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 from django import forms
-
-import reversion
+from django.contrib import admin
 
 from ..common.admin_actions import activate, deactivate
 from .models import Language
@@ -17,7 +16,7 @@ class LanguageAdminForm(forms.ModelForm):
         model = Language
 
 
-class LanguageAdmin(reversion.VersionAdmin):
+class LanguageAdmin(admin.ModelAdmin):
 
     form = LanguageAdminForm
     fields = (('language', 'country_code'), 'flag', 'default', 'active')

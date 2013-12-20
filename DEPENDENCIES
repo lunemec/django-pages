@@ -1,7 +1,6 @@
 django
 pytz
 elementtree
-django-reversion
 pil
 
 # to enable django admin doc

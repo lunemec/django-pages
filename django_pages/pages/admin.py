@@ -1,8 +1,7 @@
 # -*- encoding: utf-8 -*-
 
-import reversion
-
 from django.conf.urls import patterns
+from django.contrib import admin
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
@@ -11,7 +10,7 @@ from .models import Page, Post
 from ..views import main_view
 
 
-class PreviewAdmin(reversion.VersionAdmin):
+class PreviewAdmin(admin.ModelAdmin):
     """
     Custom parent class, with preview support
     """

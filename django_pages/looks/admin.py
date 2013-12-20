@@ -1,10 +1,11 @@
 # -*- encoding: utf-8 -*-
 
-import reversion
+from django.contrib import admin
 
 from ..common.admin_actions import activate, deactivate
 
-class LooksAdmin(reversion.VersionAdmin):
+
+class LooksAdmin(admin.ModelAdmin):
 
     fields = ('template', 'posts_per_page', 'active')
     list_display = fields

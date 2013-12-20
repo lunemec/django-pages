@@ -2,8 +2,6 @@
 
 from django.contrib import admin
 
-import reversion
-
 from .models import MetaData
 
 
@@ -12,7 +10,7 @@ class MetaDataInline(admin.TabularInline):
     model = MetaData
 
 
-class MetaSetAdmin(reversion.VersionAdmin):
+class MetaSetAdmin(admin.ModelAdmin):
 
     fields = (('language', 'name'),)
     list_display = ('name', 'language')
@@ -21,7 +19,7 @@ class MetaSetAdmin(reversion.VersionAdmin):
     search_fields = ['metadata__name', 'metadata__content']
 
 
-class MetaDataAdmin(reversion.VersionAdmin):
+class MetaDataAdmin(admin.ModelAdmin):
 
     list_display = ('__unicode__', 'name', 'content')
     list_filter = ('meta_set__name', 'name')

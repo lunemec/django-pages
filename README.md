@@ -54,7 +54,6 @@ Configure:
     'django_pages.metadata',
     'django_pages.pages',
     'django_pages.site',
-    'reversion',
 
     # optional
     'grappelli', <- nice admin looks
@@ -90,12 +89,29 @@ Configure:
     }
 
 
-Add this to your urls.py:
+Your urls.py should contain roughly this:
 
-        # optional for nice admin look (must be above django_pages):
+    from django.conf.urls import patterns, include, url
+
+    from django.contrib import admin
+
+
+    admin.autodiscover()
+
+    urlpatterns = patterns(
+        '',
+        # this is to enable nice looks in admin (plus line in INSTALLED_APPS in settings.py)
         url(r'^grappelli/', include('grappelli.urls')),
 
+        # admin site documentation - not required
+        url(r'^admindoc/', include('django.contrib.admindocs.urls')),
+
+        # admin site itself - recommended
+        url(r'^admin/', include(admin.site.urls)),
+        
+        # django-pages url resolver - required
         url(r'', include('django_pages.urls')),
+    )
 
 Create empty database:
     
@@ -125,9 +141,6 @@ This is wher language flags will be saved and loaded from
 
 POSTS_ON_PAGE = 10
 How many posts on page show
-
-ADMIN_URL = 'myadmin/'
-If you want your admin on specific url
 
 Optional:
 Set DEBUG = True in settings.py while creating pages to see debugging information

@@ -9,11 +9,6 @@ from django.conf import settings
 
 
 try:
-    ADMIN_URL = settings.ADMIN_URL
-except AttributeError:
-    ADMIN_URL = 'admin/'
-
-try:
     ADMIN_MEDIA_PREFIX = settings.ADMIN_MEDIA_PREFIX
 except AttributeError:
     ADMIN_MEDIA_PREFIX = '/static/admin/'

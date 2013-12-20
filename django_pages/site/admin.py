@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
 
-import reversion
+from django.contrib import admin
 
 
-class SiteAdmin(reversion.VersionAdmin):
+class SiteAdmin(admin.ModelAdmin):
 
     list_display = ('domain', 'display_name', 'tagline')
 
