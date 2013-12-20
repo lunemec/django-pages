@@ -15,7 +15,7 @@ This project is running on this site: [Nemec.lu](http://nemec.lu/)
 Installation
 ------------
 
-Note: do NOT use settings.py from sample_project! the secret key is visible to all and it is a security risk. Create your own Django application and simply fill settings depending on your configuration.
+Note: do NOT use `settings.py` from sample_project! the secret key is visible to all and it is a security risk. Create your own Django application and simply fill settings depending on your configuration.
 
 Get this application:
 
