@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: django-pages
-Version: 1.1.9
+Version: 1.2.0
 Summary: Simple CMS for django
 Home-page: https://github.com/lunemec/django-pages
 Author: Lukas Nemec

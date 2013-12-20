@@ -4,7 +4,7 @@
 
 section {
 	margin-top: 60px;
-	padding-top: 100px;
+	padding-top: 20px;
 }
 
 /* index */
@@ -287,7 +287,7 @@ body .one .bsa_it_p {
 }
 
 .subhead > div:first-child {
-	min-height: 200px;
+	min-height: 100px;
 }
 
 /* subnav */
