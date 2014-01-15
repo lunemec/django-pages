@@ -40,7 +40,7 @@ class RssLatestPostsFeed(Feed):
         return item.title
 
     def item_description(self, item):
-        return '{} ...'.format(item.content[:200])
+        return '{} ...'.format(item.content.encode('utf-8')[:200])
 
     def item_link(self, item):
         return item.get_url()
