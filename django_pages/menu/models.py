@@ -34,6 +34,25 @@ class MenuItem(models.Model):
 
         super(MenuItem, self).save(*args, **kwargs)
 
+    def delete(self, *args, **kwargs):
+        """
+        makes sure that there is no spaces in positioning after delete
+        """
+        super(MenuItem, self).delete(*args, **kwargs)
+
+        self.reorder_items()
+
+    def reorder_items(self):
+        """
+        repositions items after deletion or exception
+        """
+
+        items = MenuItem.objects.filter(lang=self.lang).order_by('position')
+        
+        for pos, item in enumerate(items):
+            item.position = pos + 1
+            item.save()
+
     def get_last_position(self):
         """
         returns last_item's_position or 0 (no items)
@@ -108,13 +127,17 @@ class MenuItem(models.Model):
         handles item moving, makes sure there are no items with same position
         """
 
-        object_to_swap_with = MenuItem.objects.get(lang=self.lang, position=position)
+        try:
+            object_to_swap_with = MenuItem.objects.get(lang=self.lang, position=position)
 
-        object_to_swap_with.position = self.position
-        object_to_swap_with.save()
+            object_to_swap_with.position = self.position
+            object_to_swap_with.save()
 
-        self.position = position
-        self.save()
+            self.position = position
+            self.save()
+
+        except MenuItem.DoesNotExist:
+            self.reorder_items()
 
     def is_current(self, page_url):
         """
