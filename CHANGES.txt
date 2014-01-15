@@ -1,3 +1,4 @@
+v1.2.2, 15.01.2014 -- fixed bug with wrong menuitem positions after delete
 v1.2.1, 20.12.2013 -- css changes for style2
 v1.2.0, 20.12.2013 -- removed reversion as it was causing some trouble in admin, removed custom url for ADMIN, now you need to set it in urls.py (if you want)
 v1.1.9, 17.12.2013 -- added custom url for ADMIN, minor refactor of views
