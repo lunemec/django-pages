@@ -21,7 +21,6 @@ class PreviewAdmin(admin.ModelAdmin):
 
         js = [
             '/static/admin/js/ckeditor/ckeditor.js',
-            '/static/admin/js/ckeditor/config.js',
             '/static/admin/js/ckeditor/start.js',
         ]
 

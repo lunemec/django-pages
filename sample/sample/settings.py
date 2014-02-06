@@ -1,1 +1,1 @@
-settings-newdev.py
+settings-dev-home.py
