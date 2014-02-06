@@ -5,7 +5,7 @@ from setuptools import find_packages
 
 setup(
     name='django-pages',
-    version='1.2.2',
+    version='1.2.3',
     author=u'Lukas Nemec',
     author_email='lu.nemec@gmail.com',
     url='https://github.com/lunemec/django-pages',
@@ -14,5 +14,11 @@ setup(
     long_description='''https://github.com/lunemec/django-pages''',
     zip_safe=False,
     include_package_data=True,
+    install_requires=[
+        'django>=1.4',
+        'pytz',
+        'pillow',
+        'django-grappelli',
+    ]
     packages=find_packages(),
 )

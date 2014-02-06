@@ -1,10 +1,7 @@
 django
 pytz
 elementtree
-pil
-
-# to enable django admin doc
-docutils
+pillow
 
 # nicer admin templates
 django-grappelli
