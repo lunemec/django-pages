@@ -24,7 +24,7 @@ DATABASES = {
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ['127.0.0.1']
-INTERNAL_IPS = ('127.0.0.1',)
+INTERNAL_IPS = ('127.0.0.1', '90.179.110.226')
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -52,7 +52,7 @@ USE_L10N = True
 # Example: "/var/www/example.com/media/"
 
 # FILL THIS!
-MEDIA_ROOT = '/where/is/your/media/folder'
+MEDIA_ROOT = '/media/sf_D_DRIVE/BTsync/Django/django-pages/sample_project/media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -132,6 +132,8 @@ INSTALLED_APPS = (
     'django_pages.metadata',
     'django_pages.pages',
     'django_pages.site',
+    'reversion',
+    'debug_toolbar',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -151,7 +153,7 @@ LOGGING = {
         'log': {
             'level': 'INFO',
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': 'sample_project/log/request.log',
+            'filename': 'request.log',
             'when': 'D',
             'interval': 1,
         }
@@ -163,10 +165,17 @@ LOGGING = {
         }
     }
 }
+
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.static',
     'django.core.context_processors.media',
-    'django.core.context_processors.request',
 )
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'cache1'
+    }
+}
