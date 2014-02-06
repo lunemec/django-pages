@@ -42,7 +42,6 @@ INSTALLED_APPS = (
     'django_pages',
     'django_pages.comments',
     'django_pages.common',
-    'django_pages.connector',
     'django_pages.feed',
     'django_pages.language',
     'django_pages.log',

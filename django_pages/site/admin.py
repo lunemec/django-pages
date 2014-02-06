@@ -10,7 +10,9 @@ class SiteAdmin(admin.ModelAdmin):
     class Media:
 
         js = [
+            '/static/js/jquery-1.10.2.min.js',
             '/static/admin/js/ckeditor/ckeditor.js',
+            '/static/admin/js/ckeditor/adapters/jquery.js',
             '/static/admin/js/ckeditor/config.js',
             '/static/admin/js/ckeditor/start.js',
         ]
@@ -18,3 +20,8 @@ class SiteAdmin(admin.ModelAdmin):
         css = {
             'ckeditor': ('/static/admin/js/ckeditor/contents.css',),
         }
+
+
+class ScriptAdmin(admin.ModelAdmin):
+
+    list_display = ('name', 'code')

@@ -20,7 +20,8 @@ class DjangoPagesDashboard(Dashboard):
                 column=1,
                 collapsible=True,
                 models=(
-                    'django_pages.site.models.*',
+                    'django_pages.site.models.Site',
+                    'django_pages.site.models.Script',
                     'django_pages.language.models.*',
                     'django_pages.looks.models.*',
                     'django_pages.feed.models.*'
