@@ -12,4 +12,4 @@ ADMIN_MEDIA_PREFIX = getattr(settings, 'ADMIN_MEDIA_PREFIX', '/static/admin/')
 
 # where to upload flag images /media/FLAG_UPLOAD_DIR
 FLAG_UPLOAD_DIR = getattr(settings, 'FLAG_UPLOAD_DIR', settings.MEDIA_ROOT)
-LOCALE_PATHS = ('/home/lukas/django-pages/django_pages/locale', )
+

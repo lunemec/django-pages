@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 
 class Site(models.Model):
@@ -10,14 +11,28 @@ class Site(models.Model):
     (for now)
     """
 
-    domain = models.CharField('Domain', max_length=150)
-    display_name = models.CharField('Display name', max_length=200)
-    tagline = models.CharField('Tagline', max_length=200, blank=True)
-    footer = models.TextField('Footer', max_length=1000, blank=True)
+    domain = models.CharField(_('Domain'), max_length=150)
+    display_name = models.CharField(_('Website name'), max_length=200)
+    tagline = models.CharField(
+        _('Tagline'),
+        help_text=_('Smaller text next to website name'),
+        max_length=200,
+        blank=True
+    )
+    footer = models.TextField(
+        _('Footer'),
+        help_text=_('Custom footer with HTML to be displayed on each page'),
+        max_length=1000,
+        blank=True
+    )
 
     def __unicode__(self):
 
         return self.domain
+
+    class Meta:
+        verbose_name = _('Site')
+        verbose_name_plural = _('Sites')
 
 
 class Script(models.Model):
@@ -28,5 +43,17 @@ class Script(models.Model):
     for example google analytics/facebook/google+ ..
     """
 
-    name = models.CharField('Name', help_text='Script identification', max_length=50)
-    code = models.TextField('Code', help_text='Source code for script to be inserted, including &lt;script&gt;&lt;/script&gt; tags', max_length=1000)
+    name = models.CharField(
+        _('Name'),
+        help_text=_('Script identification'),
+        max_length=50
+    )
+    code = models.TextField(
+        _('Code'),
+        help_text=_('Source code for script to be inserted, including &lt;script&gt;&lt;/script&gt; tags'),
+        max_length=1000
+    )
+
+    class Meta:
+        verbose_name = _('Script')
+        verbose_name_plural = _('Scripts')

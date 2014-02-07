@@ -1,0 +1,365 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-07 15:10+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: cs-CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: dashboard.py:19
+msgid "General"
+msgstr "Obecné"
+
+#: dashboard.py:34 pages/models.py:68
+msgid "Pages"
+msgstr "Stránky"
+
+#: dashboard.py:43
+msgid "Menu"
+msgstr "Menu"
+
+#: dashboard.py:52 comments/models.py:26
+msgid "Comments"
+msgstr "Komentáře"
+
+#: dashboard.py:61
+msgid "SEO"
+msgstr "SEO"
+
+#: dashboard.py:70
+msgid "Administration"
+msgstr "Administrace"
+
+#: dashboard.py:78
+msgid "File Management"
+msgstr "Správa souborů"
+
+#: dashboard.py:82
+msgid "File Browser"
+msgstr "Prohlížeč Souborů"
+
+#: dashboard.py:90
+msgid "Recent Actions"
+msgstr "Poslední akce"
+
+#: comments/models.py:16
+msgid "User"
+msgstr "Uživatel"
+
+#: comments/models.py:17 comments/models.py:25
+msgid "Comment"
+msgstr "Komentář"
+
+#: comments/models.py:18
+msgid "IP"
+msgstr "IP"
+
+#: common/admin_actions.py:13
+msgid "Activate selected items."
+msgstr "Aktivovat vybrané položky."
+
+#: common/admin_actions.py:19
+msgid "Deactivate selected items."
+msgstr "Deaktivovat vybrané položky."
+
+#: common/admin_actions.py:25
+msgid "Enable comments."
+msgstr "Zapnout komentáře."
+
+#: common/admin_actions.py:31
+msgid "Disable comments."
+msgstr "Vypnout komentáře."
+
+#: feed/models.py:12
+msgid "Feed enabled"
+msgstr "Feed aktivní"
+
+#: feed/models.py:14
+msgid "Title"
+msgstr "Titulek"
+
+#: feed/models.py:15
+msgid "Feed title for entire site"
+msgstr "Titulek feedu pro celou stránku"
+
+#: feed/models.py:19
+msgid "Description"
+msgstr "Popis"
+
+#: feed/models.py:20
+msgid "Feed description for entire site"
+msgstr "Popis feedu pro celou stránku"
+
+#: feed/models.py:24
+msgid "Post count"
+msgstr "Počet příspěvků"
+
+#: feed/models.py:25
+msgid "How many latest Post to be displayed"
+msgstr "Kolik posledních příspěvků zobrazit"
+
+#: feed/models.py:30
+msgid "Feed Setting"
+msgstr "Nastavení Feedu"
+
+#: feed/models.py:31
+msgid "Feed Settings"
+msgstr "Nastavení Feedů"
+
+#: language/admin.py:15 language/models.py:20
+msgid "Country code"
+msgstr "Kód státu"
+
+#: language/admin.py:16 language/models.py:21
+msgid "(US, UK, CZ, SK, ...)"
+msgstr "(US, UK, CZ, SK, ...)"
+
+#: language/admin.py:18
+msgid "2-3 letter combination required (US, UK, CZ, ...)"
+msgstr "2-3 písmenná kombinace je nutná (US, UK, CZ, ...)"
+
+#: language/models.py:18 language/models.py:92 menu/models.py:17
+#: metadata/models.py:14
+msgid "Language"
+msgstr "Jazyk"
+
+#: language/models.py:26
+msgid "Flag"
+msgstr "Vlajka"
+
+#: language/models.py:27
+msgid "Flag image to display on page."
+msgstr "Obrázek vlajky k zobrazení na stránce."
+
+#: language/models.py:33
+msgid "Default"
+msgstr "Výchozí"
+
+#: language/models.py:34
+msgid "Display as default language?"
+msgstr "Zobrazit jako výchozí jazyk?"
+
+#: language/models.py:37 looks/models.py:15 pages/models.py:29
+#: pages/models.py:84
+msgid "Active"
+msgstr "Aktivní"
+
+#: language/models.py:93
+msgid "Languages"
+msgstr "Jazyky"
+
+#: looks/models.py:13
+msgid "Template name"
+msgstr "Název šablony"
+
+#: looks/models.py:14
+msgid "Posts per page"
+msgstr "Příspěvků na stránce"
+
+#: looks/models.py:42
+msgid "Template"
+msgstr "Šablona"
+
+#: looks/models.py:43
+msgid "Templates"
+msgstr "Šablony"
+
+#: menu/admin.py:35
+msgid "up"
+msgstr "nahoru"
+
+#: menu/admin.py:37
+msgid "down"
+msgstr "dolů"
+
+#: menu/admin.py:42
+msgid "Move"
+msgstr "Přesunout"
+
+#: menu/models.py:18
+msgid "Menu item name"
+msgstr "Název položky menu"
+
+#: menu/models.py:20
+msgid "Url"
+msgstr "Adresa"
+
+#: menu/models.py:21
+msgid ""
+"It is recommended to write urls in SEO format, e.g.: "
+"this_is_my_site_describing_something."
+msgstr ""
+"Je doporučeno psát adresy v SEO formátu, např.:"
+"toto_je_moje_stranka_popisujici_neco."
+
+#: menu/models.py:26
+msgid "Position"
+msgstr "Pozice"
+
+#: menu/models.py:145
+msgid "Menu item"
+msgstr "Položka menu"
+
+#: menu/models.py:146
+msgid "Menu items"
+msgstr "Položky menu"
+
+#: metadata/models.py:16 metadata/models.py:37 site/models.py:47
+msgid "Name"
+msgstr "Název"
+
+#: metadata/models.py:17
+msgid "Name of meta set (for identification)."
+msgstr "Název setu metadat (pro identifikaci)."
+
+#: metadata/models.py:26 metadata/models.py:35
+msgid "Meta set"
+msgstr "Set metadat"
+
+#: metadata/models.py:27
+msgid "Meta sets"
+msgstr "Sety metadat"
+
+#: metadata/models.py:38
+msgid "Name of meta tag &lt;meta name=\"THIS NAME\" ... &gt;"
+msgstr "Název meta tagu &lt;meta name=\"TENTO NÁZEV\" ... &gt;"
+
+#: metadata/models.py:42
+msgid "Content"
+msgstr "Obsah"
+
+#: metadata/models.py:43
+msgid "Content of meta tag &lt;meta ... content=\"THIS CONTENT\" &gt;"
+msgstr "Obsah meta tagu &lt;meta ... content=\"TENTO OBSAH\" &gt;"
+
+#: metadata/models.py:52 metadata/models.py:53
+msgid "Meta data"
+msgstr "Meta data"
+
+#: pages/models.py:23
+msgid "Link"
+msgstr "Odkaz"
+
+#: pages/models.py:24
+msgid "Page title"
+msgstr "Titulek stránky"
+
+#: pages/models.py:25
+msgid "Page content"
+msgstr "Obsah stránky"
+
+#: pages/models.py:31
+msgid "Index page"
+msgstr "Domovská stránka"
+
+#: pages/models.py:32
+msgid ""
+"This page will be landing page for language specified for link (menu item)"
+msgstr "Tato stránka bude domovská pro jazyk vybraný pro odkaz (položku menu)"
+
+#: pages/models.py:67 pages/models.py:79
+msgid "Page"
+msgstr "Stránka"
+
+#: pages/models.py:80
+msgid "Post title"
+msgstr "Titulek příspěvku"
+
+#: pages/models.py:81
+msgid "Post content"
+msgstr "Obsah příspěvku"
+
+#: pages/models.py:82
+msgid "Enable comments"
+msgstr "Zapnout komentáře."
+
+#: pages/models.py:87
+msgid "Visible from"
+msgstr "Viditelný od"
+
+#: pages/models.py:88 pages/models.py:94
+msgid "Post will not be visible outside of specified date and time"
+msgstr "Příspěvek nebude viditelný mimo specifikované datum a čas"
+
+#: pages/models.py:93
+msgid "Visible to"
+msgstr "Viditelný do"
+
+#: pages/models.py:99
+msgid "Date of creation"
+msgstr "Datum vytvoření"
+
+#: pages/models.py:174
+msgid "Post"
+msgstr "Příspěvek"
+
+#: pages/models.py:175
+msgid "Posts"
+msgstr "Příspěvky"
+
+#: site/models.py:14
+msgid "Domain"
+msgstr "Doména"
+
+#: site/models.py:15
+msgid "Website name"
+msgstr "Jméno webu"
+
+#: site/models.py:17
+msgid "Tagline"
+msgstr "Slogan"
+
+#: site/models.py:18
+msgid "Smaller text next to website name"
+msgstr "Menší text zobrazený vedle jména webu"
+
+#: site/models.py:23
+msgid "Footer"
+msgstr "Patička"
+
+#: site/models.py:24
+msgid "Custom footer with HTML to be displayed on each page"
+msgstr "Vlastní patička s HTML zobrazená na každé stránce"
+
+#: site/models.py:34
+msgid "Site"
+msgstr "Webová aplikace"
+
+#: site/models.py:35
+msgid "Sites"
+msgstr "Webové aplikace"
+
+#: site/models.py:48
+msgid "Script identification"
+msgstr "Označení skriptu"
+
+#: site/models.py:52
+msgid "Code"
+msgstr "Kód"
+
+#: site/models.py:53
+msgid ""
+"Source code for script to be inserted, including &lt;script&gt;&lt;/"
+"script&gt; tags"
+msgstr ""
+"Zdrojový kód skriptu k vložení, včetně &lt;script&gt;&lt;/"
+"script&gt; tagů"
+
+#: site/models.py:58
+msgid "Script"
+msgstr "Skript"
+
+#: site/models.py:59
+msgid "Scripts"
+msgstr "Skripty"

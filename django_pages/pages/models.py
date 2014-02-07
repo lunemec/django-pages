@@ -6,6 +6,7 @@ from django.db import models
 
 from django.utils.text import slugify
 from django.utils.timezone import make_aware, get_current_timezone
+from django.utils.translation import ugettext_lazy as _
 
 from ..menu.models import MenuItem
 from ..metadata.models import MetaSet
@@ -19,14 +20,18 @@ class Page(models.Model):
     Is related to :model: `django_pages.MenuItem`.
     '''
 
-    link = models.OneToOneField(MenuItem)
-    title = models.CharField('Page title', max_length=500)
-    content = models.TextField('Page content', blank=True)
+    link = models.OneToOneField(MenuItem, verbose_name=_('Link'))
+    title = models.CharField(_('Page title'), max_length=500)
+    content = models.TextField(_('Page content'), blank=True)
 
-    metadata_set = models.ForeignKey(MetaSet, null=True, blank=True)
+    metadata_set = models.ForeignKey(MetaSet, verbose_name=('Meta set'), null=True, blank=True)
 
-    active = models.BooleanField('Active', blank=True, default=True)
-    index = models.BooleanField('Index page', blank=True)
+    active = models.BooleanField(_('Active'), blank=True, default=True)
+    index = models.BooleanField(
+        _('Index page'),
+        help_text=_('This page will be landing page for language specified for link (menu item)'),
+        blank=True
+    )
 
     def __unicode__(self):
 
@@ -58,6 +63,10 @@ class Page(models.Model):
 
         return result
 
+    class Meta:
+        verbose_name = _('Page')
+        verbose_name_plural = _('Pages')
+
 
 class Post(models.Model):
     '''
@@ -67,17 +76,27 @@ class Post(models.Model):
     Is related to :model: `django_pages.Page`.
     '''
 
-    page = models.ForeignKey(Page)
-    title = models.CharField('Post title', max_length=200, unique=True)
-    content = models.TextField('Post content')
-    comments = models.BooleanField('Enable comments', blank=True)
+    page = models.ForeignKey(Page, verbose_name=_('Page'))
+    title = models.CharField(_('Post title'), max_length=200, unique=True)
+    content = models.TextField(_('Post content'))
+    comments = models.BooleanField(_('Enable comments'), blank=True)
 
-    active = models.BooleanField('Active', blank=True, default=True)
+    active = models.BooleanField(_('Active'), blank=True, default=True)
 
-    visible_from = models.DateTimeField('Visible from', blank=True, null=True)
-    visible_to = models.DateTimeField('Visible to', blank=True, null=True)
+    visible_from = models.DateTimeField(
+        _('Visible from'),
+        help_text=_('Post will not be visible outside of specified date and time'),
+        blank=True,
+        null=True
+    )
+    visible_to = models.DateTimeField(
+        _('Visible to'),
+        help_text=_('Post will not be visible outside of specified date and time'),
+        blank=True,
+        null=True
+    )
 
-    created = models.DateTimeField('Created', blank=True, null=True)
+    created = models.DateTimeField(_('Date of creation'), blank=True, null=True)
 
     def __unicode__(self):
 
@@ -150,3 +169,7 @@ class Post(models.Model):
         result = url_scheme.format(country_code=self.page.link.lang.country_code, link_url=self.page.link.url, post_title=title)
 
         return result
+
+    class Meta:
+        verbose_name = _('Post')
+        verbose_name_plural = _('Posts')

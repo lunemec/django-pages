@@ -4,8 +4,7 @@ from django.conf.urls import patterns
 from django.contrib import admin
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect, get_object_or_404
-from django.utils.translation import ugettext as _
-from django.utils.translation import ugettext_lazy
+from django.utils.translation import ugettext_lazy as _
 
 from .models import MenuItem
 from ..settings import ADMIN_MEDIA_PREFIX
@@ -18,6 +17,7 @@ class MenuItemInline(admin.TabularInline):
 
 class MenuItemAdmin(admin.ModelAdmin):
 
+    #form = MenuItemForm
     fields = (('lang', 'menuitem_name'), 'url')
     list_display = ('menuitem_name', 'lang', 'url', 'move', 'position')
     list_filter = ('lang',)
@@ -39,7 +39,7 @@ class MenuItemAdmin(admin.ModelAdmin):
         return html
 
     move.allow_tags = True
-    move.short_description = ugettext_lazy('Move')
+    move.short_description = _('Move')
 
     def get_urls(self):
 

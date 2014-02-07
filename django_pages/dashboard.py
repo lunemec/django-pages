@@ -79,7 +79,7 @@ class DjangoPagesDashboard(Dashboard):
             column=3,
             children=[
                 {
-                    'title': _('FileBrowser'),
+                    'title': _('File Browser'),
                     'url': '/admin/filebrowser/browse/',
                     'external': False,
                 },

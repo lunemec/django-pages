@@ -2,6 +2,7 @@
 
 from django.db import models
 from django.core.files.storage import FileSystemStorage
+from django.utils.translation import ugettext_lazy as _
 
 from ..settings import FLAG_UPLOAD_DIR
 
@@ -14,11 +15,26 @@ class Language(models.Model):
     Country Code will be part of URL in lowercase.
     '''
 
-    language = models.CharField('Language', max_length=150, unique=True)
-    country_code = models.CharField('Country code', max_length=3, unique=True)
-    flag = models.ImageField(storage=IMAGES_DIR, upload_to='languages', blank=True)
-    default = models.BooleanField('Display as default language?', blank=True)
-    active = models.BooleanField('Active', blank=True, default=True)
+    language = models.CharField(_('Language'), max_length=150, unique=True)
+    country_code = models.CharField(
+        _('Country code'),
+        help_text=_('(US, UK, CZ, SK, ...)'),
+        max_length=3,
+        unique=True
+    )
+    flag = models.ImageField(
+        _('Flag'),
+        help_text=_('Flag image to display on page.'),
+        storage=IMAGES_DIR,
+        upload_to='languages',
+        blank=True
+    )
+    default = models.BooleanField(
+        _('Default'),
+        help_text=_('Display as default language?'),
+        blank=True
+    )
+    active = models.BooleanField(_('Active'), blank=True, default=True)
 
     def __unicode__(self):
 
@@ -71,3 +87,7 @@ class Language(models.Model):
                 new_default = new_default[0]
                 new_default.default = True
                 new_default.save()
+
+    class Meta:
+        verbose_name = _('Language')
+        verbose_name_plural = _('Languages')

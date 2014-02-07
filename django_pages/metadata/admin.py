@@ -21,6 +21,6 @@ class MetaSetAdmin(admin.ModelAdmin):
 
 class MetaDataAdmin(admin.ModelAdmin):
 
-    list_display = ('__unicode__', 'name', 'content')
+    list_display = ('name', 'content', 'meta_set')
     list_filter = ('meta_set__name', 'name')
     search_fields = ['content']

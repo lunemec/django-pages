@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 
 class Template(models.Model):
@@ -9,9 +10,9 @@ class Template(models.Model):
     Template name is used for template selection in templates foled of your project
     '''
 
-    template = models.CharField('Template name', max_length=200)
-    posts_per_page = models.PositiveIntegerField('Posts per page', default=10)
-    active = models.BooleanField('Active', default=False, blank=True)
+    template = models.CharField(_('Template name'), max_length=200)
+    posts_per_page = models.PositiveIntegerField(_('Posts per page'), default=10)
+    active = models.BooleanField(_('Active'), default=False, blank=True)
 
     def __unicode__(self):
 
@@ -36,3 +37,7 @@ class Template(models.Model):
             self.active = True
 
         super(Template, self).save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = _('Template')
+        verbose_name_plural = _('Templates')

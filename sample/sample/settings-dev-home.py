@@ -27,7 +27,7 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', ]
 
 GRAPPELLI_INDEX_DASHBOARD = 'django_pages.dashboard.DjangoPagesDashboard'
-
+LOCALE_PATHS = ('/home/lukas/django-pages/django_pages/locale/', )
 # Application definition
 
 INSTALLED_APPS = (
@@ -71,7 +71,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'cs-cz'
+LANGUAGE_CODE = 'cs-CZ'
 
 TIME_ZONE = 'Europe/Prague'
 

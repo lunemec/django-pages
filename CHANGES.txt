@@ -1,3 +1,4 @@
+v1.3.0, 07.02.2014 -- removed connector and replaced it with django-filebrowser, added nice grappelli dashboard to admin, updated CKeditor with django-filebrowser, fixed several bugs, created new sample project, added translations
 v1.2.2, 15.01.2014 -- fixed bug with wrong menuitem positions after delete
 v1.2.1, 20.12.2013 -- css changes for style2
 v1.2.0, 20.12.2013 -- removed reversion as it was causing some trouble in admin, removed custom url for ADMIN, now you need to set it in urls.py (if you want)

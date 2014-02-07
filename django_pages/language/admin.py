@@ -2,6 +2,7 @@
 
 from django import forms
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
 
 from ..common.admin_actions import activate, deactivate
 from .models import Language
@@ -9,10 +10,16 @@ from .models import Language
 
 class LanguageAdminForm(forms.ModelForm):
 
-    country_code = forms.RegexField(r'^[A-z]{2,3}$', error_messages={'invalid': '2-3 letter combination required'})
+    country_code = forms.RegexField(
+        r'^[A-z]{2,3}$',
+        label=_('Country code'),
+        help_text=_('(US, UK, CZ, SK, ...)'),
+        error_messages={
+            'invalid': _('2-3 letter combination required (US, UK, CZ, ...)')
+        }
+    )
 
     class Meta:
-
         model = Language
 
 
