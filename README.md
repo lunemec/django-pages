@@ -21,10 +21,6 @@ Get this application:
 
     pip install django-pages 
 
-Install dependencies:
-    
-    pip install -r DEPENDENCIES
-
 Create your project:
 
     Install Django (pip install django)
@@ -38,62 +34,12 @@ see [django docs](https://docs.djangoproject.com/en/1.5/intro/install/))
 
 Configure
 ---------
+The easiest way is to install django_pages and
+look at sampe project, which works on clean install
 
-`settings.py`
 
-    # add to settings.py:
-    USE_TZ = True
-
-    # add to INSTALLED_APPS:
-    'django.contrib.admin', <- admin site
-    'django.contrib.admindocs', <- admin documentation - not required
-
-    'django_pages',
-    'django_pages.comments',
-    'django_pages.common',
-    'django_pages.connector',
-    'django_pages.feed',
-    'django_pages.language',
-    'django_pages.log',
-    'django_pages.looks',
-    'django_pages.menu',
-    'django_pages.metadata',
-    'django_pages.pages',
-    'django_pages.site',
-
-    # optional
-    'grappelli', <- nice admin looks
-
-    
-    # add to MIDDLEWARE_CLASSES for logging requests into file 
-    'django_pages.log.middleware.RequestLog',
-
-    # for logging, also configure logger with name 'requestlog'
-    LOGGING = {
-        'version': 1,
-        'disable_existing_loggers': False,
-        'filters': {
-            'require_debug_false': {
-                '()': 'django.utils.log.RequireDebugFalse'
-            }
-        },
-        'handlers': {
-            'log': {
-                'level': 'INFO',
-                'class': 'logging.handlers.TimedRotatingFileHandler',
-                'filename': 'request.log',
-                'when': 'D',
-                'interval': 1,
-            }
-        },
-        'loggers': {
-                'requestlog': {
-                'handlers': ['log',],
-                'level': 'INFO',
-            }   
-        }
-    }
-
+`setting.py`
+Look at sample project and edit it's settings to fit your needs 
 
 Your `urls.py` should contain roughly this:
 

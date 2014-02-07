@@ -1,2 +1,1 @@
 django_pages
-sample_project

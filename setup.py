@@ -19,6 +19,7 @@ setup(
         'pytz',
         'pillow',
         'django-grappelli',
-    ]
+        'django-filebrowser',
+    ],
     packages=find_packages(),
 )

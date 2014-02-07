@@ -27,6 +27,12 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', ]
 
 GRAPPELLI_INDEX_DASHBOARD = 'django_pages.dashboard.DjangoPagesDashboard'
+
+# set this path to django_pages install dir
+# depends on your distro and virtualenv
+# open ipython, import django_pages
+# and type django_pages for path
+# locale should contain cs_CZ directory
 LOCALE_PATHS = ('/home/lukas/django-pages/django_pages/locale/', )
 # Application definition
 
@@ -41,7 +47,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'filebrowser',
     'django_pages',
-    'debug_toolbar'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -87,8 +92,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'sample/static/')
+
+# set this path to django_pages install dir
+# depends on your distro and virtualenv
+# open ipython, import django_pages
+# and type django_pages for path
 STATICFILES_DIRS = (
-    '/home/lukas/django-pages/django_pages/static',
+    '/home/lukas/django-pages/django_pages/static/',
 )
 
 MEDIA_URL = '/media/'
