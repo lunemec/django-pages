@@ -33,6 +33,8 @@ django_pages/feed/models.py
 django_pages/language/__init__.py
 django_pages/language/admin.py
 django_pages/language/models.py
+django_pages/locale/cs_CZ/LC_MESSAGES/django.mo
+django_pages/locale/cs_CZ/LC_MESSAGES/django.po
 django_pages/log/__init__.py
 django_pages/log/middleware.py
 django_pages/looks/__init__.py
