@@ -20,7 +20,7 @@ from .looks import get_template
 from .metadata import get_metadata
 from .pages import get_page, get_index_page, get_post, get_paginated_posts
 from .pages.models import Page
-from .site import get_site
+from .site import get_site, get_scripts
 
 
 def parse_url(url):
@@ -122,11 +122,14 @@ def main_view(request, url, preview=False):
         posts = get_paginated_posts(page, page_num, current_template[1])
         template_page = 'page.html'
 
+    scripts = get_scripts()
+
     site_content = {'site': current_site,
                     'languages': get_languages(),
                     'current_language': language,
                     'menuitems': menuitems,
                     'page': page,
+                    'scripts': scripts,
                     'metadata': meta_data,
                     'posts': posts, }
 

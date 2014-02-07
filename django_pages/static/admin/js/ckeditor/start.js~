@@ -1,0 +1,10 @@
+window.onload = function() {
+	CKEDITOR.replaceAll( function(textarea, config) {
+        config.filebrowserBrowseUrl = '/admin/filebrowser/browse/?pop=3',
+        //config.filebrowserUploadUrl = '/admin/filebrowser/upload/',
+        //config.filebrowserImageBrowseUrl = '/admin/filebrowser/browse/?&filter_type=Image',
+        //config.filebrowserImageUploadUrl = '/admin/filebrowser/upload/',
+        config.filebrowserWindowWidth  = 1000,
+        config.filebrowserWindowHeight = 800
+    });
+}

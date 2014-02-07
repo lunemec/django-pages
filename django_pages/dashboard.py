@@ -75,7 +75,7 @@ class DjangoPagesDashboard(Dashboard):
         )
 
         self.children.append(modules.LinkList(
-            _('Media Management'),
+            _('File Management'),
             column=3,
             children=[
                 {

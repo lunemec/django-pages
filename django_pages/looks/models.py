@@ -16,3 +16,23 @@ class Template(models.Model):
     def __unicode__(self):
 
         return self.template
+
+    def save(self, *args, **kwargs):
+        '''
+
+        '''
+
+        if not self.active:
+            if not Template.objects.exists():
+                self.active = True
+
+        else:
+            others = Template.objects.filter(active=True).exclude(id=self.id)
+
+            for other_active in others:
+                other_active.active = False
+                super(Template, other_active).save(*args, **kwargs)
+
+            self.active = True
+
+        super(Template, self).save(*args, **kwargs)

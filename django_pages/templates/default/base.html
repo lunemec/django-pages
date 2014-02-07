@@ -60,6 +60,14 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 		
 	</footer><!-- #footer end -->
 
-    
+    <!-- Scripts -->
+    {% for script in site_content.scripts %}
+        
+        <!-- {{ script.name }} --> 
+        {{ script.code|safe }}
+
+    {% endfor %}
+    <!-- end scripts -->
+   
 
 </body></html>

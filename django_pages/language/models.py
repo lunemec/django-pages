@@ -40,11 +40,10 @@ class Language(models.Model):
 
         else:
 
-            other_default = Language.objects.filter(default=True).exclude(id=self.id)
+            others = Language.objects.filter(default=True).exclude(id=self.id)
 
-            if other_default:
+            for other_default in others:
 
-                other_default = other_default[0]
                 other_default.default = False
                 # call super.save on this, so we don't check all this again
                 super(Language, other_default).save(*args, **kwargs)

@@ -59,4 +59,13 @@ The template was modified to work with django-pages application.
 
     </div><!-- /container -->
 
+    <!-- Scripts -->
+    {% for script in site_content.scripts %}
+        
+        <!-- {{ script.name }} --> 
+        {{ script.code|safe }}
+
+    {% endfor %}
+    <!-- end scripts -->
+
 </body></html>

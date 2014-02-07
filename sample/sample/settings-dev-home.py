@@ -39,17 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'filebrowser',
     'django_pages',
-    'django_pages.comments',
-    'django_pages.common',
-    'django_pages.feed',
-    'django_pages.language',
-    'django_pages.log',
-    'django_pages.looks',
-    'django_pages.menu',
-    'django_pages.metadata',
-    'django_pages.pages',
-    'django_pages.site',
     'debug_toolbar'
 )
 
@@ -95,14 +86,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'sample/static/')
 STATICFILES_DIRS = (
     '/home/lukas/django-pages/django_pages/static',
 )
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/lukas/django-pages/sample/sample/media/'
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'sample/media/')
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',

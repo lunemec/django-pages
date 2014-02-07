@@ -10,9 +10,9 @@ class SiteAdmin(admin.ModelAdmin):
     class Media:
 
         js = [
-            '/static/js/jquery-1.10.2.min.js',
             '/static/admin/js/ckeditor/ckeditor.js',
             '/static/admin/js/ckeditor/start.js',
+            '/static/filebrowser/js/FB_CKEditor.js',
         ]
 
         css = {

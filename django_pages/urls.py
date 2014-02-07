@@ -3,18 +3,18 @@
 """
 Default URL scheme for django-pages
 """
-
-from django.conf.urls import patterns, url
+from django.conf.urls import include, patterns, url
 from django.views.generic import TemplateView
+
+from filebrowser.sites import site
 
 from .feed.feed import RssLatestPostsFeed, AtomLatestPostsFeed
 
 
 urlpatterns = patterns(
     '',
-    # ckeditor image upload connector
-    url(r'^connector/browser/$', 'django_pages.connector.views.browser'),
-    url(r'^connector/uploader/$', 'django_pages.connector.views.uploader'),
+    # filebrowser
+    url(r'^admin/filebrowser/', include(site.urls)),
 
     # helper site (wizzard)
     url(r'^wizzard/$', TemplateView.as_view(template_name='wizzard.html')),

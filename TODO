@@ -1,9 +1,8 @@
-change connector/settings.py
-change connector (write my own stuff)
+translate to other languages (not templates)
+update wizzard, and make option to disable it
 somehow solve lightbox
 views.py looks ugly, clean up
 
 MOAR unittests!
-
-# protoype
-try LaTeX as document writing language
+selenium ideally and integration tests
+sphinx doc
