@@ -17,6 +17,7 @@ from .comments.forms import CommentForm
 from .language import get_language, get_languages
 from .language.models import Language
 from .looks import get_template
+from .menu import has_other_menu, get_other_menuitems
 from .metadata import get_metadata
 from .pages import get_page, get_index_page, get_post, get_paginated_posts
 from .pages.models import Page
@@ -133,6 +134,9 @@ def main_view(request, url, preview=False):
                     'metadata': meta_data,
                     'posts': posts, }
 
+    if has_other_menu():
+        site_content['other_menuitems'] = get_other_menuitems()
+
     try:
         site_content['form'] = form
 
@@ -141,7 +145,7 @@ def main_view(request, url, preview=False):
 
     template = '%s/%s' % (current_template[0], template_page)
 
-    return render_to_response(template, {'site_content': site_content}, context_instance=RequestContext(request))
+    return render_to_response(template, {'site_content': site_content}, RequestContext(request))
 
 
 @cache_page(60 * 60 * 24)

@@ -10,17 +10,26 @@ from .models import MenuItem
 from ..settings import ADMIN_MEDIA_PREFIX
 
 
-class MenuItemInline(admin.TabularInline):
+class MenuAdmin(admin.ModelAdmin):
 
-    model = MenuItem
+    fields = ('name', )
+    list_display = ('name', )
 
 
 class MenuItemAdmin(admin.ModelAdmin):
 
     #form = MenuItemForm
-    fields = (('lang', 'menuitem_name'), 'url')
-    list_display = ('menuitem_name', 'lang', 'url', 'move', 'position')
-    list_filter = ('lang',)
+    fields = (('lang', 'menu', 'menuitem_name'), 'url', 'style')
+    list_display = (
+        'menuitem_name',
+        'lang',
+        'menu',
+        'url',
+        'move',
+        'position',
+        'style'
+    )
+    list_filter = ('lang', 'menu')
     prepopulated_fields = {"url": ("menuitem_name",)}
 
     def move(self, obj):
@@ -65,7 +74,7 @@ class MenuItemAdmin(admin.ModelAdmin):
 
             raise PermissionDenied
 
-        return redirect('/admin/menu/menuitem/?o=2.-5')
+        return redirect('/admin/menu/menuitem/?o=2.3.-6.-5')
 
     def move_down(self, request, item_pk):
 
@@ -79,4 +88,4 @@ class MenuItemAdmin(admin.ModelAdmin):
 
             raise PermissionDenied
 
-        return redirect('/admin/menu/menuitem/?o=2.-5')
+        return redirect('/admin/menu/menuitem/?o=2.3.-6.-5')

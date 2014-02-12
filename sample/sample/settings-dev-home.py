@@ -47,6 +47,14 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'filebrowser',
     'django_pages',
+    'django_pages.comments',
+    'django_pages.feed',
+    'django_pages.language',
+    'django_pages.looks',
+    'django_pages.menu',
+    'django_pages.metadata',
+    'django_pages.pages',
+    'django_pages.site'
 )
 
 MIDDLEWARE_CLASSES = (

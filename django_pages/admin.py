@@ -10,7 +10,7 @@ from .comments.models import Comment
 from .feed.models import FeedSettings
 from .language.models import Language
 from .looks.models import Template
-from .menu.models import MenuItem
+from .menu.models import Menu, MenuItem
 from .metadata.models import MetaSet, MetaData
 from .pages.models import Page, Post
 from .site.models import Site, Script
@@ -19,7 +19,7 @@ from .comments.admin import CommentAdmin
 from .feed.admin import FeedAdmin
 from .language.admin import LanguageAdmin
 from .looks.admin import LooksAdmin
-from .menu.admin import MenuItemAdmin
+from .menu.admin import MenuAdmin, MenuItemAdmin
 from .metadata.admin import MetaSetAdmin, MetaDataAdmin
 from .pages.admin import PageAdmin, PostAdmin
 from .site.admin import SiteAdmin, ScriptAdmin
@@ -28,6 +28,7 @@ admin.site.register(Comment, CommentAdmin)
 admin.site.register(FeedSettings, FeedAdmin)
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(Template, LooksAdmin)
+admin.site.register(Menu, MenuAdmin)
 admin.site.register(MenuItem, MenuItemAdmin)
 admin.site.register(MetaSet, MetaSetAdmin)
 admin.site.register(MetaData, MetaDataAdmin)

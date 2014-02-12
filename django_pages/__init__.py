@@ -13,4 +13,7 @@ yourself (or hire someone to make it) and use it. There is no maintenance
 required.
 """
 
+import comments
+import feed
+
 VERSION = '1.2.2'

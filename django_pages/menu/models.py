@@ -6,6 +6,27 @@ from django.utils.translation import ugettext_lazy as _
 from ..language.models import Language
 
 
+class Menu(models.Model):
+    '''
+    Stores data about menu.
+    There may be reason to have multiple menu
+    Links in the header for example
+    '''
+
+    name = models.CharField(
+        _('Menu name'),
+        help_text=_('For identification only'),
+        max_length=200
+    )
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _('Menu')
+        verbose_name_plural = _('Menu')
+
+
 class MenuItem(models.Model):
     '''
     Stores menuitem information.
@@ -15,8 +36,9 @@ class MenuItem(models.Model):
     '''
 
     lang = models.ForeignKey(Language, verbose_name=_('Language'))
+    menu = models.ForeignKey(Menu, verbose_name=_('Menu'))
     menuitem_name = models.CharField(_('Menu item name'), max_length=200)
-    url = models.SlugField(
+    url = models.CharField(
         _('Url'),
         help_text=_('It is recommended to write urls in SEO format, '
                     'e.g.: this_is_my_site_describing_something.'),
@@ -24,6 +46,12 @@ class MenuItem(models.Model):
         unique=True
     )
     position = models.IntegerField(_('Position'), blank=True)
+    style = models.CharField(
+        _('Style'),
+        help_text=_('Custom style for this menu item'),
+        max_length=200,
+        blank=True
+    )
 
     def __unicode__(self):
         return '%s - %s' % (self.menuitem_name, self.lang)
@@ -52,7 +80,10 @@ class MenuItem(models.Model):
         repositions items after deletion or exception
         """
 
-        items = MenuItem.objects.filter(lang=self.lang).order_by('position')
+        items = MenuItem.objects.filter(
+            lang=self.lang,
+            menu=self.menu
+        ).order_by('position')
 
         for pos, item in enumerate(items):
             item.position = pos + 1
@@ -62,7 +93,10 @@ class MenuItem(models.Model):
         """
         returns last_item's_position or 0 (no items)
         """
-        other_objects = MenuItem.objects.filter(lang=self.lang).order_by('-position')
+        other_objects = MenuItem.objects.filter(
+            lang=self.lang,
+            menu=self.menu
+        ).order_by('-position')
 
         if other_objects.count():
             last_position = other_objects[0].position
@@ -119,7 +153,11 @@ class MenuItem(models.Model):
         handles item moving, makes sure there are no items with same position
         """
         try:
-            object_to_swap_with = MenuItem.objects.get(lang=self.lang, position=position)
+            object_to_swap_with = MenuItem.objects.get(
+                lang=self.lang,
+                menu=self.menu,
+                position=position
+            )
 
             object_to_swap_with.position = self.position
             object_to_swap_with.save()
@@ -136,7 +174,10 @@ class MenuItem(models.Model):
 
         @return bool
         """
-        if page_url == self.url or (self.page.index and self.page.active and page_url is None):
+        if page_url == self.url or (
+            self.page.index and self.page.active and page_url is None
+        ):
+
             return True
 
         return False
