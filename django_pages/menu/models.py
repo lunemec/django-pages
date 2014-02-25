@@ -42,8 +42,7 @@ class MenuItem(models.Model):
         _('Url'),
         help_text=_('It is recommended to write urls in SEO format, '
                     'e.g.: this_is_my_site_describing_something.'),
-        max_length=200,
-        unique=True
+        max_length=200
     )
     position = models.IntegerField(_('Position'), blank=True)
     style = models.CharField(
@@ -181,6 +180,17 @@ class MenuItem(models.Model):
             return True
 
         return False
+
+    def get_url(self):
+        """
+        returns url for django-page or http link
+        if 'http://' is in self.url
+        """
+        if 'http://' in self.url:
+            return self.url
+
+        else:
+            return '/{}/{}'.format(self.lang.country_code, self.url)
 
     class Meta:
         verbose_name = _('Menu item')

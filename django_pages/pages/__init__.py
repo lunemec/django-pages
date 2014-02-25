@@ -43,19 +43,14 @@ def get_page(page_url, language, preview=False):
     '''
 
     try:
-
         page = Page.objects.select_related('link', 'metadata_set', 'link__lang').get(link__url=page_url, link__lang=language)
-
         if page.active or preview:
-
             return page
 
         else:
-
             raise Http404
 
     except Page.DoesNotExist:
-
         raise Http404
 
 
@@ -68,19 +63,14 @@ def get_paginated_posts(page, page_num=1, posts_on_page=10):
     '''
 
     if page.have_posts():
-
         posts = page.post_set.filter(active=True).order_by('-created')
-
         posts_visible = [item for item in posts if item.is_visible(datetime.datetime.now())]
-
         paginated_posts = Paginator(posts_visible, posts_on_page)
 
         try:
-
             return paginated_posts.page(page_num)
 
         except EmptyPage:
-
             return paginated_posts.page(paginated_posts.num_pages)
 
     return tuple()
@@ -96,9 +86,7 @@ def get_post(page, post_title, preview=False):
     '''
 
     for post in page.post_set.all():
-
         if slugify(post.title) == post_title and (post.active or preview):
-
             return post
 
     raise Http404

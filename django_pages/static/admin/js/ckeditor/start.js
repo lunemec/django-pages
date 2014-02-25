@@ -7,5 +7,6 @@ window.onload = function() {
         config.language = 'cs';
         config.extraPlugins = 'autogrow,popup,filebrowser,preview';
         config.removePlugins = 'about';
+        config.font_names = 'AlternateGothicFSNo1, Arial;' + 'Arial;';
     });
 }

@@ -17,7 +17,7 @@ from .comments.forms import CommentForm
 from .language import get_language, get_languages
 from .language.models import Language
 from .looks import get_template
-from .menu import has_other_menu, get_other_menuitems
+from .menu import get_main_menuitems, has_other_menu, get_other_menuitems
 from .metadata import get_metadata
 from .pages import get_page, get_index_page, get_post, get_paginated_posts
 from .pages.models import Page
@@ -36,14 +36,17 @@ def parse_url(url):
     @return dict
     '''
 
-    urlpattern = re.compile(r'''
-                          ^                                         # beginning of string
-                          ((?P<country_code>[A-z]{2,3})/){0,1}      # country_code match - any 2 or 3 chars, zero or one times
-                          (?P<page>[A-z0-9-._]{4,}){0,1}            # page url
-                          (~(?P<page_num>\d*)){0,1}                 # ~page number
-                          (/~(?P<post>[A-z0-9-._]*)){0,1}           # /~post title
-                          $                                         # end of string
-                          ''', re.VERBOSE)
+    urlpattern = re.compile(
+        r'''
+        ^                                         # beginning of string
+        ((?P<country_code>[A-z]{2,3})/){0,1}      # country_code match - any 2 or 3 chars
+        (?P<page>[A-z0-9-._]{4,}){0,1}            # page url
+        (~(?P<page_num>\d*)){0,1}                 # ~page number
+        (/~(?P<post>[A-z0-9-._]*)){0,1}           # /~post title
+        $                                         # end of string
+        ''',
+        re.VERBOSE
+    )
 
     urlmatch = re.match(urlpattern, url)
 
@@ -90,7 +93,9 @@ def main_view(request, url, preview=False):
     url_result = parse_url(url)
 
     current_site = get_site()
-    current_template = get_template()  # sets tuple (template_name, posts_on_page)
+
+    # sets tuple (template_name, posts_on_page)
+    current_template = get_template()
 
     language = get_language(url_result)
 
@@ -100,15 +105,7 @@ def main_view(request, url, preview=False):
     else:
         page = get_page(url_result['page'], language, preview)
 
-    menuitems = page.link.lang.menuitem_set.select_related('page').order_by('position').filter(menu__id=1)
-
-    # filter active pages if we're not previewing
-    if not preview:
-        menuitems = menuitems.filter(page__active=True)
-
-    for menuitem in menuitems:
-        menuitem.current = menuitem.is_current(url_result['page'])
-
+    menuitems = get_main_menuitems(url_result['page'], page, preview)
     meta_data = get_metadata(page)
     page_num = url_result['page_num'] or 1
 
@@ -123,14 +120,12 @@ def main_view(request, url, preview=False):
         posts = get_paginated_posts(page, page_num, current_template[1])
         template_page = 'page.html'
 
-    scripts = get_scripts()
-
     site_content = {'site': current_site,
                     'languages': get_languages(),
                     'current_language': language,
                     'menuitems': menuitems,
                     'page': page,
-                    'scripts': scripts,
+                    'scripts': get_scripts(),
                     'metadata': meta_data,
                     'posts': posts, }
 
@@ -143,9 +138,13 @@ def main_view(request, url, preview=False):
     except NameError:
         pass
 
-    template = '%s/%s' % (current_template[0], template_page)
+    template = '{}/{}'.format(current_template[0], template_page)
 
-    return render_to_response(template, {'site_content': site_content}, RequestContext(request))
+    return render_to_response(
+        template,
+        {'site_content': site_content},
+        RequestContext(request)
+    )
 
 
 @cache_page(60 * 60 * 24)
@@ -157,12 +156,12 @@ def robots(request):
     site = get_site()
     domain = site.domain
 
-    data = '''Sitemap: http://%s/sitemap.xml
+    data = '''Sitemap: http://{}/sitemap.xml
 User-agent: *
 Disallow: /admin/
 Disallow: /media/
 Disallow: /static/
-''' % domain
+'''.format(domain)
 
     return HttpResponse(data, content_type='text/plain')
 
@@ -175,18 +174,24 @@ def generate_sitemap(request):
 
     data = []
 
-    site_url = 'http://%s/' % get_site().domain
+    site_url = 'http://{}/'.format(get_site().domain)
 
     for language in Language.objects.all():
-
         for page in Page.objects.filter(link__lang=language):
-
-            page_url = '%s%s/%s' % (site_url, language.country_code, page.link.url)
+            page_url = '{}{}/{}'.format(
+                site_url,
+                language.country_code,
+                page.link.url
+            )
 
             data.append(page_url)
 
             for post in page.post_set.all():
+                data.append('{}/~{}'.format(page_url, slugify(post.title)))
 
-                data.append('%s/~%s' % (page_url, slugify(post.title)))
-
-    return render_to_response('sitemap.xml', {'urls': data}, context_instance=RequestContext(request), mimetype='application/xml')
+    return render_to_response(
+        'sitemap.xml',
+        {'urls': data},
+        RequestContext(request),
+        mimetype='application/xml'
+    )
