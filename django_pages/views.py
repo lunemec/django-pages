@@ -100,7 +100,7 @@ def main_view(request, url, preview=False):
     else:
         page = get_page(url_result['page'], language, preview)
 
-    menuitems = page.link.lang.menuitem_set.select_related('page').order_by('position').all()
+    menuitems = page.link.lang.menuitem_set.select_related('page').order_by('position').filter(menu__id=1)
 
     # filter active pages if we're not previewing
     if not preview:
