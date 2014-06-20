@@ -7,6 +7,6 @@ from ..common.admin_actions import activate, deactivate
 
 class LooksAdmin(admin.ModelAdmin):
 
-    fields = ('template', 'posts_per_page', 'active')
+    fields = ('template', 'submenu_max_characters', 'active')
     list_display = fields
     actions = [activate, deactivate]

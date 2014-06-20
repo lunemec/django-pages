@@ -33,7 +33,7 @@ GRAPPELLI_INDEX_DASHBOARD = 'django_pages.dashboard.DjangoPagesDashboard'
 # open ipython, import django_pages
 # and type django_pages for path
 # locale should contain cs_CZ directory
-LOCALE_PATHS = ('/home/lukas/django-pages/django_pages/locale/', )
+LOCALE_PATHS = ('/home/lukas/torrentsync/Django/django-pages/django_pages/locale/', )
 # Application definition
 
 INSTALLED_APPS = (
@@ -106,7 +106,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'sample/static/')
 # open ipython, import django_pages
 # and type django_pages for path
 STATICFILES_DIRS = (
-    '/home/lukas/django-pages/django_pages/static/',
+    '/home/lukas/torrentsync/Django/django-pages/django_pages/static/',
 )
 
 MEDIA_URL = '/media/'

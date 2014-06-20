@@ -8,6 +8,7 @@ from django.utils.text import slugify
 from django.utils.timezone import make_aware, get_current_timezone
 from django.utils.translation import ugettext_lazy as _
 
+from ..looks import get_template
 from ..menu.models import MenuItem
 from ..metadata.models import MetaSet
 
@@ -62,6 +63,41 @@ class Page(models.Model):
         result = url_scheme.format(country_code=self.link.lang.country_code, link_url=self.link.url)
 
         return result
+
+    @property
+    def items_per_menu(self):
+        """
+        Counts the number of items
+        in this (sub)menu - makes sure the items
+        displayed are lower than template's
+        maximum characters in menu.
+        It will try to match maximum posiible items
+        per all paginated posts but lowest possible value
+        is 1.
+        """
+        template = get_template()
+        max_characters = template[1]
+
+        submenu_items = self.post_set.order_by('-created')
+        lengths = [len(item.title) for item in submenu_items]
+
+        items = 0
+        items_sum = 0
+        pages_items = []
+
+        for i in lengths:
+            if items_sum < max_characters:
+                items_sum += i
+                items += 1
+            else:
+                items_sum = 0
+                pages_items.append(items)
+                items = 0
+
+        if not pages_items:
+            return 1
+
+        return min(pages_items)
 
     class Meta:
         verbose_name = _('Page')

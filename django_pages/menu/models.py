@@ -184,9 +184,9 @@ class MenuItem(models.Model):
     def get_url(self):
         """
         returns url for django-page or http link
-        if 'http://' is in self.url
+        if 'http://' is in self.url or 'https://'
         """
-        if 'http://' in self.url:
+        if 'http://' in self.url or 'https://' in self.url:
             return self.url
 
         else:

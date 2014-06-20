@@ -11,7 +11,7 @@ class Template(models.Model):
     '''
 
     template = models.CharField(_('Template name'), max_length=200)
-    posts_per_page = models.PositiveIntegerField(_('Posts per page'), default=10)
+    submenu_max_characters = models.PositiveIntegerField(_('Max characters in submenu'), default=150)
     active = models.BooleanField(_('Active'), default=False, blank=True)
 
     def __unicode__(self):

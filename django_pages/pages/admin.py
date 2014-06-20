@@ -22,8 +22,8 @@ class PreviewAdmin(admin.ModelAdmin):
         js = [
             '/static/admin/js/ckeditor/ckeditor.js',
             '/static/admin/js/ckeditor/start.js',
-            '/static/filebrowser/js/FB_CKEditor.js',        
-            ]
+            '/static/filebrowser/js/FB_CKEditor.js',
+        ]
 
         css = {
             'ckeditor': ('/static/admin/js/ckeditor/contents.css',),
@@ -69,7 +69,7 @@ class PageAdmin(PreviewAdmin):
     )
 
     list_editable = ('link', 'active', 'metadata_set')
-    list_display = ('title', 'link', 'active', 'metadata_set',)
+    list_display = ('title', 'link', 'active', 'metadata_set', 'items_per_menu')
     list_filter = ('active', 'index')
     search_fields = ('title', 'content', 'link__menuitem_name')
     actions = [activate, deactivate]
@@ -77,7 +77,6 @@ class PageAdmin(PreviewAdmin):
     def preview_view(self, request, item_pk):
 
         if self.has_change_permission(request):
-
             item = get_object_or_404(Page, pk=item_pk)
             item.active = False
             item.save()
@@ -87,7 +86,6 @@ class PageAdmin(PreviewAdmin):
             return main_view(request, url, preview=True)
 
         else:
-
             raise PermissionDenied
 
 

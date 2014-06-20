@@ -1,0 +1,150 @@
+[
+{
+    "pk": 1, 
+    "model": "language.language", 
+    "fields": {
+        "default": true, 
+        "active": true, 
+        "flag": "", 
+        "country_code": "en", 
+        "language": "english"
+    }
+}, 
+{
+    "pk": 1, 
+    "model": "looks.template", 
+    "fields": {
+        "active": true, 
+        "submenu_max_characters": 150, 
+        "template": "default2"
+    }
+}, 
+{
+    "pk": 1, 
+    "model": "menu.menu", 
+    "fields": {
+        "name": "english menu"
+    }
+}, 
+{
+    "pk": 1, 
+    "model": "menu.menuitem", 
+    "fields": {
+        "lang": 1, 
+        "style": "", 
+        "url": "landing", 
+        "menu": 1, 
+        "menuitem_name": "Landing", 
+        "position": 1
+    }
+}, 
+{
+    "pk": 1, 
+    "model": "pages.page", 
+    "fields": {
+        "index": true, 
+        "title": "Land me", 
+        "metadata_set": null, 
+        "content": "<p style=\"text-align:justify\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor turpis purus, a vestibulum ante varius id. Etiam sit amet mauris ac leo rutrum suscipit. Integer vel ante ligula. Etiam tristique lectus nec lectus dapibus rhoncus. Nulla velit mi, faucibus ut blandit id, aliquet eu justo. Morbi ullamcorper tempor accumsan. Vivamus tincidunt ullamcorper nisl eget adipiscing. Proin et neque id eros gravida facilisis ac et sapien. Nullam vel magna sit amet lacus hendrerit bibendum in ac nisl. Etiam suscipit purus et risus adipiscing imperdiet. Ut vitae rutrum odio, non vulputate nunc. Aliquam quis neque vel odio malesuada fermentum. Donec fermentum posuere faucibus. Vivamus dictum pulvinar pretium. Integer tristique gravida libero eu vestibulum.</p>\r\n\r\n<p style=\"text-align:justify\">Vivamus nec dapibus lectus, in ullamcorper nulla. Ut accumsan elementum nisl, non dapibus est ultricies et. Duis varius eu urna ac interdum. Quisque hendrerit bibendum pellentesque. Nullam erat metus, aliquet vel lacus nec, dapibus volutpat mi. Nullam eget elit vitae metus suscipit egestas ut at lectus. Quisque ac faucibus justo, in sodales magna. Donec quis est odio. Proin interdum ullamcorper lacus eleifend pellentesque.</p>\r\n\r\n<p style=\"text-align:justify\">Curabitur sed massa quis eros iaculis ultrices id vel turpis. Phasellus molestie tempus est, a iaculis enim tincidunt ut. Aenean lacinia ornare odio vel dictum. Sed felis mi, pulvinar sed felis vitae, dapibus fringilla erat. Nunc sem turpis, tincidunt non nisi et, mollis viverra mauris. Ut ullamcorper nisl vel mauris scelerisque, at convallis nisi mollis. Nullam lobortis magna vitae erat euismod, in tristique risus semper. Integer quis elementum ipsum. Nullam bibendum a dolor et blandit. Donec lacinia auctor leo ut varius. Aliquam tristique laoreet ultrices. Nam id sem tristique, tincidunt justo sed, vulputate sapien.</p>\r\n\r\n<p style=\"text-align:justify\">Pellentesque rutrum lorem sit amet mauris egestas ullamcorper. Etiam semper tempus enim, eget ultrices ipsum gravida nec. Vivamus suscipit placerat nibh, vitae molestie justo adipiscing eget. Vivamus suscipit, lorem non pretium ornare, lorem quam scelerisque nisl, nec aliquam purus purus iaculis dui. Aenean ultrices sed massa sed commodo. Ut eget est vel elit consectetur volutpat at ut lectus. Maecenas id posuere nisi, non scelerisque ipsum. Nunc risus lectus, volutpat tincidunt libero ac, posuere ultricies magna. Nullam consectetur sit amet mi vitae scelerisque.</p>\r\n\r\n<p style=\"text-align:justify\">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer lobortis, est eu gravida aliquam, purus lorem mollis sem, vitae lobortis nibh ante vel nulla. Fusce vulputate, elit a pellentesque mollis, tortor urna lacinia odio, eu vehicula justo nibh nec orci. Curabitur pretium mauris in lacus mollis laoreet. Proin porta dolor eget molestie scelerisque. Quisque eu lectus tristique, ultricies tortor vel, aliquam lacus. Curabitur dictum convallis dui et egestas. Nam ut aliquet arcu. Maecenas egestas, massa nec tristique pharetra, ante erat sagittis lorem, in auctor massa dolor congue erat. Nam ac ante tincidunt, eleifend arcu quis, semper metus. Mauris scelerisque auctor lacus. Aliquam aliquam metus non odio mattis, sit amet porttitor arcu ultricies. Suspendisse potenti. Integer rutrum ultrices nulla in consequat. Curabitur placerat aliquam quam, nec varius turpis. Vestibulum vulputate imperdiet dolor et cursus.</p>\r\n", "link": 1, "active": true}}, {"pk": 1, "model": "pages.post", "fields": {"visible_from": null, "title": "Post on landing page", "created": "2014-06-20T12:52:36Z", "visible_to": null, "comments": false, "content": "<p style=\"text-align:justify\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor turpis purus, a vestibulum ante varius id. Etiam sit amet mauris ac leo rutrum suscipit. Integer vel ante ligula. Etiam tristique lectus nec lectus dapibus rhoncus. Nulla velit mi, faucibus ut blandit id, aliquet eu justo. Morbi ullamcorper tempor accumsan. Vivamus tincidunt ullamcorper nisl eget adipiscing. Proin et neque id eros gravida facilisis ac et sapien. Nullam vel magna sit amet lacus hendrerit bibendum in ac nisl. Etiam suscipit purus et risus adipiscing imperdiet. Ut vitae rutrum odio, non vulputate nunc. Aliquam quis neque vel odio malesuada fermentum. Donec fermentum posuere faucibus. Vivamus dictum pulvinar pretium. Integer tristique gravida libero eu vestibulum.</p>\r\n\r\n<p style=\"text-align:justify\">Vivamus nec dapibus lectus, in ullamcorper nulla. Ut accumsan elementum nisl, non dapibus est ultricies et. Duis varius eu urna ac interdum. Quisque hendrerit bibendum pellentesque. Nullam erat metus, aliquet vel lacus nec, dapibus volutpat mi. Nullam eget elit vitae metus suscipit egestas ut at lectus. Quisque ac faucibus justo, in sodales magna. Donec quis est odio. Proin interdum ullamcorper lacus eleifend pellentesque.</p>\r\n\r\n<p style=\"text-align:justify\">Curabitur sed massa quis eros iaculis ultrices id vel turpis. Phasellus molestie tempus est, a iaculis enim tincidunt ut. Aenean lacinia ornare odio vel dictum. Sed felis mi, pulvinar sed felis vitae, dapibus fringilla erat. Nunc sem turpis, tincidunt non nisi et, mollis viverra mauris. Ut ullamcorper nisl vel mauris scelerisque, at convallis nisi mollis. Nullam lobortis magna vitae erat euismod, in tristique risus semper. Integer quis elementum ipsum. Nullam bibendum a dolor et blandit. Donec lacinia auctor leo ut varius. Aliquam tristique laoreet ultrices. Nam id sem tristique, tincidunt justo sed, vulputate sapien.</p>\r\n\r\n<p style=\"text-align:justify\">Pellentesque rutrum lorem sit amet mauris egestas ullamcorper. Etiam semper tempus enim, eget ultrices ipsum gravida nec. Vivamus suscipit placerat nibh, vitae molestie justo adipiscing eget. Vivamus suscipit, lorem non pretium ornare, lorem quam scelerisque nisl, nec aliquam purus purus iaculis dui. Aenean ultrices sed massa sed commodo. Ut eget est vel elit consectetur volutpat at ut lectus. Maecenas id posuere nisi, non scelerisque ipsum. Nunc risus lectus, volutpat tincidunt libero ac, posuere ultricies magna. Nullam consectetur sit amet mi vitae scelerisque.</p>\r\n\r\n<p style=\"text-align:justify\">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer lobortis, est eu gravida aliquam, purus lorem mollis sem, vitae lobortis nibh ante vel nulla. Fusce vulputate, elit a pellentesque mollis, tortor urna lacinia odio, eu vehicula justo nibh nec orci. Curabitur pretium mauris in lacus mollis laoreet. Proin porta dolor eget molestie scelerisque. Quisque eu lectus tristique, ultricies tortor vel, aliquam lacus. Curabitur dictum convallis dui et egestas. Nam ut aliquet arcu. Maecenas egestas, massa nec tristique pharetra, ante erat sagittis lorem, in auctor massa dolor congue erat. Nam ac ante tincidunt, eleifend arcu quis, semper metus. Mauris scelerisque auctor lacus. Aliquam aliquam metus non odio mattis, sit amet porttitor arcu ultricies. Suspendisse potenti. Integer rutrum ultrices nulla in consequat. Curabitur placerat aliquam quam, nec varius turpis. Vestibulum vulputate imperdiet dolor et cursus.</p>\r\n", 
+            "active": true, 
+            "page": 1
+        }
+        }, 
+{
+    "pk": 2, 
+    "model": "pages.post", 
+    "fields": {
+        "visible_from": null, 
+        "title": "Post on landing page again", 
+        "created": "2014-06-20T12:53:45Z", 
+        "visible_to": null, 
+        "comments": false, 
+        "content": "<p style=\"text-align:justify\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor turpis purus, a vestibulum ante varius id. Etiam sit amet mauris ac leo rutrum suscipit. Integer vel ante ligula. Etiam tristique lectus nec lectus dapibus rhoncus. Nulla velit mi, faucibus ut blandit id, aliquet eu justo. Morbi ullamcorper tempor accumsan. Vivamus tincidunt ullamcorper nisl eget adipiscing. Proin et neque id eros gravida facilisis ac et sapien. Nullam vel magna sit amet lacus hendrerit bibendum in ac nisl. Etiam suscipit purus et risus adipiscing imperdiet. Ut vitae rutrum odio, non vulputate nunc. Aliquam quis neque vel odio malesuada fermentum. Donec fermentum posuere faucibus. Vivamus dictum pulvinar pretium. Integer tristique gravida libero eu vestibulum.</p>\r\n\r\n<p style=\"text-align:justify\">Vivamus nec dapibus lectus, in ullamcorper nulla. Ut accumsan elementum nisl, non dapibus est ultricies et. Duis varius eu urna ac interdum. Quisque hendrerit bibendum pellentesque. Nullam erat metus, aliquet vel lacus nec, dapibus volutpat mi. Nullam eget elit vitae metus suscipit egestas ut at lectus. Quisque ac faucibus justo, in sodales magna. Donec quis est odio. Proin interdum ullamcorper lacus eleifend pellentesque.</p>\r\n\r\n<p style=\"text-align:justify\">Curabitur sed massa quis eros iaculis ultrices id vel turpis. Phasellus molestie tempus est, a iaculis enim tincidunt ut. Aenean lacinia ornare odio vel dictum. Sed felis mi, pulvinar sed felis vitae, dapibus fringilla erat. Nunc sem turpis, tincidunt non nisi et, mollis viverra mauris. Ut ullamcorper nisl vel mauris scelerisque, at convallis nisi mollis. Nullam lobortis magna vitae erat euismod, in tristique risus semper. Integer quis elementum ipsum. Nullam bibendum a dolor et blandit. Donec lacinia auctor leo ut varius. Aliquam tristique laoreet ultrices. Nam id sem tristique, tincidunt justo sed, vulputate sapien.</p>\r\n\r\n<p style=\"text-align:justify\">Pellentesque rutrum lorem sit amet mauris egestas ullamcorper. Etiam semper tempus enim, eget ultrices ipsum gravida nec. Vivamus suscipit placerat nibh, vitae molestie justo adipiscing eget. Vivamus suscipit, lorem non pretium ornare, lorem quam scelerisque nisl, nec aliquam purus purus iaculis dui. Aenean ultrices sed massa sed commodo. Ut eget est vel elit consectetur volutpat at ut lectus. Maecenas id posuere nisi, non scelerisque ipsum. Nunc risus lectus, volutpat tincidunt libero ac, posuere ultricies magna. Nullam consectetur sit amet mi vitae scelerisque.</p>\r\n\r\n<p style=\"text-align:justify\">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer lobortis, est eu gravida aliquam, purus lorem mollis sem, vitae lobortis nibh ante vel nulla. Fusce vulputate, elit a pellentesque mollis, tortor urna lacinia odio, eu vehicula justo nibh nec orci. Curabitur pretium mauris in lacus mollis laoreet. Proin porta dolor eget molestie scelerisque. Quisque eu lectus tristique, ultricies tortor vel, aliquam lacus. Curabitur dictum convallis dui et egestas. Nam ut aliquet arcu. Maecenas egestas, massa nec tristique pharetra, ante erat sagittis lorem, in auctor massa dolor congue erat. Nam ac ante tincidunt, eleifend arcu quis, semper metus. Mauris scelerisque auctor lacus. Aliquam aliquam metus non odio mattis, sit amet porttitor arcu ultricies. Suspendisse potenti. Integer rutrum ultrices nulla in consequat. Curabitur placerat aliquam quam, nec varius turpis. Vestibulum vulputate imperdiet dolor et cursus.</p>\r\n", 
+        "active": true, 
+        "page": 1
+    }
+}, 
+{
+    "pk": 3, 
+    "model": "pages.post", 
+    "fields": {
+        "visible_from": null, 
+        "title": "Another post with longer title", 
+        "created": "2014-06-20T12:56:55.879Z", 
+        "visible_to": null, 
+        "comments": false, 
+        "content": "<p style=\"text-align:justify\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor turpis purus, a vestibulum ante varius id. Etiam sit amet mauris ac leo rutrum suscipit. Integer vel ante ligula. Etiam tristique lectus nec lectus dapibus rhoncus. Nulla velit mi, faucibus ut blandit id, aliquet eu justo. Morbi ullamcorper tempor accumsan. Vivamus tincidunt ullamcorper nisl eget adipiscing. Proin et neque id eros gravida facilisis ac et sapien. Nullam vel magna sit amet lacus hendrerit bibendum in ac nisl. Etiam suscipit purus et risus adipiscing imperdiet. Ut vitae rutrum odio, non vulputate nunc. Aliquam quis neque vel odio malesuada fermentum. Donec fermentum posuere faucibus. Vivamus dictum pulvinar pretium. Integer tristique gravida libero eu vestibulum.</p>\r\n", 
+        "active": true, 
+        "page": 1
+    }
+}, 
+{
+    "pk": 4, 
+    "model": "pages.post", 
+    "fields": {
+        "visible_from": null, 
+        "title": "Another another more longer title because im crazy", 
+        "created": "2014-06-20T12:57:12.919Z", 
+        "visible_to": null, 
+        "comments": false, 
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor turpis purus, a vestibulum ante varius id. Etiam sit amet mauris ac leo rutrum suscipit. Integer vel ante ligula. Etiam tristique lectus nec lectus dapibus rhoncus. Nulla velit mi, faucibus ut blandit id, aliquet eu justo. Morbi ullamcorper tempor accumsan. Vivamus tincidunt ullamcorper nisl eget adipiscing. Proin et neque id eros gravida facilisis ac et sapien. Nullam vel magna sit amet lacus hendrerit bibendum in ac nisl. Etiam suscipit purus et risus adipiscing imperdiet. Ut vitae rutrum odio, non vulputate nunc. Aliquam quis neque vel odio malesuada fermentum. Donec fermentum posuere faucibus. Vivamus dictum pulvinar pretium. Integer tristique gravida libero eu vestibulum.</p>\r\n", 
+        "active": true, 
+        "page": 1
+    }
+}, 
+{
+    "pk": 5, 
+    "model": "pages.post", 
+    "fields": {
+        "visible_from": null, 
+        "title": "More more longer title for post", 
+        "created": "2014-06-20T12:57:33.733Z", 
+        "visible_to": null, 
+        "comments": false, 
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor turpis purus, a vestibulum ante varius id. Etiam sit amet mauris ac leo rutrum suscipit. Integer vel ante ligula. Etiam tristique lectus nec lectus dapibus rhoncus. Nulla velit mi, faucibus ut blandit id, aliquet eu justo. Morbi ullamcorper tempor accumsan. Vivamus tincidunt ullamcorper nisl eget adipiscing. Proin et neque id eros gravida facilisis ac et sapien. Nullam vel magna sit amet lacus hendrerit bibendum in ac nisl. Etiam suscipit purus et risus adipiscing imperdiet. Ut vitae rutrum odio, non vulputate nunc. Aliquam quis neque vel odio malesuada fermentum. Donec fermentum posuere faucibus. Vivamus dictum pulvinar pretium. Integer tristique gravida libero eu vestibulum.</p>\r\n", 
+        "active": true, 
+        "page": 1
+    }
+}, 
+{
+    "pk": 6, 
+    "model": "pages.post", 
+    "fields": {
+        "visible_from": null, 
+        "title": "Lets try automatic align of long titles", 
+        "created": "2014-06-20T12:58:01.295Z", 
+        "visible_to": null, 
+        "comments": false, 
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor turpis purus, a vestibulum ante varius id. Etiam sit amet mauris ac leo rutrum suscipit. Integer vel ante ligula. Etiam tristique lectus nec lectus dapibus rhoncus. Nulla velit mi, faucibus ut blandit id, aliquet eu justo. Morbi ullamcorper tempor accumsan. Vivamus tincidunt ullamcorper nisl eget adipiscing. Proin et neque id eros gravida facilisis ac et sapien. Nullam vel magna sit amet lacus hendrerit bibendum in ac nisl. Etiam suscipit purus et risus adipiscing imperdiet. Ut vitae rutrum odio, non vulputate nunc. Aliquam quis neque vel odio malesuada fermentum. Donec fermentum posuere faucibus. Vivamus dictum pulvinar pretium. Integer tristique gravida libero eu vestibulum.</p>\r\n", 
+        "active": true, 
+        "page": 1
+    }
+}, 
+{
+    "pk": 1, 
+    "model": "site.site", 
+    "fields": {
+        "tagline": "My awesome site", 
+        "domain": "localhost", 
+        "display_name": "Sample website", 
+        "footer": "<p style=\"text-align: center;\"><a href=\"mailto:Awesomer@somewhere.com\">Awesomer@somewhere.com</a></p>\r\n"
+    }
+},  
+{
+    "pk": 1, 
+    "model": "auth.user", 
+    "fields": {
+        "username": "admin", 
+        "first_name": "", 
+        "last_name": "", 
+        "is_active": true, 
+        "is_superuser": true, 
+        "is_staff": true, 
+        "last_login": "2014-06-20T12:45:28.736Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "password": "pbkdf2_sha256$12000$SDKOP7DKrPnh$pkmbm9jIA5Y6LMMmyLp+L0ucOnRgZEwH1g2z2qZh9YI=", 
+        "email": "admin@admin.com", 
+        "date_joined": "2014-06-20T12:38:32.071Z"
+    }
+}]

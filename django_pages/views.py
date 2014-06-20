@@ -117,7 +117,7 @@ def main_view(request, url, preview=False):
 
     else:
 
-        posts = get_paginated_posts(page, page_num, current_template[1])
+        posts = get_paginated_posts(page, page_num, page.items_per_menu)
         template_page = 'page.html'
 
     site_content = {'site': current_site,

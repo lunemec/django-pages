@@ -20,10 +20,8 @@ def get_template():
         if not cache.get('template'):
 
             template = Template.objects.get(active=True)
-            template_name = template.template
-            posts_count = template.posts_per_page
 
-            current_template = (template_name, posts_count)
+            current_template = (template.template, template.submenu_max_characters)
             cache.set('template', current_template, 30)
 
         else:
@@ -32,6 +30,6 @@ def get_template():
 
     except Template.DoesNotExist:
 
-        current_template = ('default', 10)
+        current_template = ('default', 150)
 
     return current_template

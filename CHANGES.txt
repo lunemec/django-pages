@@ -1,3 +1,4 @@
+v1.3.1, 20.06.2013 -- removed posts_per_page from Template setting, instead the application computes this value from maximum characters in sub-menu, added fixture with test data
 v1.3.0, 07.02.2014 -- removed connector and replaced it with django-filebrowser, added nice grappelli dashboard to admin, updated CKeditor with django-filebrowser, fixed several bugs, created new sample project, added translations
 v1.2.2, 15.01.2014 -- fixed bug with wrong menuitem positions after delete
 v1.2.1, 20.12.2013 -- css changes for style2
