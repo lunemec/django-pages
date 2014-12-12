@@ -1,7 +1,11 @@
 update wizzard, and make option to disable it
 update README
 somehow solve lightbox
+
+join into one app (django_pages) and not several.
 views.py looks ugly, clean up
+
+try with new django
 
 MOAR unittests!
 selenium ideally and integration tests
