@@ -5,9 +5,9 @@ from django.contrib import admin
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
+from django_pages.views import main_view
 from ..common.admin_actions import activate, deactivate, enable_comments, disable_comments
 from .models import Page, Post
-from ..views import main_view
 
 
 class PreviewAdmin(admin.ModelAdmin):
@@ -18,21 +18,17 @@ class PreviewAdmin(admin.ModelAdmin):
     readonly_fields = ['preview_link', ]
 
     class Media:
-
         js = [
             '/static/admin/js/ckeditor/ckeditor.js',
             '/static/admin/js/ckeditor/start.js',
             '/static/filebrowser/js/FB_CKEditor.js',
         ]
-
         css = {
             'ckeditor': ('/static/admin/js/ckeditor/contents.css',),
         }
 
     def get_urls(self):
-
         admin_view = self.admin_site.admin_view
-
         urls = patterns('',
                         (r'^(?P<item_pk>\d+)/preview/$', admin_view(self.preview_view)),
                         )
@@ -45,14 +41,12 @@ class PreviewAdmin(admin.ModelAdmin):
 
         @return string
         """
-
         return '<a href="./preview/">Page preview</a>'
 
     preview_link.allow_tags = True
     preview_link.short_description = 'Preview'
 
     def preview_view(self, request, item_pk):
-
         pass
 
 
@@ -75,7 +69,6 @@ class PageAdmin(PreviewAdmin):
     actions = [activate, deactivate]
 
     def preview_view(self, request, item_pk):
-
         if self.has_change_permission(request):
             item = get_object_or_404(Page, pk=item_pk)
             item.active = False
@@ -85,8 +78,7 @@ class PageAdmin(PreviewAdmin):
 
             return main_view(request, url, preview=True)
 
-        else:
-            raise PermissionDenied
+        raise PermissionDenied
 
 
 class PostAdmin(PreviewAdmin):
@@ -99,9 +91,7 @@ class PostAdmin(PreviewAdmin):
     actions = [activate, deactivate, enable_comments, disable_comments]
 
     def preview_view(self, request, item_pk):
-
         if self.has_change_permission(request):
-
             item = get_object_or_404(Post, pk=item_pk)
             item.active = False
             item.save()
@@ -110,6 +100,4 @@ class PostAdmin(PreviewAdmin):
 
             return main_view(request, url, preview=True)
 
-        else:
-
-            raise PermissionDenied
+        raise PermissionDenied

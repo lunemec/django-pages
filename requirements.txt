@@ -1,0 +1,6 @@
+# you should not need this, pip will install it automagically
+django>=1.8
+pytz
+pillow
+django-grappelli
+django-filebrowser

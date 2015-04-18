@@ -1,5 +1,0 @@
-django>=1.4
-pytz
-pillow
-django-grappelli
-django-filebrowser

@@ -12,20 +12,20 @@ from django.template import RequestContext
 from django.utils.text import slugify
 from django.views.decorators.cache import cache_page
 
-from .comments import handle_comment, set_humanity_check, translate_humanity
-from .comments.forms import CommentForm
-from .language import get_language, get_languages
-from .language.models import Language
-from .looks import get_template
-from .menu import get_main_menuitems, has_other_menu, get_other_menuitems
-from .metadata import get_metadata
-from .pages import get_page, get_index_page, get_post, get_paginated_posts
-from .pages.models import Page
-from .site import get_site, get_scripts
+from django_pages.comments import handle_comment, set_humanity_check, translate_humanity
+from django_pages.comments.forms import CommentForm
+from django_pages.language import get_language, get_languages
+from django_pages.language.models import Language
+from django_pages.looks import get_template
+from django_pages.menu import get_main_menuitems, has_other_menu, get_other_menuitems
+from django_pages.metadata import get_metadata
+from django_pages.pages import get_page, get_index_page, get_post, get_paginated_posts
+from django_pages.pages.models import Page
+from django_pages.site import get_site, get_scripts
 
 
 def parse_url(url):
-    '''
+    """
     parses url format is:
         language/page~pagenum/~post
 
@@ -34,24 +34,21 @@ def parse_url(url):
 
     @param url: string
     @return dict
-    '''
-
+    """
     urlpattern = re.compile(
-        r'''
+        r"""
         ^                                         # beginning of string
         ((?P<country_code>[A-z]{2,3})/){0,1}      # country_code match - any 2 or 3 chars
         (?P<page>[A-z0-9-._]{4,}){0,1}            # page url
         (~(?P<page_num>\d*)){0,1}                 # ~page number
         (/~(?P<post>[A-z0-9-._]*)){0,1}           # /~post title
         $                                         # end of string
-        ''',
+        """,
         re.VERBOSE
     )
 
     urlmatch = re.match(urlpattern, url)
-
     if not urlmatch:
-
         raise Http404
 
     return urlmatch.groupdict()
@@ -68,7 +65,6 @@ def handle_comment_form(request, user_last_post):
 
     @return comments.form.CommentForm instance
     """
-
     if request.method == 'POST':
         form = handle_comment(request, user_last_post)
 
@@ -89,14 +85,11 @@ def main_view(request, url, preview=False):
     @param url: string
     @param preview: boolean
     """
-
     url_result = parse_url(url)
-
     current_site = get_site()
 
     # sets tuple (template_name, posts_on_page)
     current_template = get_template()
-
     language = get_language(url_result)
 
     if not url_result['page']:
@@ -110,13 +103,11 @@ def main_view(request, url, preview=False):
     page_num = url_result['page_num'] or 1
 
     if url_result['post']:
-
         posts = get_post(page, url_result['post'], preview)
         template_page = 'post.html'
         form = handle_comment_form(request, posts)
 
     else:
-
         posts = get_paginated_posts(page, page_num, page.items_per_menu)
         template_page = 'page.html'
 
@@ -152,16 +143,15 @@ def robots(request):
     """
     generates robots.txt, which pretty much does not change
     """
-
     site = get_site()
     domain = site.domain
 
-    data = '''Sitemap: http://{}/sitemap.xml
+    data = """Sitemap: http://{}/sitemap.xml
 User-agent: *
 Disallow: /admin/
 Disallow: /media/
 Disallow: /static/
-'''.format(domain)
+""".format(domain)
 
     return HttpResponse(data, content_type='text/plain')
 
@@ -171,9 +161,7 @@ def generate_sitemap(request):
     """
     generates /sitemap.xml
     """
-
     data = []
-
     site_url = 'http://{}/'.format(get_site().domain)
 
     for language in Language.objects.all():

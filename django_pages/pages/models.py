@@ -14,12 +14,12 @@ from ..metadata.models import MetaSet
 
 
 class Page(models.Model):
-    '''
+    """
     Stores page data.
     Please be careful with comments, and don't put them on the Page and also.
     to all the Posts on that Page.
     Is related to :model: `django_pages.MenuItem`.
-    '''
+    """
 
     link = models.OneToOneField(MenuItem, verbose_name=_('Link'))
     title = models.CharField(_('Page title'), max_length=500)
@@ -35,7 +35,6 @@ class Page(models.Model):
     )
 
     def __unicode__(self):
-
         return self.title
 
     def have_posts(self):
@@ -44,9 +43,7 @@ class Page(models.Model):
 
         @return bool
         """
-
         if self.post_set.count():
-
             return True
 
         return False
@@ -57,9 +54,7 @@ class Page(models.Model):
 
         @return string
         """
-
         url_scheme = '/{country_code}/{link_url}'
-
         result = url_scheme.format(country_code=self.link.lang.country_code, link_url=self.link.url)
 
         return result
@@ -100,17 +95,18 @@ class Page(models.Model):
         return min(pages_items)
 
     class Meta:
+        app_label = 'django_pages'
         verbose_name = _('Page')
         verbose_name_plural = _('Pages')
 
 
 class Post(models.Model):
-    '''
+    """
     Stores post data.
     Posts are ment to be small paragraphs of text, sorted by date of creation.
     from newer (up) to older (down).
     Is related to :model: `django_pages.Page`.
-    '''
+    """
 
     page = models.ForeignKey(Page, verbose_name=_('Page'))
     title = models.CharField(_('Post title'), max_length=200, unique=True)
@@ -135,13 +131,10 @@ class Post(models.Model):
     created = models.DateTimeField(_('Date of creation'), blank=True, null=True)
 
     def __unicode__(self):
-
         return self.title
 
     def save(self, *args, **kwargs):
-
         if not self.created:
-
             self.created = make_aware(datetime.datetime.now(), get_current_timezone())
 
         super(Post, self).save(*args, **kwargs)
@@ -152,43 +145,27 @@ class Post(models.Model):
 
         @return bool
         """
-
         now = make_aware(now, get_current_timezone())
 
         if self.visible_from:
-
             if self.visible_from <= now:
-
                 second_from = True
-
             else:
-
                 second_from = False
-
         else:
-
             second_from = True
 
         if self.visible_to:
-
             if self.visible_to >= now:
-
                 second_to = True
-
             else:
-
                 second_to = False
-
         else:
-
             second_to = True
 
         if second_from and second_to:
-
             return True
-
         else:
-
             return False
 
     def get_url(self):
@@ -197,15 +174,14 @@ class Post(models.Model):
 
         @return string
         """
-
         url_scheme = '/{country_code}/{link_url}/~{post_title}'
 
         title = slugify(self.title)
-
         result = url_scheme.format(country_code=self.page.link.lang.country_code, link_url=self.page.link.url, post_title=title)
 
         return result
 
     class Meta:
+        app_label = 'django_pages'
         verbose_name = _('Post')
         verbose_name_plural = _('Posts')

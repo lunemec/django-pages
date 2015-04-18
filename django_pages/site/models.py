@@ -27,10 +27,10 @@ class Site(models.Model):
     )
 
     def __unicode__(self):
-
         return self.domain
 
     class Meta:
+        app_label = 'django_pages'
         verbose_name = _('Site')
         verbose_name_plural = _('Sites')
 
@@ -55,5 +55,6 @@ class Script(models.Model):
     )
 
     class Meta:
+        app_label = 'django_pages'
         verbose_name = _('Script')
         verbose_name_plural = _('Scripts')

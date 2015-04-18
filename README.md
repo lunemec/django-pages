@@ -34,43 +34,48 @@ see [django docs](https://docs.djangoproject.com/en/1.5/intro/install/))
 
 Configure
 ---------
-The easiest way is to install django_pages and
-look at sampe project, which works on clean install
 
+`settings.py`
 
-`setting.py`
-Look at sample project and edit it's settings to fit your needs 
+    # For better admin interface, add the dashboard:
+    GRAPPELLI_INDEX_DASHBOARD = 'django_pages.dashboard.DjangoPagesDashboard'
 
-Your `urls.py` should contain roughly this:
+    # Add grappelli, filebrowser and django_pages to INSTALLED_APPS:
+    INSTALLED_APPS = (
+        'grappelli.dashboard',
+        'grappelli',
+        ...
+        'filebrowser',
+        'django_pages'
+    )
 
-    from django.conf.urls import patterns, include, url
+    # Set proper MEDIA_ROOT path, and create uploads directory inside.
 
-    from django.contrib import admin
-
-
-    admin.autodiscover()
+Your `urls.py` should contain roughly this, note that django_pages urls MUST be
+the last:
 
     urlpatterns = patterns(
         '',
-        # this is to enable nice looks in admin (plus line in INSTALLED_APPS in settings.py)
+        # this is to enable nice looks in admin
         url(r'^grappelli/', include('grappelli.urls')),
-
-        # admin site documentation - not required
-        url(r'^admindoc/', include('django.contrib.admindocs.urls')),
 
         # admin site itself - recommended
         url(r'^admin/', include(admin.site.urls)),
-        
+
         # django-pages url resolver - required
         url(r'', include('django_pages.urls')),
     )
 
 Create empty `database`:
-    
-    run #~ python manage.py syncdb  to create database and tables
-    
+
+    python manage.py migrate
+
+Add superuser:
+
+    python manage.py createsuperuser
+
 Run webserver:
-    
+
     run your webserver (nginx/apache/django test server)
 
 Add some nice website content:
@@ -82,7 +87,6 @@ Add some nice website content:
 
 Configuration
 -------------
-
 You can override default settings on these values:
 
 `ADMIN_MEDIA_PREFIX` = '/static/admin/'
@@ -100,11 +104,8 @@ Set `DEBUG` = True in settings.py while creating pages to see debugging informat
 
 Create website
 --------------
-
-**Or use the new Wizzard (go to http://yoururl.example/wizzard/)**
-
     Go to http://mydomain.example/admin/ (replace mydomain.example with your actual domain)
-    
+
     Login using credentials from command python manage.py syncdb
 
     Create Site
@@ -135,27 +136,13 @@ Done!
 
 Preview in admin
 ----------------
-
-The preview does this:
-    
-    After clicking on Preview, it sets the item to INACTIVE
-    Displays it as it would look on the page (pagination may not work)
-    
-DO NOT FORGET to set the item to ACTIVE after you're happy with the way it looks!!!
-
-
-Wizzard
--------
-
-This is just a simple helper page, that will guide you through the process of creating your presentation.
-Images and exmplanations included.
-
-Wizzard is accesible from http://yoursite.com/wizzard/
+* Disable active on the page you're working on and save it.
+* Click on preview and you can see the resulting page.
+* When you're satisfied with it, set it to active again.
 
 
 Adding Images
 -------------
-
 You can now add images directly from admin. Select Page/Post you want to edit. Click on Image icon in the editor.
 Click Browse server. In the new window, either upload your image or select
 already uploaded image from the files.
@@ -171,7 +158,6 @@ Don't forget to set your /media/uploaded/ folder permissions to 775 so you'll be
 
 Templates
 ---------
-
 You can now use one of 3 default templates!
 
 The default, which is the first that came with this package, just ordinary white and responsive design,
@@ -192,7 +178,6 @@ Note: there is a 30s cache for current template, so after the change in admin, w
 
 Creating custom template
 ------------------------
-
 1. In your settings.py, set `TEMPLATE_PATH` = 'templatename'
 2. Copy templates/default to templates/templatename
 3. Edit files in templates/templatename to your liking
@@ -205,8 +190,7 @@ I wanted to make templatetags that would just say {% menu %}, {% content %} {% c
 
 Scheme
 ------
-
-Wysiwyg editor uses this application and database scheme
+Application and database scheme:
 
     Site
     Language --> 
@@ -219,11 +203,10 @@ Wysiwyg editor uses this application and database scheme
 
 Url
 ---
-
 Url is following:
 
 `http://mydomain.example/language/my-page-with-somethin~page_number/~post`
-    
+
 Rules are following:
 
     language - string with 2-3 letters
@@ -237,11 +220,10 @@ automatically from post count. Post detail url is determined automatically from 
 with rules same as page.
 
 Reserved URLs:
-    
+
     /admin/*
     /connector/*
     /grapelli/*
-    /wizzard/
     /rss/
     /atom/
     /robots.txt
@@ -250,14 +232,12 @@ Reserved URLs:
 
 Caching
 -------
-
-Wysiwyg now supports caching in-memory, for some reason django's wrapper @chache_page for specific view caching works without CACHE in settings.py, which is weird at least. I tried memcached, in-memory and without cache, and in-memory had the best results, and you don't even have to configure it.
+Django_pages now supports caching in-memory, for some reason django's wrapper @chache_page for specific view caching works without CACHE in settings.py, which is weird at least. I tried memcached, in-memory and without cache, and in-memory had the best results, and you don't even have to configure it.
 Now it can handle 50 concurrent page acceses in 12ms! (tested with ab -n 1000 -c 50 http://nemec.lu/)
 
 
 Atom and RSS
 ------------
-
 Atom and RSS are accessible under /atom/ and /rss/ respectively.
 Simply add one record into admin Feed Settings, it must contain Site Title, Site Description, and latest post count.
 You can disable rss and atom feed by disabling it in admin.

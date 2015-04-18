@@ -7,9 +7,9 @@ from ..language.models import Language
 
 
 class MetaSet(models.Model):
-    '''
+    """
     Stores MetaData configurations
-    '''
+    """
 
     language = models.ForeignKey(Language, verbose_name=_('Language'))
     name = models.CharField(
@@ -19,18 +19,18 @@ class MetaSet(models.Model):
     )
 
     def __unicode__(self):
-
         return self.name
 
     class Meta:
+        app_label = 'django_pages'
         verbose_name = _('Meta set')
         verbose_name_plural = _('Meta sets')
 
 
 class MetaData(models.Model):
-    '''
+    """
     Stores MetaData item
-    '''
+    """
 
     meta_set = models.ForeignKey(MetaSet, verbose_name=_('Meta set'))
     name = models.CharField(
@@ -45,9 +45,9 @@ class MetaData(models.Model):
     )
 
     def __unicode__(self):
-
         return self.name
 
     class Meta:
+        app_label = 'django_pages'
         verbose_name = _('Meta data')
         verbose_name_plural = _('Meta data')

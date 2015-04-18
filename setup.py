@@ -9,7 +9,7 @@ setup(
     author=u'Lukas Nemec',
     author_email='lu.nemec@gmail.com',
     url='https://github.com/lunemec/django-pages',
-    license='see LICENCE.txt',
+    license='see LICENSE.txt',
     description='Simple CMS for django',
     long_description='''https://github.com/lunemec/django-pages''',
     zip_safe=False,

@@ -5,9 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class FeedSettings(models.Model):
-    '''
+    """
     Stores Rss/Atom feed settings
-    '''
+    """
 
     active = models.BooleanField(_('Feed enabled'), default=True)
     site_title = models.CharField(
@@ -27,9 +27,9 @@ class FeedSettings(models.Model):
     )
 
     class Meta():
-        verbose_name = _('Feed Setting')
+        app_label = 'django_pages'
+        verbose_name = _('Feed Settings')
         verbose_name_plural = _('Feed Settings')
 
     def __unicode__(self):
-
         return self.site_title

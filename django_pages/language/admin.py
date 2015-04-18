@@ -9,7 +9,6 @@ from .models import Language
 
 
 class LanguageAdminForm(forms.ModelForm):
-
     country_code = forms.RegexField(
         r'^[A-z]{2,3}$',
         label=_('Country code'),
@@ -20,6 +19,7 @@ class LanguageAdminForm(forms.ModelForm):
     )
 
     class Meta:
+        fields = '__all__'
         model = Language
 
 

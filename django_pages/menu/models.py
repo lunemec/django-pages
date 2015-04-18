@@ -7,11 +7,11 @@ from ..language.models import Language
 
 
 class Menu(models.Model):
-    '''
+    """
     Stores data about menu.
     There may be reason to have multiple menu
     Links in the header for example
-    '''
+    """
 
     name = models.CharField(
         _('Menu name'),
@@ -23,17 +23,18 @@ class Menu(models.Model):
         return self.name
 
     class Meta:
+        app_label = 'django_pages'
         verbose_name = _('Menu')
         verbose_name_plural = _('Menu')
 
 
 class MenuItem(models.Model):
-    '''
+    """
     Stores menuitem information.
     It is recommended to write urls in SEO format,
     e.g.: this_is_my_site_describing_something.
     Is related to :model: `django_pages.Menu`.
-    '''
+    """
 
     lang = models.ForeignKey(Language, verbose_name=_('Language'))
     menu = models.ForeignKey(Menu, verbose_name=_('Menu'))
@@ -78,7 +79,6 @@ class MenuItem(models.Model):
         """
         repositions items after deletion or exception
         """
-
         items = MenuItem.objects.filter(
             lang=self.lang,
             menu=self.menu
@@ -193,5 +193,6 @@ class MenuItem(models.Model):
             return '/{}/{}'.format(self.lang.country_code, self.url)
 
     class Meta:
+        app_label = 'django_pages'
         verbose_name = _('Menu item')
         verbose_name_plural = _('Menu items')

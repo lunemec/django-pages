@@ -12,23 +12,19 @@ class RssLatestPostsFeed(Feed):
     link = '/'
 
     try:
-
         settings = FeedSettings.objects.get(pk=1)
 
         if not settings.active:
-
             title = "Feeds are disabled for this site."
             description = ""
             post_count = 0
 
         else:
-
             title = settings.site_title
             description = settings.site_description
             post_count = int(settings.latest_post_count)
 
     except FeedSettings.DoesNotExist:
-
         title = "No FeedSettings found, create one in admin"
         description = "Please create exactly one feed setting in site administration"
         post_count = 5
@@ -47,5 +43,4 @@ class RssLatestPostsFeed(Feed):
 
 
 class AtomLatestPostsFeed(RssLatestPostsFeed):
-
     feed_type = Atom1Feed
