@@ -1,8 +1,5 @@
 # -*- encoding: utf-8 -*-
 
-"""
-Default URL scheme for django-pages
-"""
 from django.conf.urls import include, patterns, url
 from django.views.generic import TemplateView
 

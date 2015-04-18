@@ -10,6 +10,5 @@ def validate_empty(value):
     the field is supposed to be empty because
     it is hidden by CSS from the user
     """
-
     if value:
         raise ValidationError(u'Email must not be filled, you are a SPAM BOT!')

@@ -181,5 +181,5 @@ def generate_sitemap(request):
         'sitemap.xml',
         {'urls': data},
         RequestContext(request),
-        mimetype='application/xml'
+        content_type='application/xml'
     )

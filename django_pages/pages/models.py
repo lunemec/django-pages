@@ -20,7 +20,6 @@ class Page(models.Model):
     to all the Posts on that Page.
     Is related to :model: `django_pages.MenuItem`.
     """
-
     link = models.OneToOneField(MenuItem, verbose_name=_('Link'))
     title = models.CharField(_('Page title'), max_length=500)
     content = models.TextField(_('Page content'), blank=True)
@@ -107,7 +106,6 @@ class Post(models.Model):
     from newer (up) to older (down).
     Is related to :model: `django_pages.Page`.
     """
-
     page = models.ForeignKey(Page, verbose_name=_('Page'))
     title = models.CharField(_('Post title'), max_length=200, unique=True)
     content = models.TextField(_('Post content'))

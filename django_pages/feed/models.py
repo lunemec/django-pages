@@ -8,7 +8,6 @@ class FeedSettings(models.Model):
     """
     Stores Rss/Atom feed settings
     """
-
     active = models.BooleanField(_('Feed enabled'), default=True)
     site_title = models.CharField(
         _('Title'),

@@ -15,15 +15,10 @@ def get_client_ip(request):
     @param request: Http Request
     @return string
     """
-
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-
     if x_forwarded_for:
-
         ip = x_forwarded_for.split(',')[0]
-
     else:
-
         ip = request.META.get('REMOTE_ADDR')
 
     return ip
@@ -36,20 +31,15 @@ def set_humanity_check(request):
     @param request: Http Request
     @return None
     """
-
     result = {}
 
     # this ensures we don't have empty checkboxes
     while result == {} or result == {0: False, 1: False, 2: False, 3: False}:
-
         for i in xrange(4):
-
             if random.randint(0, 1):
-
                 result[i] = True
 
             else:
-
                 result[i] = False
 
     request.session['humanity'] = result
@@ -68,7 +58,6 @@ def translate_humanity(request):
     @param request: Http Request
     @return string
     """
-
     numbers = []
     translation = {0: 'one', 1: 'two', 2: 'three', 3: 'four'}
 
@@ -83,28 +72,24 @@ def translate_humanity(request):
 
 
 def is_human(request, data):
-
     if request.session['humanity'] == data:
-
         return True
 
     return False
 
 
 def handle_comment(request, post):
-    '''
+    """
     handles comment and either saves it or displays error
 
     @param request: Http Request
     @param post: Post object
     @return None or errorfrom django.utils.timezone import make_aware, get_current_timezone
-    '''
-
+    """
     form = CommentForm(request.POST)
     ip = get_client_ip(request)
 
     if form.is_valid():
-
         user = strip_tags(form.cleaned_data['user'])
         comment = strip_tags(form.cleaned_data['comment'])
 
@@ -116,15 +101,12 @@ def handle_comment(request, post):
         random_number = form.cleaned_data['fillmeup']
 
         if random_number != request.session['random_number']:
-
             form.spam = 'Please check that you have JavaScript enabled.'
             return form
 
         if is_human(request, {0: one, 1: two, 2: three, 3: four}):
-
             # check for duplicate comments
             if Comment.objects.filter(post=post, user=user, comment=comment):
-
                 return CommentForm()
 
             comment = Comment(post=post, user=user, comment=comment, ip=ip)
@@ -133,10 +115,8 @@ def handle_comment(request, post):
             return CommentForm()
 
         else:
-
             form.spam = 'Wrong antispam check'
             return form
 
     else:
-
         return form

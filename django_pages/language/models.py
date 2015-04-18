@@ -14,7 +14,6 @@ class Language(models.Model):
     Stores single language with optional flag image.
     Country Code will be part of URL in lowercase.
     """
-
     language = models.CharField(_('Language'), max_length=150, unique=True)
     country_code = models.CharField(
         _('Country code'),
@@ -46,7 +45,6 @@ class Language(models.Model):
         if not, check if some other language has default set to True.
         if not, do not allow to set it to False.
         """
-
         if not self.default:
             if not Language.objects.exists():
                 self.default = True
@@ -69,7 +67,6 @@ class Language(models.Model):
         override delete method to check if any other language has default set.
         if not, set language with lowest ID as default.
         """
-
         super(Language, self).delete(*args, **kwargs)
 
         if not Language.objects.filter(default=True):

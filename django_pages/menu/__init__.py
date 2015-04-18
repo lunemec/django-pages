@@ -38,7 +38,6 @@ def has_other_menu():
     :return: True or False
     :rtype: :py:obj:`bool`
     """
-
     if Menu.objects.exclude(pk=0):
         return True
 

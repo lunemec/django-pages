@@ -12,7 +12,6 @@ class Menu(models.Model):
     There may be reason to have multiple menu
     Links in the header for example
     """
-
     name = models.CharField(
         _('Menu name'),
         help_text=_('For identification only'),
@@ -35,7 +34,6 @@ class MenuItem(models.Model):
     e.g.: this_is_my_site_describing_something.
     Is related to :model: `django_pages.Menu`.
     """
-
     lang = models.ForeignKey(Language, verbose_name=_('Language'))
     menu = models.ForeignKey(Menu, verbose_name=_('Menu'))
     menuitem_name = models.CharField(_('Menu item name'), max_length=200)

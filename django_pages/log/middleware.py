@@ -11,6 +11,5 @@ class RequestLog(object):
 
         @param request: HTTP request
         """
-
         log = logging.getLogger('requestlog')
         log.info('REQUEST: %s' % unicode(request).replace('\n', ' ').encode('utf-8'))

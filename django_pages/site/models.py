@@ -10,7 +10,6 @@ class Site(models.Model):
     there is supposed to by only one Site
     (for now)
     """
-
     domain = models.CharField(_('Domain'), max_length=150)
     display_name = models.CharField(_('Website name'), max_length=200)
     tagline = models.CharField(
@@ -42,7 +41,6 @@ class Script(models.Model):
 
     for example google analytics/facebook/google+ ..
     """
-
     name = models.CharField(
         _('Name'),
         help_text=_('Script identification'),

@@ -1,4 +1,5 @@
 somehow solve lightbox
 views.py looks ugly, clean up
 MOAR unittests!
+Comments from google's api instead of own solution
 Convert to Python3

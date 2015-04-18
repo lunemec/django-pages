@@ -9,7 +9,6 @@ class Template(models.Model):
     Stores template information.
     Template name is used for template selection in templates foled of your project
     """
-
     template = models.CharField(_('Template name'), max_length=200)
     submenu_max_characters = models.PositiveIntegerField(_('Max characters in submenu'), default=150)
     active = models.BooleanField(_('Active'), default=False, blank=True)

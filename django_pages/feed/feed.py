@@ -8,7 +8,6 @@ from .models import FeedSettings
 
 
 class RssLatestPostsFeed(Feed):
-
     link = '/'
 
     try:

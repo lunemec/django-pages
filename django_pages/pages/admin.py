@@ -14,7 +14,6 @@ class PreviewAdmin(admin.ModelAdmin):
     """
     Custom parent class, with preview support
     """
-
     readonly_fields = ['preview_link', ]
 
     class Media:
