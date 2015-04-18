@@ -15,8 +15,6 @@ This project is running on this site: [Nemec.lu](http://nemec.lu/)
 Installation
 ------------
 
-Note: do NOT use `settings.py` from sample_project! the secret key is visible to all and it is a security risk. Create your own Django application and simply fill settings depending on your configuration.
-
 Get this application:
 
     pip install django-pages 
@@ -25,12 +23,6 @@ Create your project:
 
     Install Django (pip install django)
     Create your Django application 
-
-    OR
-
-    Download and copy sample_project
-
-see [django docs](https://docs.djangoproject.com/en/1.5/intro/install/))
 
 Configure
 ---------
