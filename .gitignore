@@ -3,3 +3,4 @@ build
 MANIFEST.in
 sample
 dist
+django_pages.egg-info/

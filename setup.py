@@ -3,9 +3,11 @@
 from distutils.core import setup
 from setuptools import find_packages
 
+import django_pages
+
 setup(
     name='django-pages',
-    version='1.3.1',
+    version=django_pages.VERSION,
     author=u'Lukas Nemec',
     author_email='lu.nemec@gmail.com',
     url='https://github.com/lunemec/django-pages',
